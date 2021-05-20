@@ -1,0 +1,11 @@
+@import "~@angular/material/theming";
+
+@include mat-core();
+
+// hue. Available color palettes: https://material.io/design/color/
+$market-primary-dark: mat-palette($mat-red);
+$market-accent-dark: mat-palette($mat-red);
+$market-warn-dark: mat-palette($mat-red);
+
+$market-theme-dark: mat-dark-theme($market-primary-dark, $market-accent-dark, $market-warn-dark);
+@include angular-material-theme($market-theme-dark);

@@ -1,0 +1,69 @@
+<div class="clients-container">
+
+  <mat-form-field>
+    <input matInput placeholder="name" #name>
+  </mat-form-field>
+
+  <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <mat-table class="clients-table mat-elevation-z8" [dataSource]="dataSource"
+             matSort matSortActive="name" matSortDirection="asc" matSortDisableClear>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Név</mat-header-cell>
+      <mat-cell *matCellDef="let client">{{client.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dob">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Szül. év</mat-header-cell>
+      <mat-cell class="description-cell"
+                *matCellDef="let client">{{client.dob}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tel">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Tel.</mat-header-cell>
+      <mat-cell class="description-cell"
+                *matCellDef="let client">{{client.tel}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>E-mail</mat-header-cell>
+      <mat-cell class="description-cell"
+                *matCellDef="let client">
+        {{client.email}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button color="accent">
+          <mat-icon aria-label="Add">add</mat-icon>
+        </button>
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let client; let i=index;">
+        <button mat-icon-button color="accent">
+          <mat-icon aria-label="View">remove_red_eye</mat-icon>
+        </button>
+
+        <button mat-icon-button color="accent">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="accent" >
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let client; columns: displayedColumns"></mat-row>
+
+  </mat-table>
+
+  <mat-paginator [pageSize]="pageSize"
+                 [length]="dataSource.dataLength$"
+                 [pageSizeOptions]="[3, 5, 10]"></mat-paginator>
+
+</div>

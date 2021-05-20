@@ -1,0 +1,18 @@
+<mat-sidenav-container>
+
+  <nav mat-tab-nav-bar class="mat-elevation-z8" backgroundColor="primary">
+    <a
+      mat-tab-link
+      *ngFor="let link of navLinks"
+      routerLink="{{ link.location }}"
+      routerLinkActive
+      #rla="routerLinkActive"
+      [active]="rla.isActive">
+      <mat-icon>{{ link.icon }}</mat-icon>
+      <span>{{ link.label | uppercase }}</span>
+    </a>
+  </nav>
+
+  <router-outlet></router-outlet>
+
+</mat-sidenav-container>
