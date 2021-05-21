@@ -17,7 +17,7 @@ import {HttpService} from '../services/http.service';
 export class ClientsComponent implements OnInit, AfterViewInit {
 
   dataSource: ClientsDataSource;
-  displayedColumns = ['name', 'dob', 'tel', 'email'];
+  displayedColumns = ['name', 'dob', 'tel', 'email', 'actions'];
   pageSize = 10;
   categoryInputText: string;
   @ViewChild(MatPaginator) paginator: MatPaginator;
