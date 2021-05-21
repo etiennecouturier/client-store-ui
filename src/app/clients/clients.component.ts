@@ -65,4 +65,8 @@ export class ClientsComponent implements OnInit, AfterViewInit {
       this.paginator.pageSize);
   }
 
+  deleteItem(id) {
+    this.httpService.deleteById('/clients/delete/', id)
+      .subscribe(() => this.loadClientsPage());
+  }
 }
