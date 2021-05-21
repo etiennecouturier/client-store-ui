@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {ClientsComponent} from './products/clients.component';
+import {ClientsComponent} from './clients/clients.component';
+import {ClientDetailsComponent} from "./client-details/client-details.component";
+import {ClientResolver} from "./services/client-resolver.service";
 
 const routes: Routes = [
   {
@@ -11,6 +13,13 @@ const routes: Routes = [
   {
     path: 'clients',
     component: ClientsComponent
+  },
+  {
+    path: 'clients/:id',
+    component: ClientDetailsComponent,
+    resolve: {
+      product: ClientResolver
+    }
   },
   {
     path: '**',

@@ -19,18 +19,20 @@ import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {HttpClientModule} from '@angular/common/http';
 import {ClientsService} from './services/clients.service';
-import {ClientsComponent} from './products/clients.component';
+import {ClientsComponent} from './clients/clients.component';
 import {FormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {HttpService} from './services/http.service';
 import {ChartsModule} from 'ng2-charts';
-import {ClientResolver} from './services/product-resolver.service';
+import {ClientResolver} from './services/client-resolver.service';
+import {ClientDetailsComponent} from "./client-details/client-details.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientsComponent,
+    ClientDetailsComponent
   ],
   imports: [
     BrowserModule,

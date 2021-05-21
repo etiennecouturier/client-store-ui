@@ -43,7 +43,7 @@
       </mat-header-cell>
 
       <mat-cell *matCellDef="let client; let i=index;">
-        <button mat-icon-button color="accent">
+        <button mat-icon-button color="accent" [routerLink]="['/clients', client.id]">
           <mat-icon aria-label="View">remove_red_eye</mat-icon>
         </button>
 
