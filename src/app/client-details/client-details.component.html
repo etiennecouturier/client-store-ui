@@ -1,16 +1,84 @@
 <div class="client-details-container">
   <mat-list>
-    <mat-list-item><span>category:&nbsp;</span>{{client.name}}</mat-list-item>
+    <mat-list-item><span>Név:&nbsp;</span>{{client.name}}</mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item><span>price:&nbsp;</span>{{client.dob}}</mat-list-item>
+    <mat-list-item><span>Szül. év:&nbsp;</span>{{client.dob}}</mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item><span>quantity:&nbsp;</span>{{client.tel}}</mat-list-item>
+    <mat-list-item><span>Tel:&nbsp;</span>{{client.tel}}</mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item><span>brand:&nbsp;</span>{{client.email}}</mat-list-item>
+    <mat-list-item><span>Email:&nbsp;</span>{{client.email}}</mat-list-item>
     <mat-divider></mat-divider>
-
-    <mat-divider></mat-divider>
-    <mat-list-item ><span>supplier rating:&nbsp;</span>{{client.visits[0].date}}</mat-list-item>
+    <mat-list-item ><span>Látogatás dátuma:&nbsp;</span>{{client.visits[0].date}}</mat-list-item>
     <mat-divider></mat-divider>
   </mat-list>
+</div>
+
+<div class="clients-container">
+  <mat-label>Látogatások</mat-label>
+
+  <mat-table class="clients-table mat-elevation-z8" [dataSource]="client.visits"
+             matSort matSortActive="name" matSortDirection="asc" matSortDisableClear>
+    <ng-container matColumnDef="date">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Dátum</mat-header-cell>
+      <mat-cell *matCellDef="let visit">{{visit.date}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="jobb-dioptria">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Jobb Dioptria</mat-header-cell>
+      <mat-cell class="description-cell"
+                *matCellDef="let visit">{{visit.rightEye.dioptria}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="jobb-cilinder">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Jobb Cilinder</mat-header-cell>
+      <mat-cell class="description-cell"
+                *matCellDef="let visit">{{visit.rightEye.cilinder}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="jobb-fok">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Jobb Fok</mat-header-cell>
+      <mat-cell class="description-cell"
+                *matCellDef="let visit">{{visit.rightEye.fok}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="jobb-vizus">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Jobb Vízus</mat-header-cell>
+      <mat-cell class="description-cell"
+                *matCellDef="let visit">{{visit.rightEye.vizus}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="bal-dioptria">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Bal Dioptria</mat-header-cell>
+      <mat-cell class="description-cell"
+                *matCellDef="let visit">{{visit.leftEye.dioptria}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="bal-cilinder">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Bal Cilinder</mat-header-cell>
+      <mat-cell class="description-cell"
+                *matCellDef="let visit">{{visit.leftEye.cilinder}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="bal-fok">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Bal Fok</mat-header-cell>
+      <mat-cell class="description-cell"
+                *matCellDef="let visit">{{visit.leftEye.fok}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="bal-vizus">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Bal Vízus</mat-header-cell>
+      <mat-cell class="description-cell"
+                *matCellDef="let visit">{{visit.leftEye.vizus}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="notes">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Megjegyzés</mat-header-cell>
+      <mat-cell class="description-cell"
+                *matCellDef="let visit">{{visit.notes}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let client; columns: displayedColumns"></mat-row>
+
+  </mat-table>
 </div>

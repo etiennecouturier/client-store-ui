@@ -17,3 +17,14 @@ span {
 a {
   color: white;
 }
+
+.clients-container {
+  text-align: center;
+  max-width: 70%;
+  margin: 40px auto;
+}
+
+.clients-table {
+  min-height: 360px;
+  margin-top: 10px;
+}

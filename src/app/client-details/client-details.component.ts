@@ -8,6 +8,8 @@ import {Client} from "../model/client";
   styleUrls: ['./client-details.component.css']
 })
 export class ClientDetailsComponent implements OnInit {
+  displayedColumns = ['date', 'jobb-dioptria', 'jobb-cilinder', 'jobb-fok', 'jobb-vizus',
+                      'bal-dioptria', 'bal-cilinder', 'bal-fok', 'bal-vizus', 'notes'];
   public client: Client;
 
   constructor(private route: ActivatedRoute) {}
