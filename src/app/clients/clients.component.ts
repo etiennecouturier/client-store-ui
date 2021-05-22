@@ -66,7 +66,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   }
 
   deleteItem(id) {
-    this.httpService.deleteById('/clients/delete/', id)
+    this.httpService.deleteById('/clients/', id)
       .subscribe(() => this.loadClientsPage());
   }
 }
