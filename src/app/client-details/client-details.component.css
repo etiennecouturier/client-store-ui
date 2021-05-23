@@ -1,14 +1,9 @@
 .client-details-container {
-  /*border: 2px solid red;*/
   text-align: center;
   color: red;
   max-width: 30%;
   margin: 0 auto;
 }
-
-/*.mat-divider {*/
-/*  border-top-color: red;*/
-/*}*/
 
 span {
   color: #f44336;

@@ -27,12 +27,14 @@ import {HttpService} from './services/http.service';
 import {ChartsModule} from 'ng2-charts';
 import {ClientResolver} from './services/client-resolver.service';
 import {ClientDetailsComponent} from "./client-details/client-details.component";
+import {PropertyReaderPipe} from "./client-details/property-reader.pipe";
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientsComponent,
-    ClientDetailsComponent
+    ClientDetailsComponent,
+    PropertyReaderPipe
   ],
   imports: [
     BrowserModule,

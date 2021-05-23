@@ -8,14 +8,27 @@ import {Client} from "../model/client";
   styleUrls: ['./client-details.component.css']
 })
 export class ClientDetailsComponent implements OnInit {
-  displayedColumns = ['date', 'jobb-dioptria', 'jobb-cilinder', 'jobb-fok', 'jobb-vizus',
-                      'bal-dioptria', 'bal-cilinder', 'bal-fok', 'bal-vizus', 'notes'];
+  displayedColumns = ['date', 'rightEye.dioptria', 'rightEye.cilinder', 'rightEye.fok', 'rightEye.vizus',
+                      'leftEye.dioptria', 'leftEye.cilinder', 'leftEye.fok', 'leftEye.vizus', 'notes'];
+
+  propertyToDisplayedName = new Map([
+    ['date', 'Dátum'],
+    ['rightEye.dioptria', 'Jobb dioptria'],
+    ['rightEye.cilinder', 'Jobb cilinder'],
+    ['rightEye.fok', 'Jobb fok'],
+    ['rightEye.vizus', 'Jobb vizus'],
+    ['leftEye.dioptria', 'Bal dioptria'],
+    ['leftEye.cilinder', 'Bal cilinder'],
+    ['leftEye.fok', 'Bal fok'],
+    ['leftEye.vizus', 'Bal vizus'],
+    ['notes', 'Megjegyzések']
+  ]);
+
   public client: Client;
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.data);
     this.client = this.route.snapshot.data['client'];
   }
 
