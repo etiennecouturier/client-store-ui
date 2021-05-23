@@ -21,7 +21,7 @@
 
     <ng-container matColumnDef="{{col}}" *ngFor="let col of displayedColumns">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
-        {{propertyToDisplayedName[col]}}
+        {{propertyToDisplayedName.get(col)}}
       </mat-header-cell>
       <mat-cell class="description-cell" *matCellDef="let element">
         {{col | propertyReader:element}}
