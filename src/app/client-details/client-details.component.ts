@@ -9,7 +9,7 @@ import {Client} from "../model/client";
 })
 export class ClientDetailsComponent implements OnInit {
   displayedColumns = ['date', 'rightEye.dioptria', 'rightEye.cilinder', 'rightEye.fok', 'rightEye.vizus',
-                      'leftEye.dioptria', 'leftEye.cilinder', 'leftEye.fok', 'leftEye.vizus', 'notes'];
+                      'leftEye.dioptria', 'leftEye.cilinder', 'leftEye.fok', 'leftEye.vizus', 'notes', '$$edit'];
 
   propertyToDisplayedName = new Map([
     ['date', 'Dátum'],
@@ -21,7 +21,8 @@ export class ClientDetailsComponent implements OnInit {
     ['leftEye.cilinder', 'Bal cilinder'],
     ['leftEye.fok', 'Bal fok'],
     ['leftEye.vizus', 'Bal vizus'],
-    ['notes', 'Megjegyzések']
+    ['notes', 'Megjegyzések'],
+    ['$$edit', '']
   ]);
 
   public client: Client;

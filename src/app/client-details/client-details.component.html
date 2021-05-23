@@ -24,7 +24,27 @@
         {{propertyToDisplayedName.get(col)}}
       </mat-header-cell>
       <mat-cell class="description-cell" *matCellDef="let element">
-        {{col | propertyReader:element}}
+        <div *ngIf="!element.isEdit">
+          <div class="btn-edit" *ngIf="col === '$$edit'; else spanHeader" >
+            <button (click)="element.isEdit = !element.isEdit">Edit</button>
+          </div>
+          <ng-template #spanHeader>
+            <span>
+              {{col | propertyReader:element}}
+            </span>
+          </ng-template>
+        </div>
+        <div *ngIf="element.isEdit">
+          <div class="btn-edit" *ngIf="col === '$$edit'; else dataField">
+            <button (click)="element.isEdit = !element.isEdit">Done</button>
+          </div>
+          <ng-template #dataField>
+            <mat-form-field>
+              <!--              <mat-label>{{col}}</mat-label>-->
+              <input matInput [ngModel]="col | propertyReader:element">
+            </mat-form-field>
+          </ng-template>
+        </div>
       </mat-cell>
     </ng-container>
 
