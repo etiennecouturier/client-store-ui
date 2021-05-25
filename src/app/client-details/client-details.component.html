@@ -12,9 +12,9 @@
 
 <div class="clients-container">
 
-  <mat-card class="example-card">
+  <mat-card class="example-card" *ngFor="let visit of client.visits">
     <div class="card-header">
-      <div class="date">{{client.visits[0].date}}</div>
+      <div class="date">{{visit.date}}</div>
       <div mat-card-avatar class="example-header-image"></div>
 <!--      <mat-card-subtitle>Vizsgálat</mat-card-subtitle>-->
     </div>
@@ -23,10 +23,10 @@
     <mat-card-content class="flex-container">
       <div class="flex-child">
         <mat-icon aria-label="left eye" color="accent">remove_red_eye</mat-icon>
-        <div class="flex-line">{{client.visits[0].leftEye.dioptria}}</div>
-        <div class="flex-line">{{client.visits[0].leftEye.cilinder}}</div>
-        <div class="flex-line">{{client.visits[0].leftEye.fok}}</div>
-        <div class="flex-line">{{client.visits[0].leftEye.vizus}}</div>
+        <div class="flex-line">{{visit.leftEye.dioptria}}</div>
+        <div class="flex-line">{{visit.leftEye.cilinder}}</div>
+        <div class="flex-line">{{visit.leftEye.fok}}</div>
+        <div class="flex-line">{{visit.leftEye.vizus}}</div>
       </div>
       <div class="flex-child">
         <mat-icon aria-label="left eye" color="accent">info</mat-icon>
@@ -37,12 +37,13 @@
       </div>
       <div class="flex-child">
         <mat-icon aria-label="right eye" color="accent">remove_red_eye</mat-icon>
-        <div class="flex-line">{{client.visits[0].rightEye.dioptria}}</div>
-        <div class="flex-line">{{client.visits[0].rightEye.cilinder}}</div>
-        <div class="flex-line">{{client.visits[0].rightEye.fok}}</div>
-        <div class="flex-line">{{client.visits[0].rightEye.vizus}}</div>
+        <div class="flex-line">{{visit.rightEye.dioptria}}</div>
+        <div class="flex-line">{{visit.rightEye.cilinder}}</div>
+        <div class="flex-line">{{visit.rightEye.fok}}</div>
+        <div class="flex-line">{{visit.rightEye.vizus}}</div>
       </div>
     </mat-card-content>
+    <div>{{visit.notes}}</div>
 <!--    <mat-card-subtitle>Megjegyzés</mat-card-subtitle>-->
     <mat-card-actions>
       <button mat-icon-button color="accent">

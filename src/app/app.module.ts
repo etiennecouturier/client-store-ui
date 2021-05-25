@@ -27,7 +27,7 @@ import {HttpService} from './services/http.service';
 import {ChartsModule} from 'ng2-charts';
 import {ClientResolver} from './services/client-resolver.service';
 import {ClientDetailsComponent} from './client-details/client-details.component';
-import {PropertyReaderPipe} from './client-details/property-reader.pipe';
+import {TelephoneNumberPipe} from './client-details/telephone-number.pipe';
 import {CommonModule} from '@angular/common';
 
 @NgModule({
@@ -35,7 +35,7 @@ import {CommonModule} from '@angular/common';
     AppComponent,
     ClientsComponent,
     ClientDetailsComponent,
-    PropertyReaderPipe
+    TelephoneNumberPipe
   ],
   imports: [
     BrowserModule,

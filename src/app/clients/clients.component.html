@@ -44,11 +44,7 @@
 
       <mat-cell *matCellDef="let client; let i=index;">
         <button mat-icon-button color="accent" [routerLink]="['/clients', client.id]">
-          <mat-icon aria-label="View">remove_red_eye</mat-icon>
-        </button>
-
-        <button mat-icon-button color="accent">
-          <mat-icon aria-label="Edit">edit</mat-icon>
+          <mat-icon aria-label="View">list</mat-icon>
         </button>
 
         <button mat-icon-button color="accent" (click)="deleteItem(client.id)">
