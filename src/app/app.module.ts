@@ -26,8 +26,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {HttpService} from './services/http.service';
 import {ChartsModule} from 'ng2-charts';
 import {ClientResolver} from './services/client-resolver.service';
-import {ClientDetailsComponent} from "./client-details/client-details.component";
-import {PropertyReaderPipe} from "./client-details/property-reader.pipe";
+import {ClientDetailsComponent} from './client-details/client-details.component';
+import {PropertyReaderPipe} from './client-details/property-reader.pipe';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import {PropertyReaderPipe} from "./client-details/property-reader.pipe";
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    CommonModule,
     HttpClientModule,
     MatMenuModule,
     MatButtonModule,

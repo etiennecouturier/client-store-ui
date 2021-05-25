@@ -1,55 +1,59 @@
 <div class="client-details-container">
   <mat-list>
-    <mat-list-item><span>Név:&nbsp;</span>{{client.name}}</mat-list-item>
+    <div class="personal-info-line"><span>Név:&nbsp;</span>{{client.name}}</div>
     <mat-divider></mat-divider>
-    <mat-list-item><span>Szül. év:&nbsp;</span>{{client.dob}}</mat-list-item>
+    <div class="personal-info-line"><span>Szül. év:&nbsp;</span>{{client.dob}}</div>
     <mat-divider></mat-divider>
-    <mat-list-item><span>Tel:&nbsp;</span>{{client.tel}}</mat-list-item>
+    <div class="personal-info-line"><span>Tel:&nbsp;</span>{{client.tel}}</div>
     <mat-divider></mat-divider>
-    <mat-list-item><span>Email:&nbsp;</span>{{client.email}}</mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item ><span>Látogatás dátuma:&nbsp;</span>{{client.visits[0].date}}</mat-list-item>
+    <div class="personal-info-line"><span>Email:&nbsp;</span>{{client.email}}</div>
     <mat-divider></mat-divider>
   </mat-list>
 </div>
 
 <div class="clients-container">
-  <mat-label>Látogatások</mat-label>
 
-  <mat-table class="clients-table mat-elevation-z8" [dataSource]="client.visits"
-             matSort matSortActive="name" matSortDirection="asc" matSortDisableClear>
+  <mat-card class="example-card">
+    <div class="card-header">
+      <div class="date">{{client.visits[0].date}}</div>
+      <div mat-card-avatar class="example-header-image"></div>
+<!--      <mat-card-subtitle>Vizsgálat</mat-card-subtitle>-->
+    </div>
 
-    <ng-container matColumnDef="{{col}}" *ngFor="let col of displayedColumns">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        {{propertyToDisplayedName.get(col)}}
-      </mat-header-cell>
-      <mat-cell class="description-cell" *matCellDef="let element">
-        <div *ngIf="!element.isEdit">
-          <div class="btn-edit" *ngIf="col === '$$edit'; else spanHeader" >
-            <button (click)="element.isEdit = !element.isEdit">Edit</button>
-          </div>
-          <ng-template #spanHeader>
-            <span>
-              {{col | propertyReader:element}}
-            </span>
-          </ng-template>
-        </div>
-        <div *ngIf="element.isEdit">
-          <div class="btn-edit" *ngIf="col === '$$edit'; else dataField">
-            <button (click)="element.isEdit = !element.isEdit">Done</button>
-          </div>
-          <ng-template #dataField>
-            <mat-form-field>
-              <!--              <mat-label>{{col}}</mat-label>-->
-              <input matInput [ngModel]="col | propertyReader:element">
-            </mat-form-field>
-          </ng-template>
-        </div>
-      </mat-cell>
-    </ng-container>
+    <!--    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
+    <mat-card-content class="flex-container">
+      <div class="flex-child">
+        <mat-icon aria-label="left eye" color="accent">remove_red_eye</mat-icon>
+        <div class="flex-line">{{client.visits[0].leftEye.dioptria}}</div>
+        <div class="flex-line">{{client.visits[0].leftEye.cilinder}}</div>
+        <div class="flex-line">{{client.visits[0].leftEye.fok}}</div>
+        <div class="flex-line">{{client.visits[0].leftEye.vizus}}</div>
+      </div>
+      <div class="flex-child">
+        <mat-icon aria-label="left eye" color="accent">info</mat-icon>
+        <div class="flex-line">dioptria</div>
+        <div class="flex-line">cilinder</div>
+        <div class="flex-line">fok</div>
+        <div class="flex-line">vizus</div>
+      </div>
+      <div class="flex-child">
+        <mat-icon aria-label="right eye" color="accent">remove_red_eye</mat-icon>
+        <div class="flex-line">{{client.visits[0].rightEye.dioptria}}</div>
+        <div class="flex-line">{{client.visits[0].rightEye.cilinder}}</div>
+        <div class="flex-line">{{client.visits[0].rightEye.fok}}</div>
+        <div class="flex-line">{{client.visits[0].rightEye.vizus}}</div>
+      </div>
+    </mat-card-content>
+<!--    <mat-card-subtitle>Megjegyzés</mat-card-subtitle>-->
+    <mat-card-actions>
+      <button mat-icon-button color="accent">
+        <mat-icon aria-label="Edit">edit</mat-icon>
+      </button>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let client; columns: displayedColumns"></mat-row>
+      <button mat-icon-button color="accent">
+        <mat-icon aria-label="Delete">delete</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
 
-  </mat-table>
 </div>

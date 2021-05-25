@@ -1,6 +1,6 @@
 .client-details-container {
   text-align: center;
-  color: red;
+  /*color: red;*/
   max-width: 30%;
   margin: 0 auto;
 }
@@ -22,4 +22,50 @@ a {
 .clients-table {
   min-height: 360px;
   margin-top: 10px;
+}
+
+.example-card {
+  max-width: 500px;
+  margin: auto;
+}
+
+.example-header-image {
+  background-image: url('../../assets/exam.png');
+  background-size: cover;
+  /*float: right;*/
+}
+
+.flex-container {
+  display: flex;
+  margin-top: 10px;
+  border: 1px solid red;
+  padding-top: 15px;
+}
+
+.flex-child {
+  flex: 1;
+  /*border: 1px solid red;*/
+}
+
+.flex-child:first-child {
+  margin-right: 20px;
+}
+
+.flex-line {
+  margin: 20px;
+}
+
+.card-header {
+  padding-bottom: 20px;
+}
+
+.date {
+  float: right;
+  padding-top: 15px;
+  color: red;
+}
+
+.personal-info-line {
+  margin: auto;
+  padding: 20px;
 }
