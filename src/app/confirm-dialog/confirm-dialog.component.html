@@ -1,0 +1,13 @@
+<div mat-dialog-content  align="center">
+  <mat-label>Biztosan törlöd a {{data.name}} nevű ügyfelet?</mat-label>
+</div>
+<div mat-dialog-actions align="center">
+  <button mat-icon-button color="accent" (click)="onNoClick()">
+    <mat-icon aria-label="Delete">cancel</mat-icon>
+  </button>
+  <button mat-icon-button color="accent"
+          [mat-dialog-close]="data.id"
+          (click)="onDelete()">
+    <mat-icon aria-label="Delete">check</mat-icon>
+  </button>
+</div>

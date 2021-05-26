@@ -30,13 +30,15 @@ import {ClientDetailsComponent} from './client-details/client-details.component'
 import {PhonePipe} from './pipes/phone.pipe';
 import {CommonModule} from '@angular/common';
 import {NotifierModule} from 'angular-notifier';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientsComponent,
     ClientDetailsComponent,
-    PhonePipe
+    PhonePipe,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,

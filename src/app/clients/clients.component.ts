@@ -8,6 +8,8 @@ import {ClientsDataSource} from '../services/clientsDataSource';
 import {ClientsService} from '../services/clients.service';
 import {HttpService} from '../services/http.service';
 import {NotifierService} from 'angular-notifier';
+import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
 
 
 @Component({
@@ -25,7 +27,8 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('name') nameInput: ElementRef;
 
-  constructor(private route: ActivatedRoute,
+  constructor(public dialog: MatDialog,
+              private route: ActivatedRoute,
               private clientsService: ClientsService,
               private httpService: HttpService,
               private notifierService: NotifierService) {}
@@ -73,5 +76,16 @@ export class ClientsComponent implements OnInit, AfterViewInit {
         this.loadClientsPage();
         this.notifierService.notify('success', 'Ügyfél törölve!');
       });
+  }
+
+  openDialog(client): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '500px',
+      data: client
+    });
+
+    dialogRef.componentInstance.del.subscribe(() => {
+      this.deleteItem(client.id);
+    });
   }
 }
