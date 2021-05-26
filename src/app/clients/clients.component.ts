@@ -7,6 +7,7 @@ import {fromEvent, merge} from 'rxjs';
 import {ClientsDataSource} from '../services/clientsDataSource';
 import {ClientsService} from '../services/clients.service';
 import {HttpService} from '../services/http.service';
+import {NotifierService} from 'angular-notifier';
 
 
 @Component({
@@ -26,7 +27,8 @@ export class ClientsComponent implements OnInit, AfterViewInit {
 
   constructor(private route: ActivatedRoute,
               private clientsService: ClientsService,
-              private httpService: HttpService) {}
+              private httpService: HttpService,
+              private notifierService: NotifierService) {}
 
   ngOnInit() {
     this.dataSource = new ClientsDataSource(this.clientsService);
@@ -67,6 +69,9 @@ export class ClientsComponent implements OnInit, AfterViewInit {
 
   deleteItem(id) {
     this.httpService.deleteById('/clients/', id)
-      .subscribe(() => this.loadClientsPage());
+      .subscribe(() => {
+        this.loadClientsPage();
+        this.notifierService.notify('success', 'Ügyfél törölve!');
+      });
   }
 }

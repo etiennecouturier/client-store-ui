@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {LOCALE_ID, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -29,7 +29,7 @@ import {ClientResolver} from './services/client-resolver.service';
 import {ClientDetailsComponent} from './client-details/client-details.component';
 import {PhonePipe} from './pipes/phone.pipe';
 import {CommonModule} from '@angular/common';
-import {Locale} from 'moment';
+import {NotifierModule} from 'angular-notifier';
 
 @NgModule({
   declarations: [
@@ -60,13 +60,13 @@ import {Locale} from 'moment';
     MatDialogModule,
     FormsModule,
     MatSelectModule,
-    ChartsModule
+    ChartsModule,
+    NotifierModule
   ],
   providers: [
     ClientsService,
     HttpService,
     ClientResolver
-    // {provide: LOCALE_ID, useValue: 'hu'}
   ],
   bootstrap: [AppComponent]
 })
