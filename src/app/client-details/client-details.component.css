@@ -1,8 +1,5 @@
 .client-details-container {
-  text-align: center;
-  /*color: red;*/
-  max-width: 30%;
-  margin: 0 auto;
+  background-color: #505050;
 }
 
 span {
