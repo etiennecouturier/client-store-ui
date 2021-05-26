@@ -1,7 +1,7 @@
-import {Eye} from "./eye";
+import {Eye} from './eye';
 
 export interface Visit {
-  date: string;
+  date: Date;
   rightEye: Eye;
   leftEye: Eye;
   notes: string;

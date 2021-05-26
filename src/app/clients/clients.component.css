@@ -13,3 +13,8 @@ mat-form-field {
   padding-right: 10px;
   padding-left: 10px;
 }
+
+.name {
+  display: flex !important;
+  justify-content: flex-start !important;
+}

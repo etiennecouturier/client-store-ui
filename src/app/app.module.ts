@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -27,15 +27,16 @@ import {HttpService} from './services/http.service';
 import {ChartsModule} from 'ng2-charts';
 import {ClientResolver} from './services/client-resolver.service';
 import {ClientDetailsComponent} from './client-details/client-details.component';
-import {TelephoneNumberPipe} from './client-details/telephone-number.pipe';
+import {PhonePipe} from './pipes/phone.pipe';
 import {CommonModule} from '@angular/common';
+import {Locale} from 'moment';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientsComponent,
     ClientDetailsComponent,
-    TelephoneNumberPipe
+    PhonePipe
   ],
   imports: [
     BrowserModule,
@@ -65,6 +66,7 @@ import {CommonModule} from '@angular/common';
     ClientsService,
     HttpService,
     ClientResolver
+    // {provide: LOCALE_ID, useValue: 'hu'}
   ],
   bootstrap: [AppComponent]
 })

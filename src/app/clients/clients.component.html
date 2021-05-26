@@ -11,24 +11,32 @@
   <mat-table class="clients-table mat-elevation-z8" [dataSource]="dataSource"
              matSort matSortActive="name" matSortDirection="asc" matSortDisableClear>
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Név</mat-header-cell>
-      <mat-cell *matCellDef="let client">{{client.name}}</mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        <mat-icon aria-label="View" color="accent">person</mat-icon>
+      </mat-header-cell>
+      <mat-cell class="name" *matCellDef="let client">{{client.name}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="dob">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Szül. év</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        <mat-icon aria-label="View" color="accent">perm_contact_calendar</mat-icon>
+      </mat-header-cell>
       <mat-cell class="description-cell"
                 *matCellDef="let client">{{client.dob}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="tel">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Tel.</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        <mat-icon aria-label="View" color="accent">phone</mat-icon>
+      </mat-header-cell>
       <mat-cell class="description-cell"
-                *matCellDef="let client">{{client.tel}}</mat-cell>
+                *matCellDef="let client">{{client.tel | phone}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>E-mail</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        <mat-icon aria-label="View" color="accent">alternate_email</mat-icon>
+      </mat-header-cell>
       <mat-cell class="description-cell"
                 *matCellDef="let client">
         {{client.email}}
