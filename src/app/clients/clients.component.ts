@@ -71,11 +71,11 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   }
 
   deleteItem(id) {
-    this.httpService.deleteById('/clients/', id)
-      .pipe(
-        catchError(err => this.notifierService.notify('error', 'Ügyfél nem lett törölve!'))
-      )
-      .subscribe(() => {
+    const response = this.httpService.deleteById('/clients/', id);
+    // response.pipe(
+    //     catchError(() => this.notifierService.notify('error', 'Ügyfél nem lett törölve!'))
+    //   );
+    response.subscribe(() => {
         this.loadClientsPage();
         this.notifierService.notify('success', 'Ügyfél törölve!');
       });

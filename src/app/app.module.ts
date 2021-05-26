@@ -31,6 +31,8 @@ import {PhonePipe} from './pipes/phone.pipe';
 import {CommonModule} from '@angular/common';
 import {NotifierModule} from 'angular-notifier';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,9 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     FormsModule,
     MatSelectModule,
     ChartsModule,
-    NotifierModule
+    NotifierModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     ClientsService,

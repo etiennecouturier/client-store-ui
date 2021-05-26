@@ -32,6 +32,8 @@ a {
 .example-header-image {
   background-image: url('../../assets/exam.png');
   background-size: cover;
+  /*margin-top: 10px;*/
+  margin-bottom: 30px;
   /*float: right;*/
 }
 
@@ -54,12 +56,11 @@ a {
 }
 
 .card-header {
-  padding-bottom: 20px;
+  /*padding-bottom: 20px;*/
 }
 
 .date {
   float: right;
-  padding-top: 15px;
   color: red;
 }
 

@@ -34,7 +34,7 @@ export class HttpService {
     return this.http.get<Page<T>>(environment.baseUrl + url, {params : params});
   }
 
-  deleteById(url: String, id: number) {
+  deleteById(url: String, id: number): Observable<Object> {
     return this.http.delete(environment.baseUrl + url + id);
   }
 
