@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/
 import {ActivatedRoute} from '@angular/router';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
-import {debounceTime, distinctUntilChanged, tap} from 'rxjs/operators';
+import {catchError, debounceTime, distinctUntilChanged, tap} from 'rxjs/operators';
 import {fromEvent, merge} from 'rxjs';
 import {ClientsDataSource} from '../services/clientsDataSource';
 import {ClientsService} from '../services/clients.service';
@@ -72,6 +72,9 @@ export class ClientsComponent implements OnInit, AfterViewInit {
 
   deleteItem(id) {
     this.httpService.deleteById('/clients/', id)
+      .pipe(
+        catchError(err => this.notifierService.notify('error', 'Ügyfél nem lett törölve!'))
+      )
       .subscribe(() => {
         this.loadClientsPage();
         this.notifierService.notify('success', 'Ügyfél törölve!');

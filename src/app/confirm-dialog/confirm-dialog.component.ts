@@ -16,11 +16,4 @@ export class ConfirmDialogComponent {
     console.log(data);
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  onDelete() {
-    this.del.emit();
-  }
 }

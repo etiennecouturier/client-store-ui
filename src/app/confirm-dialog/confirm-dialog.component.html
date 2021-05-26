@@ -2,12 +2,12 @@
   <mat-label>Biztosan törlöd a <span class="red">{{data.name}}</span> nevű ügyfelet?</mat-label>
 </div>
 <div mat-dialog-actions align="center">
-  <button mat-icon-button color="accent" (click)="onNoClick()">
+  <button mat-icon-button color="accent" (click)="dialogRef.close()">
     <mat-icon aria-label="Delete">cancel</mat-icon>
   </button>
   <button mat-icon-button color="accent"
           [mat-dialog-close]="data.id"
-          (click)="onDelete()">
+          (click)="del.emit()">
     <mat-icon aria-label="Delete">check</mat-icon>
   </button>
 </div>
