@@ -40,6 +40,7 @@ a {
   margin-top: 10px;
   border: 1px solid red;
   padding-top: 15px;
+  max-width: 500px;
 }
 
 .flex-child {
@@ -47,12 +48,9 @@ a {
   /*border: 1px solid red;*/
 }
 
-.flex-child:first-child {
-  margin-right: 20px;
-}
-
 .flex-line {
-  margin: 20px;
+  /*margin-left: 20px;*/
+  max-width: 100px;
 }
 
 .card-header {

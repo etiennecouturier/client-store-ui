@@ -26,3 +26,7 @@ body {
 .spinner-container mat-spinner {
   margin: 130px auto 0 auto;
 }
+
+.red {
+  color: red;
+}

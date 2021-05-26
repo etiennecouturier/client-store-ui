@@ -10,6 +10,7 @@ import {Client} from '../model/client';
 export class ClientDetailsComponent implements OnInit {
 
   public client: Client;
+  edit = false;
 
   constructor(private route: ActivatedRoute) {}
 
