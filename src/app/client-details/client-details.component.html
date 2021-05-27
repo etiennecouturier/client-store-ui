@@ -64,15 +64,15 @@
       <button mat-icon-button color="accent" (click)="edit=!edit" *ngIf="!edit">
         <mat-icon aria-label="Edit">edit</mat-icon>
       </button>
-      <button mat-icon-button color="accent" (click)="edit=!edit" *ngIf="edit">
-        <mat-icon aria-label="Edit">check</mat-icon>
+      <button mat-icon-button color="accent" (click)="save()" *ngIf="edit">
+        <mat-icon aria-label="Save">check</mat-icon>
       </button>
 
       <button mat-icon-button color="accent" *ngIf="!edit">
         <mat-icon aria-label="Delete">delete</mat-icon>
       </button>
       <button mat-icon-button color="accent" (click)="edit=false" *ngIf="edit">
-        <mat-icon aria-label="Delete">cancel</mat-icon>
+        <mat-icon aria-label="Cancel">cancel</mat-icon>
       </button>
     </mat-card-actions>
   </mat-card>
