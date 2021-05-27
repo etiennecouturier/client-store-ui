@@ -1,6 +1,6 @@
 <div class="clients-container">
   <mat-card class="example-card client-details-container" *ngFor="let visit of client.visits">
-    <mat-card-content >
+    <mat-card-content>
       <mat-list>
         <div class="personal-info-line"><span>Név:&nbsp;</span>{{client.name}}</div>
         <div class="personal-info-line"><span>Szül. év:&nbsp;</span>{{client.dob}}</div>
@@ -15,7 +15,8 @@
   <mat-card class="example-card" *ngFor="let visit of client.visits">
     <div class="card-header">
       <mat-form-field class="date">
-        <input matInput [(ngModel)]="visit.date" [matDatepicker]="picker" [disabled]="!edit">
+        <input matInput [ngModel]="visit.date | date:'yyyy-MM-dd'"
+               (ngModelChange)="visit.date = $event" [matDatepicker]="picker" [disabled]="!edit">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>

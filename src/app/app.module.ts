@@ -33,6 +33,7 @@ import {NotifierModule} from 'angular-notifier';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { VisitComponent } from './visit/visit.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     ClientsComponent,
     ClientDetailsComponent,
     PhonePipe,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    VisitComponent
   ],
   imports: [
     BrowserModule,
