@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Visit} from '../model/visit';
 
 @Component({
   selector: 'visit',
@@ -6,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./visit.component.css']
 })
 export class VisitComponent implements OnInit {
+
+  @Input() visit: Visit;
+  @Output() save: EventEmitter<any> = new EventEmitter();
+
+  edit = false;
 
   constructor() { }
 

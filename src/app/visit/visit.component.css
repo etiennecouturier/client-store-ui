@@ -1,0 +1,32 @@
+.example-card {
+  max-width: 500px;
+  margin: auto;
+  margin-bottom: 40px;
+}
+
+.example-header-image {
+  background-image: url('../../assets/exam.png');
+  background-size: cover;
+  margin-bottom: 30px;
+}
+
+.flex-container {
+  display: flex;
+  margin-top: 10px;
+  border: 1px solid red;
+  padding-top: 15px;
+  max-width: 500px;
+}
+
+.flex-child {
+  flex: 1;
+}
+
+.flex-line {
+  max-width: 100px;
+}
+
+.date {
+  float: right;
+  color: red;
+}

@@ -2,66 +2,27 @@
   background-color: #505050;
 }
 
-span {
-  color: #f44336;
-}
-
-a {
-  color: white;
-}
-
 .clients-container {
   text-align: center;
   max-width: 70%;
   margin: 40px auto;
 }
 
-.clients-table {
-  min-height: 360px;
-  margin-top: 10px;
-}
-
 .example-card {
   max-width: 500px;
   margin: auto;
-}
-
-.example-header-image {
-  background-image: url('../../assets/exam.png');
-  background-size: cover;
-  /*margin-top: 10px;*/
-  margin-bottom: 30px;
-  /*float: right;*/
-}
-
-.flex-container {
-  display: flex;
-  margin-top: 10px;
-  border: 1px solid red;
-  padding-top: 15px;
-  max-width: 500px;
-}
-
-.flex-child {
-  flex: 1;
-  /*border: 1px solid red;*/
-}
-
-.flex-line {
-  /*margin-left: 20px;*/
-  max-width: 100px;
-}
-
-.card-header {
-  /*padding-bottom: 20px;*/
-}
-
-.date {
-  float: right;
-  color: red;
+  border: red solid 2px;
 }
 
 .personal-info-line {
   margin: auto;
+  padding: 20px;
+}
+
+span {
+  color: #f44336;
+}
+
+.add {
   padding: 20px;
 }
