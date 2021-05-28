@@ -3,7 +3,6 @@ import {ActivatedRoute} from '@angular/router';
 import {Client} from '../model/client';
 import {HttpService} from '../services/http.service';
 import {Constants} from '../model/constants';
-import {response} from 'express';
 
 
 @Component({
@@ -26,13 +25,8 @@ export class ClientDetailsComponent implements OnInit {
 
   save() {
     this.httpService.save('/clients/new', this.client)
-      .subscribe(() => {
-        this.httpService.find<Client>(
-          '/clients/id',
-          {id: this.client.id}
-        ).subscribe(resp => {
-          this.client = resp;
-        });
+      .subscribe(resp => {
+        this.client = resp;
       });
     this.edit = false;
   }
