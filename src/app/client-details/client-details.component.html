@@ -9,9 +9,11 @@
       </mat-list>
     </mat-card-content>
   </mat-card>
-  <button mat-icon-button class="add" color="accent" (click)="client.visits.unshift(newVisit)">
-    <mat-icon aria-label="Add">add</mat-icon>
-  </button>
+  <mat-card-actions>
+    <button mat-icon-button color="accent" (click)="client.visits.unshift(newVisit)">
+      <mat-icon aria-label="Add">add</mat-icon>
+    </button>
+  </mat-card-actions>
 </div>
 
 <div class="clients-container">
