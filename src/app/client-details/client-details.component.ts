@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Client} from '../model/client';
 import {HttpService} from '../services/http.service';
-import {Visit} from '../model/visit';
+import {Constants} from '../model/constants';
 
 
 @Component({
@@ -11,22 +11,7 @@ import {Visit} from '../model/visit';
   styleUrls: ['./client-details.component.css']
 })
 export class ClientDetailsComponent implements OnInit {
-  newVisit: Visit = {
-    date: new Date(),
-    rightEye: {
-      dioptria: 0,
-      cilinder: 0,
-      fok: 0,
-      vizus: 0
-    },
-    leftEye: {
-      dioptria: 0,
-      cilinder: 0,
-      fok: 0,
-      vizus: 0
-    },
-    notes: ''
-  };
+
   public client: Client;
 
   constructor(private route: ActivatedRoute,
@@ -39,6 +24,10 @@ export class ClientDetailsComponent implements OnInit {
 
   save() {
     this.httpService.save('/clients/new', this.client);
+  }
+
+  addNewVisit() {
+    this.client.visits.unshift(Constants.emptyVisit());
   }
 
 }
