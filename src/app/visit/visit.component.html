@@ -58,7 +58,10 @@
       <mat-icon aria-label="Save">check</mat-icon>
     </button>
 
-    <button mat-icon-button color="accent" (click)="del.emit()" *ngIf="!edit">
+    <button mat-icon-button color="accent"
+            (click)="del.emit()"
+            *ngIf="!edit"
+            [disabled]="anyUnderEdit && !edit">
       <mat-icon aria-label="Delete">delete</mat-icon>
     </button>
     <button mat-icon-button color="accent" (click)="cancel.emit(); edit=false" *ngIf="edit">

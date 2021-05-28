@@ -72,9 +72,6 @@ export class ClientsComponent implements OnInit, AfterViewInit {
 
   deleteItem(id) {
     const response = this.httpService.deleteById('/clients/', id);
-    // response.pipe(
-    //     catchError(() => this.notifierService.notify('error', 'Ügyfél nem lett törölve!'))
-    //   );
     response.subscribe(() => {
         this.loadClientsPage();
         this.notifierService.notify('success', 'Ügyfél törölve!');

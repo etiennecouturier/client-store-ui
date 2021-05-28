@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Client} from '../model/client';
 import {HttpService} from '../services/http.service';
 import {Constants} from '../model/constants';
+import {NotifierService} from 'angular-notifier';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class ClientDetailsComponent implements OnInit {
   anyUnderEdit = false;
 
   constructor(private route: ActivatedRoute,
-              private httpService: HttpService) {
+              private httpService: HttpService,
+              private notifierService: NotifierService) {
   }
 
   ngOnInit(): void {
@@ -28,6 +30,7 @@ export class ClientDetailsComponent implements OnInit {
     this.httpService.save('/clients/new', this.client)
       .subscribe(resp => {
         this.client = resp;
+        this.notifierService.notify('success', 'Mentés sikeres!');
       });
     this.edit = false;
     this.anyUnderEdit = false;
@@ -46,6 +49,7 @@ export class ClientDetailsComponent implements OnInit {
 
   addNewVisit() {
     this.client.visits.unshift(Constants.emptyVisit());
+    this.save();
   }
 
   deleteVisit(i) {
