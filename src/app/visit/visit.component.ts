@@ -9,9 +9,11 @@ import {Visit} from '../model/visit';
 export class VisitComponent implements OnInit {
 
   @Input() visit: Visit;
+  @Input() anyUnderEdit: boolean;
   @Output() save: EventEmitter<any> = new EventEmitter();
   @Output() del: EventEmitter<any> = new EventEmitter();
   @Output() cancel: EventEmitter<any> = new EventEmitter();
+  @Output() editStarted: EventEmitter<any> = new EventEmitter();
 
   edit = false;
 

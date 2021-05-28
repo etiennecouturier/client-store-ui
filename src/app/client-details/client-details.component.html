@@ -25,7 +25,10 @@
         </mat-form-field>
       </div>
     </mat-card-content>
-    <button mat-icon-button color="accent" (click)="edit=!edit" *ngIf="!edit">
+    <button mat-icon-button color="accent"
+            (click)="edit=!edit;anyUnderEdit=true"
+            *ngIf="!edit"
+            [disabled]="anyUnderEdit && !edit">
       <mat-icon aria-label="Edit">edit</mat-icon>
     </button>
     <button mat-icon-button color="accent" (click)="save()" *ngIf="edit">
@@ -49,6 +52,8 @@
 <div class="clients-container">
   <visit *ngFor="let visit of client.visits;let i = index"
          [visit]="visit"
+         [anyUnderEdit]="anyUnderEdit"
+         (editStarted)="anyUnderEdit=true"
          (save)="save()"
          (del)="deleteVisit(i)"
          (cancel)="cancel()">

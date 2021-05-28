@@ -48,7 +48,10 @@
   </mat-card-content>
   <div>{{visit.notes}}</div>
   <mat-card-actions>
-    <button mat-icon-button color="accent" (click)="edit=!edit" *ngIf="!edit">
+    <button mat-icon-button color="accent"
+            (click)="edit=!edit;editStarted.emit()"
+            *ngIf="!edit"
+            [disabled]="anyUnderEdit && !edit">
       <mat-icon aria-label="Edit">edit</mat-icon>
     </button>
     <button mat-icon-button color="accent" (click)="save.emit(); edit = !edit" *ngIf="edit">

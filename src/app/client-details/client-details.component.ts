@@ -14,6 +14,7 @@ export class ClientDetailsComponent implements OnInit {
 
   public client: Client;
   edit = false;
+  anyUnderEdit = false;
 
   constructor(private route: ActivatedRoute,
               private httpService: HttpService) {
@@ -29,6 +30,7 @@ export class ClientDetailsComponent implements OnInit {
         this.client = resp;
       });
     this.edit = false;
+    this.anyUnderEdit = false;
   }
 
   cancel() {
@@ -38,6 +40,7 @@ export class ClientDetailsComponent implements OnInit {
     ).subscribe(resp => {
       this.client = resp;
       this.edit = false;
+      this.anyUnderEdit = false;
     });
   }
 
