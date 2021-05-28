@@ -22,6 +22,19 @@
         </mat-form-field>
       </div>
     </mat-card-content>
+    <button mat-icon-button color="accent" (click)="edit=!edit" *ngIf="!edit">
+      <mat-icon aria-label="Edit">edit</mat-icon>
+    </button>
+    <button mat-icon-button color="accent" (click)="save(); edit = !edit" *ngIf="edit">
+      <mat-icon aria-label="Save">check</mat-icon>
+    </button>
+
+    <button mat-icon-button color="accent" *ngIf="!edit">
+      <mat-icon aria-label="Delete">delete</mat-icon>
+    </button>
+    <button mat-icon-button color="accent" (click)="edit=false" *ngIf="edit">
+      <mat-icon aria-label="Cancel">cancel</mat-icon>
+    </button>
   </mat-card>
   <mat-card-actions>
     <button mat-icon-button color="accent" (click)="addNewVisit()">
