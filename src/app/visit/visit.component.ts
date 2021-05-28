@@ -10,6 +10,7 @@ export class VisitComponent implements OnInit {
 
   @Input() visit: Visit;
   @Output() save: EventEmitter<any> = new EventEmitter();
+  @Output() del: EventEmitter<any> = new EventEmitter();
 
   edit = false;
 

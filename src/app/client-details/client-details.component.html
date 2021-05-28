@@ -44,5 +44,5 @@
 </div>
 
 <div class="clients-container">
-  <visit *ngFor="let visit of client.visits" [visit]="visit" (save)="save()"></visit>
+  <visit *ngFor="let visit of client.visits;let i = index" [visit]="visit" (save)="save()" (del)="deleteVisit(i)"></visit>
 </div>

@@ -31,4 +31,8 @@ export class ClientDetailsComponent implements OnInit {
     this.client.visits.unshift(Constants.emptyVisit());
   }
 
+  deleteVisit(i) {
+    this.client.visits.splice(i, 1);
+    this.save();
+  }
 }
