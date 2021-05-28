@@ -8,7 +8,10 @@
         </mat-form-field>
         <div class="flex-line red">Szül. év</div>
         <mat-form-field class="flex-line">
-          <input matInput type="text" [(ngModel)]="client.dob" [disabled]="!edit"/>
+          <input matInput [ngModel]="client.dob | date:'yyyy-MM-dd'"
+                 (ngModelChange)="client.dob = $event" [matDatepicker]="picker" [disabled]="!edit">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
       </div>
       <div class="flex-child">
@@ -25,14 +28,14 @@
     <button mat-icon-button color="accent" (click)="edit=!edit" *ngIf="!edit">
       <mat-icon aria-label="Edit">edit</mat-icon>
     </button>
-    <button mat-icon-button color="accent" (click)="save(); edit = !edit" *ngIf="edit">
+    <button mat-icon-button color="accent" (click)="save()" *ngIf="edit">
       <mat-icon aria-label="Save">check</mat-icon>
     </button>
 
     <button mat-icon-button color="accent" *ngIf="!edit">
       <mat-icon aria-label="Delete">delete</mat-icon>
     </button>
-    <button mat-icon-button color="accent" (click)="edit=false" *ngIf="edit">
+    <button mat-icon-button color="accent" (click)="cancel()" *ngIf="edit">
       <mat-icon aria-label="Cancel">cancel</mat-icon>
     </button>
   </mat-card>
@@ -44,5 +47,10 @@
 </div>
 
 <div class="clients-container">
-  <visit *ngFor="let visit of client.visits;let i = index" [visit]="visit" (save)="save()" (del)="deleteVisit(i)"></visit>
+  <visit *ngFor="let visit of client.visits;let i = index"
+         [visit]="visit"
+         (save)="save()"
+         (del)="deleteVisit(i)"
+         (cancel)="cancel()">
+  </visit>
 </div>

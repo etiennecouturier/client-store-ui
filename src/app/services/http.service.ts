@@ -18,8 +18,7 @@ export class HttpService {
   }
 
   save<T>(url: String, elem: T) {
-    return this.http.post<T>(environment.baseUrl + url, elem, {})
-      .subscribe(resp => console.log(resp));
+    return this.http.post<T>(environment.baseUrl + url, elem, {});
   }
 
 }

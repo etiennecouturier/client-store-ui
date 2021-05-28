@@ -58,7 +58,7 @@
     <button mat-icon-button color="accent" (click)="del.emit()" *ngIf="!edit">
       <mat-icon aria-label="Delete">delete</mat-icon>
     </button>
-    <button mat-icon-button color="accent" (click)="edit=false" *ngIf="edit">
+    <button mat-icon-button color="accent" (click)="cancel.emit(); edit=false" *ngIf="edit">
       <mat-icon aria-label="Cancel">cancel</mat-icon>
     </button>
   </mat-card-actions>
