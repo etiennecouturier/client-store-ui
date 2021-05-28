@@ -1,12 +1,26 @@
 <div class="clients-container">
   <mat-card class="example-card client-details-container">
-    <mat-card-content>
-      <mat-list>
-        <div class="personal-info-line"><span>Név:&nbsp;</span>{{client.name}}</div>
-        <div class="personal-info-line"><span>Szül. év:&nbsp;</span>{{client.dob}}</div>
-        <div class="personal-info-line"><span>Tel:&nbsp;</span>{{client.tel | phone}}</div>
-        <div class="personal-info-line"><span>Email:&nbsp;</span>{{client.email}}</div>
-      </mat-list>
+    <mat-card-content class="flex-container">
+      <div class="flex-child">
+        <div class="flex-line red">Név</div>
+        <mat-form-field class="flex-line">
+          <input matInput type="text" [(ngModel)]="client.name" [disabled]="!edit"/>
+        </mat-form-field>
+        <div class="flex-line red">Szül. év</div>
+        <mat-form-field class="flex-line">
+          <input matInput type="text" [(ngModel)]="client.dob" [disabled]="!edit"/>
+        </mat-form-field>
+      </div>
+      <div class="flex-child">
+        <div class="flex-line red">Tel</div>
+        <mat-form-field class="flex-line">
+          <input matInput type="text" [(ngModel)]="client.tel" [disabled]="!edit"/>
+        </mat-form-field>
+        <div class="flex-line red">Email</div>
+        <mat-form-field class="flex-line">
+          <input matInput type="text" [(ngModel)]="client.email" [disabled]="!edit"/>
+        </mat-form-field>
+      </div>
     </mat-card-content>
   </mat-card>
   <mat-card-actions>

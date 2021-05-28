@@ -13,6 +13,7 @@ import {Constants} from '../model/constants';
 export class ClientDetailsComponent implements OnInit {
 
   public client: Client;
+  edit = false;
 
   constructor(private route: ActivatedRoute,
               private httpService: HttpService) {
