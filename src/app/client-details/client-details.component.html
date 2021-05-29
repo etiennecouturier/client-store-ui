@@ -47,7 +47,7 @@
   <mat-card-actions>
     <button mat-icon-button color="accent"
             (click)="addNewVisit()"
-            [disabled]="anyUnderEdit">
+            [disabled]="anyUnderEdit || client.id == null">
       <mat-icon aria-label="Add">add</mat-icon>
     </button>
   </mat-card-actions>

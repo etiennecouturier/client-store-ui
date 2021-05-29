@@ -15,6 +15,10 @@ const routes: Routes = [
     component: ClientsComponent
   },
   {
+    path: 'clients/new',
+    component: ClientDetailsComponent
+  },
+  {
     path: 'clients/:id',
     component: ClientDetailsComponent,
     resolve: {

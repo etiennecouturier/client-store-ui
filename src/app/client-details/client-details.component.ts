@@ -25,6 +25,8 @@ export class ClientDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.client = this.route.snapshot.data['client'];
+    if (!this.client) { this.client = Constants.emptyClient(); }
+    console.log(this.client);
     this.calculateAge();
   }
 
