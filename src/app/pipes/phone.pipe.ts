@@ -1,4 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
+import {parsePhoneNumber} from 'libphonenumber-js';
 
 @Pipe({
   name: 'phone',
@@ -6,11 +7,12 @@ import {Pipe, PipeTransform} from '@angular/core';
 })
 export class PhonePipe implements PipeTransform {
 
-  private static format(value: string) {
-    return value.slice(0, 2) + '/' + value.slice(2, 5) + '-' + value.slice(5, 7) + '-' + value.slice(7, 9);
+  transform(phoneValue: number | string): string {
+    if (!phoneValue) {
+      return '';
+    }
+    return parsePhoneNumber(phoneValue + '', 'HU')
+      .formatNational();
   }
 
-  transform(value: string): any {
-    return value.length >=  9 ? PhonePipe.format(value) : '';
-  }
 }

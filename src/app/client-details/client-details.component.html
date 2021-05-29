@@ -22,7 +22,10 @@
       <div class="flex-child">
         <div class="flex-line red">tel</div>
         <mat-form-field class="flex-line">
-          <input matInput type="text" [(ngModel)]="client.tel" [disabled]="!edit"/>
+          <input matInput type="text"
+                 [disabled]="!edit"
+                 [ngModel]="client.tel | phone"
+                 (ngModelChange)="client.tel = $event"/>
         </mat-form-field>
         <div class="flex-line red">email</div>
         <mat-form-field class="flex-line">
