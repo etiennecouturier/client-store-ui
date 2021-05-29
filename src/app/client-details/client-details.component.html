@@ -1,25 +1,30 @@
 <div class="clients-container">
   <mat-card class="example-card client-details-container">
+    <mat-card-header>
+      <mat-form-field class="name">
+        <input matInput type="text" [(ngModel)]="client.name" [disabled]="!edit"/>
+      </mat-form-field>
+    </mat-card-header>
     <mat-card-content class="flex-container">
       <div class="flex-child">
-        <div class="flex-line red">Név</div>
-        <mat-form-field class="flex-line">
-          <input matInput type="text" [(ngModel)]="client.name" [disabled]="!edit"/>
-        </mat-form-field>
-        <div class="flex-line red">Szül. év</div>
+        <div class="flex-line red">szül. év</div>
         <mat-form-field class="flex-line">
           <input matInput [ngModel]="client.dob | date:'yyyy-MM-dd'"
-                 (ngModelChange)="client.dob = $event" [matDatepicker]="picker" [disabled]="!edit">
+                 (ngModelChange)="client.dob = $event; calculateAge()" [matDatepicker]="picker" [disabled]="!edit">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
+        <div class="flex-line red">kor</div>
+        <mat-form-field class="flex-line">
+          <input matInput type="text" [(ngModel)]="age" [disabled]="true"/>
+        </mat-form-field>
       </div>
       <div class="flex-child">
-        <div class="flex-line red">Tel</div>
+        <div class="flex-line red">tel</div>
         <mat-form-field class="flex-line">
           <input matInput type="text" [(ngModel)]="client.tel" [disabled]="!edit"/>
         </mat-form-field>
-        <div class="flex-line red">Email</div>
+        <div class="flex-line red">email</div>
         <mat-form-field class="flex-line">
           <input matInput type="text" [(ngModel)]="client.email" [disabled]="!edit"/>
         </mat-form-field>

@@ -14,6 +14,7 @@ import {NotifierService} from 'angular-notifier';
 export class ClientDetailsComponent implements OnInit {
 
   public client: Client;
+  public age: number;
   edit = false;
   anyUnderEdit = false;
 
@@ -24,6 +25,7 @@ export class ClientDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.client = this.route.snapshot.data['client'];
+    this.calculateAge();
   }
 
   save() {
@@ -56,4 +58,13 @@ export class ClientDetailsComponent implements OnInit {
     this.client.visits.splice(i, 1);
     this.save();
   }
+
+  calculateAge() {
+    if (this.client.dob) {
+      const timeDiff = Math.abs(Date.now() - new Date(this.client.dob).getTime());
+      this.age = Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
+      console.log(this.age);
+    }
+  }
+
 }

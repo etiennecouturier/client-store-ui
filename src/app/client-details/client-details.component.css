@@ -31,6 +31,10 @@
   padding: 20px;
 }
 
+.name {
+  margin: auto
+}
+
 span {
   color: #f44336;
 }
