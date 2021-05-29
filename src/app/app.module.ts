@@ -32,7 +32,7 @@ import {CommonModule} from '@angular/common';
 import {NotifierModule} from 'angular-notifier';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
+import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import { VisitComponent } from './visit/visit.component';
 
 @NgModule({
@@ -74,7 +74,8 @@ import { VisitComponent } from './visit/visit.component';
   providers: [
     ClientsService,
     HttpService,
-    ClientResolver
+    ClientResolver,
+    {provide: MAT_DATE_LOCALE, useValue: 'hu'}
   ],
   bootstrap: [AppComponent]
 })
