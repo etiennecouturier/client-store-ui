@@ -13,6 +13,7 @@
 .flex-container {
   display: flex;
   margin-top: 10px;
+  margin-bottom: 20px;
   border: 1px solid red;
   padding-top: 15px;
   max-width: 500px;
@@ -29,4 +30,12 @@
 .date {
   float: right;
   color: red;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.select {
+  margin: 10px;
 }

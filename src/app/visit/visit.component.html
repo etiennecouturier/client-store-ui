@@ -8,45 +8,65 @@
     </mat-form-field>
     <div mat-card-avatar class="example-header-image"></div>
   </div>
-  <mat-card-content class="flex-container">
-    <div class="flex-child">
-      <div class="flex-line red">dioptria</div>
-      <mat-form-field class="flex-line">
-        <input matInput type="text" [(ngModel)]="visit.rightEye.dioptria" [disabled]="!edit"/>
-      </mat-form-field>
-      <mat-form-field class="flex-line">
-        <input matInput type="text" [(ngModel)]="visit.leftEye.dioptria" [disabled]="!edit"/>
-      </mat-form-field>
+  <mat-card-content>
+    <div class="flex-container">
+      <div class="flex-child">
+        <div class="flex-line red">dioptria</div>
+        <mat-form-field class="flex-line">
+          <input matInput type="text" [(ngModel)]="visit.rightEye.dioptria" [disabled]="!edit"/>
+        </mat-form-field>
+        <mat-form-field class="flex-line">
+          <input matInput type="text" [(ngModel)]="visit.leftEye.dioptria" [disabled]="!edit"/>
+        </mat-form-field>
+      </div>
+      <div class="flex-child">
+        <div class="flex-line red">cilinder</div>
+        <mat-form-field class="flex-line">
+          <input matInput type="text" [(ngModel)]="visit.rightEye.cilinder" [disabled]="!edit"/>
+        </mat-form-field>
+        <mat-form-field class="flex-line">
+          <input matInput type="text" [(ngModel)]="visit.leftEye.cilinder" [disabled]="!edit"/>
+        </mat-form-field>
+      </div>
+      <div class="flex-child">
+        <div class="flex-line red">fok</div>
+        <mat-form-field class="flex-line">
+          <input matInput type="text" [(ngModel)]="visit.rightEye.fok" [disabled]="!edit"/>
+        </mat-form-field>
+        <mat-form-field class="flex-line">
+          <input matInput type="text" [(ngModel)]="visit.leftEye.fok" [disabled]="!edit"/>
+        </mat-form-field>
+      </div>
+      <div class="flex-child">
+        <div class="flex-line red">vizus</div>
+        <mat-form-field class="flex-line">
+          <input matInput type="text" [(ngModel)]="visit.rightEye.vizus" [disabled]="!edit"/>
+        </mat-form-field>
+        <mat-form-field class="flex-line">
+          <input matInput type="text" [(ngModel)]="visit.leftEye.vizus" [disabled]="!edit"/>
+        </mat-form-field>
+      </div>
     </div>
-    <div class="flex-child">
-      <div class="flex-line red">cilinder</div>
-      <mat-form-field class="flex-line">
-        <input matInput type="text" [(ngModel)]="visit.rightEye.cilinder" [disabled]="!edit"/>
-      </mat-form-field>
-      <mat-form-field class="flex-line">
-        <input matInput type="text" [(ngModel)]="visit.leftEye.cilinder" [disabled]="!edit"/>
-      </mat-form-field>
-    </div>
-    <div class="flex-child">
-      <div class="flex-line red">fok</div>
-      <mat-form-field class="flex-line">
-        <input matInput type="text" [(ngModel)]="visit.rightEye.fok" [disabled]="!edit"/>
-      </mat-form-field>
-      <mat-form-field class="flex-line">
-        <input matInput type="text" [(ngModel)]="visit.leftEye.fok" [disabled]="!edit"/>
-      </mat-form-field>
-    </div>
-    <div class="flex-child">
-      <div class="flex-line red">vizus</div>
-      <mat-form-field class="flex-line">
-        <input matInput type="text" [(ngModel)]="visit.rightEye.vizus" [disabled]="!edit"/>
-      </mat-form-field>
-      <mat-form-field class="flex-line">
-        <input matInput type="text" [(ngModel)]="visit.leftEye.vizus" [disabled]="!edit"/>
-      </mat-form-field>
-    </div>
+    <mat-form-field appearance="fill" class="select">
+      <mat-label>Keret</mat-label>
+      <mat-select [disabled]="!edit">
+        <mat-option value="option1">Option 1</mat-option>
+        <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
+        <mat-option value="option3">Option 3</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="select">
+      <mat-label>Lencse</mat-label>
+      <mat-select [disabled]="!edit">
+        <mat-option value="option1">Option 1</mat-option>
+        <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
+        <mat-option value="option3">Option 3</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Megjegyzes" [(ngModel)]="visit.notes" [disabled]="!edit"></textarea>
+    </mat-form-field>
   </mat-card-content>
-  <div>{{visit.notes}}</div>
   <mat-card-actions>
     <button mat-icon-button color="accent"
             (click)="edit=!edit;editStarted.emit()"
