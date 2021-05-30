@@ -30,10 +30,11 @@ import {ClientDetailsComponent} from './client-details/client-details.component'
 import {PhonePipe} from './pipes/phone.pipe';
 import {CommonModule} from '@angular/common';
 import {NotifierModule} from 'angular-notifier';
-import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
-import { VisitComponent } from './visit/visit.component';
+import {VisitComponent} from './visit/visit.component';
+import {PhoneMaskDirective} from './directives/phone-mask.directive';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { VisitComponent } from './visit/visit.component';
     ClientDetailsComponent,
     PhonePipe,
     ConfirmDialogComponent,
-    VisitComponent
+    VisitComponent,
+    PhoneMaskDirective
   ],
   imports: [
     BrowserModule,

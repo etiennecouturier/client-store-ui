@@ -7,11 +7,11 @@ import {parsePhoneNumber} from 'libphonenumber-js';
 })
 export class PhonePipe implements PipeTransform {
 
-  transform(phoneValue: number | string): string {
-    if (!phoneValue) {
+  transform(phoneValue: string): string {
+    if (phoneValue == null || phoneValue === '') {
       return '';
     }
-    return parsePhoneNumber(phoneValue + '', 'HU')
+    return parsePhoneNumber(phoneValue, 'HU')
       .formatNational();
   }
 

@@ -9,6 +9,12 @@
   margin-bottom: 30px;
 }
 
+.shopping-header-image {
+  background-image: url('../../assets/shopping.png');
+  background-size: cover;
+  margin-bottom: 30px;
+}
+
 .flex-container {
   display: flex;
   margin-top: 10px;
