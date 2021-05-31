@@ -30,8 +30,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   constructor(public dialog: MatDialog,
               private route: ActivatedRoute,
               private clientsService: ClientsService,
-              private httpService: HttpService,
-              private notifierService: NotifierService) {}
+              private httpService: HttpService) {}
 
   ngOnInit() {
     this.dataSource = new ClientsDataSource(this.clientsService);
@@ -74,7 +73,6 @@ export class ClientsComponent implements OnInit, AfterViewInit {
     const response = this.httpService.deleteById('/clients/', id);
     response.subscribe(() => {
         this.loadClientsPage();
-        this.notifierService.notify('success', 'Ügyfél törölve!');
       });
   }
 

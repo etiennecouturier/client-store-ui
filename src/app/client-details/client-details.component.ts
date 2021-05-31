@@ -19,8 +19,7 @@ export class ClientDetailsComponent implements OnInit {
   anyUnderEdit = false;
 
   constructor(private route: ActivatedRoute,
-              private httpService: HttpService,
-              private notifierService: NotifierService) {
+              private httpService: HttpService) {
   }
 
   ngOnInit(): void {
@@ -34,10 +33,9 @@ export class ClientDetailsComponent implements OnInit {
     this.httpService.save('/clients/new', this.client)
       .subscribe(resp => {
         this.client = resp;
-        this.notifierService.notify('success', 'Mentés sikeres!');
+        this.edit = false;
+        this.anyUnderEdit = false;
       });
-    this.edit = false;
-    this.anyUnderEdit = false;
   }
 
   cancel() {

@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {ClassProvider, NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -17,7 +17,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ClientsService} from './services/clients.service';
 import {ClientsComponent} from './clients/clients.component';
 import {FormsModule} from '@angular/forms';
@@ -35,6 +35,13 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import {VisitComponent} from './visit/visit.component';
 import {PhoneMaskDirective} from './directives/phone-mask.directive';
+import {LoggingInterceptor} from './services/logging-interceptor.service';
+
+const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
+  provide: HTTP_INTERCEPTORS ,
+  useClass: LoggingInterceptor,
+  multi: true
+};
 
 @NgModule({
   declarations: [
@@ -77,6 +84,7 @@ import {PhoneMaskDirective} from './directives/phone-mask.directive';
     ClientsService,
     HttpService,
     ClientResolver,
+    LOGGING_INTERCEPTOR_PROVIDER,
     {provide: MAT_DATE_LOCALE, useValue: 'hu'}
   ],
   bootstrap: [AppComponent]
