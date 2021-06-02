@@ -3,7 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Client} from '../model/client';
 import {HttpService} from '../services/http.service';
 import {Constants} from '../model/constants';
-import {NotifierService} from 'angular-notifier';
+import {PhonePipe} from '../pipes/phone.pipe';
 
 
 @Component({
@@ -19,7 +19,8 @@ export class ClientDetailsComponent implements OnInit {
   anyUnderEdit = false;
 
   constructor(private route: ActivatedRoute,
-              private httpService: HttpService) {
+              private httpService: HttpService,
+              private phonePipe: PhonePipe) {
   }
 
   ngOnInit(): void {
@@ -27,6 +28,7 @@ export class ClientDetailsComponent implements OnInit {
     if (!this.client) { this.client = Constants.emptyClient(); }
     console.log(this.client);
     this.calculateAge();
+    this.client.tel = this.phonePipe.transform(this.client.tel);
   }
 
   save() {

@@ -84,6 +84,7 @@ const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
     ClientsService,
     HttpService,
     ClientResolver,
+    PhonePipe,
     LOGGING_INTERCEPTOR_PROVIDER,
     {provide: MAT_DATE_LOCALE, useValue: 'hu'}
   ],

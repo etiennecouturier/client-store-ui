@@ -7,8 +7,7 @@ import {AsYouType, parsePhoneNumber} from 'libphonenumber-js';
 })
 export class PhoneMaskDirective {
 
-  constructor(public ngControl: NgControl) {
-  }
+  constructor(public ngControl: NgControl) {}
 
   @HostListener('ngModelChange', ['$event'])
   onModelChange(event) {
