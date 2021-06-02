@@ -4,6 +4,8 @@ import {Client} from '../model/client';
 import {HttpService} from '../services/http.service';
 import {Constants} from '../model/constants';
 import {PhonePipe} from '../pipes/phone.pipe';
+import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
 
 
 @Component({
@@ -18,7 +20,8 @@ export class ClientDetailsComponent implements OnInit {
   edit = false;
   anyUnderEdit = false;
 
-  constructor(private route: ActivatedRoute,
+  constructor(private dialog: MatDialog,
+              private route: ActivatedRoute,
               private httpService: HttpService,
               private phonePipe: PhonePipe) {
   }
@@ -59,6 +62,17 @@ export class ClientDetailsComponent implements OnInit {
   deleteVisit(i) {
     this.client.visits.splice(i, 1);
     this.save();
+  }
+
+  openDialog(index): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '500px',
+      data: this.client
+    });
+
+    dialogRef.componentInstance.del.subscribe(() => {
+      this.deleteVisit(index);
+    });
   }
 
   calculateAge() {
