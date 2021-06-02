@@ -1,8 +1,11 @@
 <mat-card class="visit-card">
   <div class="card-header">
     <mat-form-field class="date">
-      <input matInput [ngModel]="visit.date | date:'yyyy-MM-dd'"
-             (ngModelChange)="visit.date = $event" [matDatepicker]="picker" [disabled]="!edit">
+      <input matInput [max]="today"
+             [ngModel]="visit.date | date:'yyyy-MM-dd'"
+             (ngModelChange)="visit.date = $event"
+             [matDatepicker]="picker"
+             [disabled]="!edit">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
@@ -47,29 +50,13 @@
         </mat-form-field>
       </div>
     </div>
-  </mat-card-content>
-  <div class="card-header">
-    <div mat-card-avatar class="shopping-header-image"></div>
-  </div>
-  <mat-card-content>
-    <mat-form-field appearance="fill" class="select">
-      <mat-label>Keret</mat-label>
-      <mat-select [disabled]="!edit">
-        <mat-option value="option1">Option 1</mat-option>
-        <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
-        <mat-option value="option3">Option 3</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="fill" class="select">
-      <mat-label>Lencse</mat-label>
-      <mat-select [disabled]="!edit">
-        <mat-option value="option1">Option 1</mat-option>
-        <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
-        <mat-option value="option3">Option 3</mat-option>
-      </mat-select>
-    </mat-form-field>
     <mat-form-field class="example-full-width">
-      <textarea matInput placeholder="Megjegyzes" [(ngModel)]="visit.notes" [disabled]="!edit"></textarea>
+      <textarea matInput matTextareaAutosize placeholder="Vizsgálat" [(ngModel)]="visit.notes" [disabled]="!edit"></textarea>
+    </mat-form-field>
+  </mat-card-content>
+  <mat-card-content>
+    <mat-form-field class="example-full-width">
+      <textarea matInput matTextareaAutosize placeholder="Vásárlás" [(ngModel)]="visit.notes" [disabled]="!edit"></textarea>
     </mat-form-field>
   </mat-card-content>
   <mat-card-actions>

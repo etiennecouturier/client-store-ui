@@ -15,6 +15,7 @@ export class VisitComponent implements OnInit {
   @Output() cancel: EventEmitter<any> = new EventEmitter();
   @Output() editStarted: EventEmitter<any> = new EventEmitter();
 
+  today = new Date();
   edit = false;
 
   constructor() { }

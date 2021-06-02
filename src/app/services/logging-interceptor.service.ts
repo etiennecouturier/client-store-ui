@@ -7,8 +7,7 @@ import {NotifierService} from 'angular-notifier';
 @Injectable()
 export class LoggingInterceptor implements HttpInterceptor {
 
-  constructor(private notifierService: NotifierService) {
-  }
+  constructor(private notifierService: NotifierService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
