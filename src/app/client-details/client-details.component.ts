@@ -16,6 +16,7 @@ import {MatDialog} from '@angular/material/dialog';
 export class ClientDetailsComponent implements OnInit {
 
   public client: Client;
+  today = new Date();
   public age: number;
   edit = false;
   anyUnderEdit = false;

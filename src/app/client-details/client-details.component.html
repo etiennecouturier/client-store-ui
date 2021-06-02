@@ -9,7 +9,8 @@
       <div class="flex-child">
         <div class="flex-line red">szül. év</div>
         <mat-form-field class="flex-line">
-          <input matInput [ngModel]="client.dob | date:'yyyy-MM-dd'"
+          <input matInput [max]="today"
+                 [ngModel]="client.dob | date:'yyyy-MM-dd'"
                  (ngModelChange)="client.dob = $event; calculateAge()" [matDatepicker]="picker" [disabled]="!edit">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
