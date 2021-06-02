@@ -29,7 +29,8 @@ export class Constants {
         fok: null,
         vizus: null
       },
-      notes: null
+      examNotes: null,
+      shoppingNotes: null
     };
   }
 

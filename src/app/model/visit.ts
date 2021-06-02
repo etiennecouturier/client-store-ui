@@ -4,5 +4,6 @@ export interface Visit {
   date: Date;
   rightEye: Eye;
   leftEye: Eye;
-  notes: string;
+  examNotes: string;
+  shoppingNotes: string;
 }
