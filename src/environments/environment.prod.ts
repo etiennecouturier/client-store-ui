@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'http://localhost:8080' // TODO change
+  baseUrl: 'https://optics-client-store.herokuapp.com'
 };
