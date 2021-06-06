@@ -2,14 +2,14 @@ import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/
 import {ActivatedRoute} from '@angular/router';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
-import {catchError, debounceTime, distinctUntilChanged, tap} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, tap} from 'rxjs/operators';
 import {fromEvent, merge} from 'rxjs';
 import {ClientsDataSource} from '../services/clientsDataSource';
 import {ClientsService} from '../services/clients.service';
 import {HttpService} from '../services/http.service';
-import {NotifierService} from 'angular-notifier';
 import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
+import {DeviceDetectorService} from 'ngx-device-detector';
 
 
 @Component({
@@ -19,10 +19,19 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class ClientsComponent implements OnInit, AfterViewInit {
 
+  columnDefinitions = [
+    {def: 'name', showMobile: true},
+    {def: 'dob', showMobile: false},
+    {def: 'tel', showMobile: false},
+    {def: 'email', showMobile: false},
+    {def: 'actions', showMobile: true},
+  ];
+
   dataSource: ClientsDataSource;
-  displayedColumns = ['name', 'dob', 'tel', 'email', 'actions'];
   pageSize = 10;
   categoryInputText: string;
+  mobile: boolean;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('name') nameInput: ElementRef;
@@ -30,11 +39,14 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   constructor(public dialog: MatDialog,
               private route: ActivatedRoute,
               private clientsService: ClientsService,
-              private httpService: HttpService) {}
+              private httpService: HttpService,
+              private deviceService: DeviceDetectorService) {
+  }
 
   ngOnInit() {
     this.dataSource = new ClientsDataSource(this.clientsService);
     this.dataSource.loadClients(this.categoryInputText);
+    this.mobile = this.deviceService.isMobile();
   }
 
   ngAfterViewInit() {
@@ -59,6 +71,12 @@ export class ClientsComponent implements OnInit, AfterViewInit {
       .subscribe();
   }
 
+  getDisplayedColumns(): string[] {
+    return this.columnDefinitions
+      .filter(cd => !this.mobile || cd.showMobile)
+      .map(cd => cd.def);
+  }
+
   private loadClientsPage() {
     this.dataSource.loadClients(
       this.categoryInputText,
@@ -72,8 +90,8 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   deleteItem(id) {
     const response = this.httpService.deleteById('/clients/', id);
     response.subscribe(() => {
-        this.loadClientsPage();
-      });
+      this.loadClientsPage();
+    });
   }
 
   openDialog(client): void {

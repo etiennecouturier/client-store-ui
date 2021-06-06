@@ -61,8 +61,8 @@
       </mat-cell>
     </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let client; columns: displayedColumns"></mat-row>
+    <mat-header-row *matHeaderRowDef="getDisplayedColumns()"></mat-header-row>
+    <mat-row *matRowDef="let client; columns: getDisplayedColumns()"></mat-row>
 
   </mat-table>
 
