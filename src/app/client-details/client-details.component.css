@@ -21,10 +21,6 @@
   max-width: 500px;
 }
 
-/*.flex-line {*/
-/*  max-width: 100px;*/
-/*}*/
-
 .flex-child {
   flex: 1;
 }
@@ -40,10 +36,4 @@
 
 span {
   color: #f44336;
-}
-
-@media (max-width: 700px) {
-  .flex-container {
-    flex-direction: column;
-  }
 }

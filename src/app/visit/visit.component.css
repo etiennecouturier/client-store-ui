@@ -24,17 +24,13 @@
   max-width: 500px;
 }
 
-.flex-block {
-  flex-direction: column;
-}
-
 .flex-child {
   flex: 1;
 }
 
-/*.flex-line {*/
-/*  max-width: 100px;*/
-/*}*/
+.flex-line {
+  max-width: 100px;
+}
 
 .date {
   float: right;
@@ -47,18 +43,4 @@
 
 .select {
   margin: 10px;
-}
-
-@media (max-width: 700px) {
-  .flex-container {
-    flex-direction: column;
-  }
-
-  .flex-block {
-    flex-direction: column;
-  }
-
-  .flex-child {
-    flex-direction: column;
-  }
 }
