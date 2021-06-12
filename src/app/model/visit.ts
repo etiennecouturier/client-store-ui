@@ -1,9 +1,11 @@
-import {Eye} from './eye';
+import {Exam} from './exam';
 
 export interface Visit {
   date: Date;
-  rightEye: Eye;
-  leftEye: Eye;
+  historicExam: Exam;
+  exam: Exam;
+  contactLenseExam: Exam;
+  contactLenseNotes: string;
   examNotes: string;
   shoppingNotes: string;
 }
