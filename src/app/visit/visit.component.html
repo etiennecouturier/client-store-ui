@@ -40,6 +40,35 @@
           <input matInput type="number" [(ngModel)]="visit.leftEye.fok" [disabled]="!edit"/>
         </mat-form-field>
       </div>
+    </div>
+    <div class="flex-container">
+      <div class="flex-child">
+        <div class="flex-line red">dioptria</div>
+        <mat-form-field class="flex-line">
+          <input matInput type="number" [(ngModel)]="visit.rightEye.dioptria" [disabled]="!edit"/>
+        </mat-form-field>
+        <mat-form-field class="flex-line">
+          <input matInput type="number" [(ngModel)]="visit.leftEye.dioptria" [disabled]="!edit"/>
+        </mat-form-field>
+      </div>
+      <div class="flex-child">
+        <div class="flex-line red">cilinder</div>
+        <mat-form-field class="flex-line">
+          <input matInput type="number" [(ngModel)]="visit.rightEye.cilinder" [disabled]="!edit"/>
+        </mat-form-field>
+        <mat-form-field class="flex-line">
+          <input matInput type="number" [(ngModel)]="visit.leftEye.cilinder" [disabled]="!edit"/>
+        </mat-form-field>
+      </div>
+      <div class="flex-child">
+        <div class="flex-line red">fok</div>
+        <mat-form-field class="flex-line">
+          <input matInput type="number" [(ngModel)]="visit.rightEye.fok" [disabled]="!edit"/>
+        </mat-form-field>
+        <mat-form-field class="flex-line">
+          <input matInput type="number" [(ngModel)]="visit.leftEye.fok" [disabled]="!edit"/>
+        </mat-form-field>
+      </div>
       <div class="flex-child">
         <div class="flex-line red">vizus</div>
         <mat-form-field class="flex-line">
@@ -50,11 +79,50 @@
         </mat-form-field>
       </div>
     </div>
+    <div class="flex-container">
+      <div class="flex-child">
+        <div class="flex-line red">szaruh. görb.</div>
+        <mat-form-field class="flex-line">
+          <input matInput type="number" [(ngModel)]="visit.rightEye.vizus" [disabled]="!edit"/>
+        </mat-form-field>
+        <mat-form-field class="flex-line">
+          <input matInput type="number" [(ngModel)]="visit.leftEye.vizus" [disabled]="!edit"/>
+        </mat-form-field>
+      </div>
+      <div class="flex-child">
+        <div class="flex-line red">dioptria</div>
+        <mat-form-field class="flex-line">
+          <input matInput type="number" [(ngModel)]="visit.rightEye.dioptria" [disabled]="!edit"/>
+        </mat-form-field>
+        <mat-form-field class="flex-line">
+          <input matInput type="number" [(ngModel)]="visit.leftEye.dioptria" [disabled]="!edit"/>
+        </mat-form-field>
+      </div>
+      <div class="flex-child">
+        <div class="flex-line red">cilinder</div>
+        <mat-form-field class="flex-line">
+          <input matInput type="number" [(ngModel)]="visit.rightEye.cilinder" [disabled]="!edit"/>
+        </mat-form-field>
+        <mat-form-field class="flex-line">
+          <input matInput type="number" [(ngModel)]="visit.leftEye.cilinder" [disabled]="!edit"/>
+        </mat-form-field>
+      </div>
+      <div class="flex-child">
+        <div class="flex-line red">fok</div>
+        <mat-form-field class="flex-line">
+          <input matInput type="number" [(ngModel)]="visit.rightEye.fok" [disabled]="!edit"/>
+        </mat-form-field>
+        <mat-form-field class="flex-line">
+          <input matInput type="number" [(ngModel)]="visit.leftEye.fok" [disabled]="!edit"/>
+        </mat-form-field>
+      </div>
+    </div>
+    <mat-form-field class="example-full-width">
+      <textarea matInput matTextareaAutosize placeholder="Kontaktlencse" [(ngModel)]="visit.examNotes" [disabled]="!edit"></textarea>
+    </mat-form-field>
     <mat-form-field class="example-full-width">
       <textarea matInput matTextareaAutosize placeholder="Vizsgálat" [(ngModel)]="visit.examNotes" [disabled]="!edit"></textarea>
     </mat-form-field>
-  </mat-card-content>
-  <mat-card-content>
     <mat-form-field class="example-full-width">
       <textarea matInput matTextareaAutosize placeholder="Vásárlás" [(ngModel)]="visit.shoppingNotes" [disabled]="!edit"></textarea>
     </mat-form-field>
