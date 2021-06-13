@@ -45,3 +45,9 @@
 .select {
   margin: 10px;
 }
+
+.vertical {
+  transform: rotate(180deg);
+  writing-mode: vertical-lr;
+  text-align: center;
+}

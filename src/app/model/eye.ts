@@ -3,4 +3,5 @@ export interface Eye {
   cilinder: number;
   fok: number;
   vizus: number;
+  szaruGorbulet: number;
 }

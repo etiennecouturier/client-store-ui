@@ -17,18 +17,55 @@ export class Constants {
   static emptyVisit(): Visit {
     return {
       date: new Date(),
-      rightEye: {
-        dioptria: null,
-        cilinder: null,
-        fok: null,
-        vizus: null
+      historicExam: {
+        rightEye: {
+          dioptria: null,
+          cilinder: null,
+          fok: null,
+          vizus: null,
+          szaruGorbulet: null
+        },
+        leftEye: {
+          dioptria: null,
+          cilinder: null,
+          fok: null,
+          vizus: null,
+          szaruGorbulet: null
+        }
       },
-      leftEye: {
-        dioptria: null,
-        cilinder: null,
-        fok: null,
-        vizus: null
+      exam: {
+        rightEye: {
+          dioptria: null,
+          cilinder: null,
+          fok: null,
+          vizus: null,
+          szaruGorbulet: null
+        },
+        leftEye: {
+          dioptria: null,
+          cilinder: null,
+          fok: null,
+          vizus: null,
+          szaruGorbulet: null
+        }
       },
+      contactLenseExam: {
+        rightEye: {
+          dioptria: null,
+          cilinder: null,
+          fok: null,
+          vizus: null,
+          szaruGorbulet: null
+        },
+        leftEye: {
+          dioptria: null,
+          cilinder: null,
+          fok: null,
+          vizus: null,
+          szaruGorbulet: null
+        }
+      },
+      contactLenseNotes: null,
       examNotes: null,
       shoppingNotes: null
     };
