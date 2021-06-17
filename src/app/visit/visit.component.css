@@ -14,22 +14,20 @@
   margin-bottom: 20px;
   border: 1px solid red;
   flex-flow: row wrap;
-  justify-content: space-around;
+  /*justify-content: space-around;*/
 }
 
 .flex-child {
+  display: flex;
+  flex-direction: column;
   flex: 1;
+  align-content: center;
+  padding: 10px;
 }
 
 .flex-line {
-  max-width: 100px;
+  max-width: 70px;
   margin: auto;
-}
-
-.flex-header-line {
-  max-width: 100px;
-  margin: auto;
-  padding-top: 15px;
 }
 
 .date {
