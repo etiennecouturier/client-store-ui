@@ -11,10 +11,8 @@
 
 .flex-container {
   display: flex;
-  margin-top: 10px;
   margin-bottom: 20px;
   border: 1px solid red;
-  max-width: 500px;
   flex-flow: row wrap;
   justify-content: space-around;
 }
