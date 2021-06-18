@@ -1,12 +1,13 @@
 .clients-container {
   text-align: center;
-  max-width: 70%;
-  margin: 0 auto;
+  min-width: 400px;
+  max-width: 900px;
+  padding: 10px; /*margin on mobile, cant use margin, it is used for centering*/
+  margin: auto;
 }
 
 .clients-table {
   min-height: 360px;
-  margin-top: 10px;
 }
 
 mat-form-field {
