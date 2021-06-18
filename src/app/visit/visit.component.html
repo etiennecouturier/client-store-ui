@@ -12,127 +12,154 @@
     <div mat-card-avatar class="exam-header-image"></div>
   </div>
   <mat-card-content>
-    <div class="flex-container">
-      <div class="vertical red">ELŐZMÉNYEK</div>
-      <mat-divider [vertical]="true"></mat-divider>
-      <div class="flex-child">
-        <div class="flex-line red">Sph.</div>
-        <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="visit.historicExam.rightEye.dioptria" [disabled]="!edit"/>
-        </mat-form-field>
-        <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="visit.historicExam.leftEye.dioptria" [disabled]="!edit"/>
-        </mat-form-field>
+    <div class="exam-container">
+      <div class="label-border">
+        <div class="exam-label">
+          <div class="vertical red">ELŐZMÉNYEK</div>
+        </div>
       </div>
-      <div class="flex-child">
-        <div class="flex-line red">Cyl.</div>
-        <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="visit.historicExam.rightEye.cilinder" [disabled]="!edit"/>
-        </mat-form-field>
-        <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="visit.historicExam.leftEye.cilinder" [disabled]="!edit"/>
-        </mat-form-field>
-      </div>
-      <div class="flex-child">
-        <div class="flex-line red">Fok</div>
-        <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="visit.historicExam.rightEye.fok" [disabled]="!edit"/>
-        </mat-form-field>
-        <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="visit.historicExam.leftEye.fok" [disabled]="!edit"/>
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="flex-container">
-      <div class="vertical red">VISZGÁLAT</div>
-      <mat-divider [vertical]="true"></mat-divider>
-      <div class="flex-child">
-        <div class="flex-line red">Sph.</div>
-        <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="visit.exam.rightEye.dioptria" [disabled]="!edit"/>
-        </mat-form-field>
-        <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="visit.exam.leftEye.dioptria" [disabled]="!edit"/>
-        </mat-form-field>
-      </div>
-      <div class="flex-child">
-        <div class="flex-line red">Cyl.</div>
-        <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="visit.exam.rightEye.cilinder" [disabled]="!edit"/>
-        </mat-form-field>
-        <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="visit.exam.leftEye.cilinder" [disabled]="!edit"/>
-        </mat-form-field>
-      </div>
-      <div class="flex-child">
-        <div class="flex-line red">Fok</div>
-        <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="visit.exam.rightEye.fok" [disabled]="!edit"/>
-        </mat-form-field>
-        <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="visit.exam.leftEye.fok" [disabled]="!edit"/>
-        </mat-form-field>
-      </div>
-      <div class="flex-child">
-        <div class="flex-line red">Visus</div>
-        <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="visit.exam.rightEye.vizus" [disabled]="!edit"/>
-        </mat-form-field>
-        <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="visit.exam.leftEye.vizus" [disabled]="!edit"/>
+      <div class="exam-data-container">
+        <div class="exam-number-container">
+          <div class="flex-child">
+            <div class="flex-line red">Sph.</div>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.historicExam.rightEye.dioptria" [disabled]="!edit"/>
+            </mat-form-field>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.historicExam.leftEye.dioptria" [disabled]="!edit"/>
+            </mat-form-field>
+          </div>
+          <div class="flex-child">
+            <div class="flex-line red">Cyl.</div>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.historicExam.rightEye.cilinder" [disabled]="!edit"/>
+            </mat-form-field>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.historicExam.leftEye.cilinder" [disabled]="!edit"/>
+            </mat-form-field>
+          </div>
+          <div class="flex-child">
+            <div class="flex-line red">Fok</div>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.historicExam.rightEye.fok" [disabled]="!edit"/>
+            </mat-form-field>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.historicExam.leftEye.fok" [disabled]="!edit"/>
+            </mat-form-field>
+          </div>
+        </div>
+        <mat-form-field class="note-full-width">
+          <textarea matInput matTextareaAutosize placeholder="Megjegyzés" [(ngModel)]="visit.examNotes"
+                    [disabled]="!edit"></textarea>
         </mat-form-field>
       </div>
     </div>
-    <div class="flex-container">
-      <div class="vertical red">KONT. LENCSE</div>
-      <mat-divider [vertical]="true"></mat-divider>
-      <div class="flex-child">
-        <div class="flex-line red">Szaruh.</div>
-        <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="visit.contactLenseExam.rightEye.szaruGorbulet" [disabled]="!edit"/>
-        </mat-form-field>
-        <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="visit.contactLenseExam.leftEye.szaruGorbulet" [disabled]="!edit"/>
-        </mat-form-field>
+    <div class="exam-container">
+      <div class="label-border">
+        <div class="exam-label">
+          <div class="vertical red">VISZGÁLAT</div>
+        </div>
       </div>
-      <div class="flex-child">
-        <div class="flex-line red">Sph.</div>
-        <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="visit.contactLenseExam.rightEye.dioptria" [disabled]="!edit"/>
-        </mat-form-field>
-        <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="visit.contactLenseExam.leftEye.dioptria" [disabled]="!edit"/>
-        </mat-form-field>
-      </div>
-      <div class="flex-child">
-        <div class="flex-line red">Cyl.</div>
-        <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="visit.contactLenseExam.rightEye.cilinder" [disabled]="!edit"/>
-        </mat-form-field>
-        <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="visit.contactLenseExam.leftEye.cilinder" [disabled]="!edit"/>
-        </mat-form-field>
-      </div>
-      <div class="flex-child">
-        <div class="flex-line red">Fok</div>
-        <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="visit.contactLenseExam.rightEye.fok" [disabled]="!edit"/>
-        </mat-form-field>
-        <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="visit.contactLenseExam.leftEye.fok" [disabled]="!edit"/>
-        </mat-form-field>
-      </div>
-    </div>
-    <mat-form-field class="note-full-width">
-      <textarea matInput matTextareaAutosize placeholder="Kontaktlencse" [(ngModel)]="visit.contactLenseNotes"
+      <div class="exam-data-container">
+        <div class="exam-number-container">
+          <div class="flex-child">
+            <div class="flex-line red">Sph.</div>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.exam.rightEye.dioptria" [disabled]="!edit"/>
+            </mat-form-field>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.exam.leftEye.dioptria" [disabled]="!edit"/>
+            </mat-form-field>
+          </div>
+          <div class="flex-child">
+            <div class="flex-line red">Cyl.</div>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.exam.rightEye.cilinder" [disabled]="!edit"/>
+            </mat-form-field>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.exam.leftEye.cilinder" [disabled]="!edit"/>
+            </mat-form-field>
+          </div>
+          <div class="flex-child">
+            <div class="flex-line red">Fok</div>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.exam.rightEye.fok" [disabled]="!edit"/>
+            </mat-form-field>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.exam.leftEye.fok" [disabled]="!edit"/>
+            </mat-form-field>
+          </div>
+          <div class="flex-child">
+            <div class="flex-line red">Visus</div>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.exam.rightEye.vizus" [disabled]="!edit"/>
+            </mat-form-field>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.exam.leftEye.vizus" [disabled]="!edit"/>
+            </mat-form-field>
+          </div>
+        </div>
+        <mat-form-field class="note-full-width">
+      <textarea matInput matTextareaAutosize placeholder="Megjegyzés" [(ngModel)]="visit.examNotes"
                 [disabled]="!edit"></textarea>
-    </mat-form-field>
-    <mat-form-field class="note-full-width">
-      <textarea matInput matTextareaAutosize placeholder="Vizsgálat" [(ngModel)]="visit.examNotes"
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="exam-container">
+      <div class="label-border">
+        <div class="exam-label">
+          <div class="vertical red">KONT. LENCSE</div>
+        </div>
+      </div>
+      <div class="exam-data-container">
+        <div class="exam-number-container">
+          <div class="flex-child">
+            <div class="flex-line red">Szaruh.</div>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.contactLenseExam.rightEye.szaruGorbulet"
+                     [disabled]="!edit"/>
+            </mat-form-field>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.contactLenseExam.leftEye.szaruGorbulet"
+                     [disabled]="!edit"/>
+            </mat-form-field>
+          </div>
+          <div class="flex-child">
+            <div class="flex-line red">Sph.</div>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.contactLenseExam.rightEye.dioptria" [disabled]="!edit"/>
+            </mat-form-field>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.contactLenseExam.leftEye.dioptria" [disabled]="!edit"/>
+            </mat-form-field>
+          </div>
+          <div class="flex-child">
+            <div class="flex-line red">Cyl.</div>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.contactLenseExam.rightEye.cilinder" [disabled]="!edit"/>
+            </mat-form-field>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.contactLenseExam.leftEye.cilinder" [disabled]="!edit"/>
+            </mat-form-field>
+          </div>
+          <div class="flex-child">
+            <div class="flex-line red">Fok</div>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.contactLenseExam.rightEye.fok" [disabled]="!edit"/>
+            </mat-form-field>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.contactLenseExam.leftEye.fok" [disabled]="!edit"/>
+            </mat-form-field>
+          </div>
+        </div>
+        <mat-form-field class="note-full-width">
+      <textarea matInput matTextareaAutosize placeholder="Megjegyzés" [(ngModel)]="visit.contactLenseNotes"
                 [disabled]="!edit"></textarea>
-    </mat-form-field>
+        </mat-form-field>
+      </div>
+    </div>
     <mat-form-field class="note-full-width">
-      <textarea matInput matTextareaAutosize placeholder="Vásárlás" [(ngModel)]="visit.shoppingNotes"
+      <textarea matInput matTextareaAutosize placeholder="Vásárlási megjegyzés" [(ngModel)]="visit.shoppingNotes"
                 [disabled]="!edit"></textarea>
     </mat-form-field>
   </mat-card-content>

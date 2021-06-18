@@ -9,12 +9,12 @@
   margin-bottom: 30px;
 }
 
-.flex-container {
+.exam-container {
   display: flex;
   margin-bottom: 20px;
   border: 1px solid red;
-  flex-flow: row wrap;
-  /*justify-content: space-around;*/
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
 }
 
 .flex-child {
@@ -35,7 +35,8 @@
 }
 
 .note-full-width {
-  width: 100%;
+  width: 80%;
+  margin: auto;
 }
 
 .select {
@@ -46,6 +47,27 @@
   transform: rotate(180deg);
   writing-mode: vertical-lr;
   text-align: center;
-  padding-left: 5px;
-  padding-right: 5px;
+  margin: auto;
+}
+
+.exam-data-container {
+  display: flex;
+  flex: 15;
+  flex-direction: column;
+  margin: 10px auto;
+}
+
+.exam-number-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.exam-label {
+  margin: auto;
+}
+
+.label-border {
+  display: flex;
+  flex: 1;
+  border-right: 1px solid gray;
 }
