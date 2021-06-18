@@ -31,7 +31,8 @@ export class Constants {
           fok: null,
           vizus: null,
           szaruGorbulet: null
-        }
+        },
+        notes: null
       },
       exam: {
         rightEye: {
@@ -47,7 +48,8 @@ export class Constants {
           fok: null,
           vizus: null,
           szaruGorbulet: null
-        }
+        },
+        notes: null
       },
       contactLenseExam: {
         rightEye: {
@@ -63,10 +65,9 @@ export class Constants {
           fok: null,
           vizus: null,
           szaruGorbulet: null
-        }
+        },
+        notes: null
       },
-      contactLenseNotes: null,
-      examNotes: null,
       shoppingNotes: null
     };
   }

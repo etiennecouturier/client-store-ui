@@ -49,7 +49,7 @@
           </div>
         </div>
         <mat-form-field class="note-full-width">
-          <textarea matInput matTextareaAutosize placeholder="Megjegyzés" [(ngModel)]="visit.examNotes"
+          <textarea matInput matTextareaAutosize placeholder="Megjegyzés" [(ngModel)]="visit.historicExam.notes"
                     [disabled]="!edit"></textarea>
         </mat-form-field>
       </div>
@@ -100,7 +100,7 @@
           </div>
         </div>
         <mat-form-field class="note-full-width">
-      <textarea matInput matTextareaAutosize placeholder="Megjegyzés" [(ngModel)]="visit.examNotes"
+      <textarea matInput matTextareaAutosize placeholder="Megjegyzés" [(ngModel)]="visit.exam.notes"
                 [disabled]="!edit"></textarea>
         </mat-form-field>
       </div>
@@ -153,7 +153,7 @@
           </div>
         </div>
         <mat-form-field class="note-full-width">
-      <textarea matInput matTextareaAutosize placeholder="Megjegyzés" [(ngModel)]="visit.contactLenseNotes"
+      <textarea matInput matTextareaAutosize placeholder="Megjegyzés" [(ngModel)]="visit.contactLenseExam.notes"
                 [disabled]="!edit"></textarea>
         </mat-form-field>
       </div>

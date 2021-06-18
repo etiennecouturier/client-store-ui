@@ -5,7 +5,5 @@ export interface Visit {
   historicExam: Exam;
   exam: Exam;
   contactLenseExam: Exam;
-  contactLenseNotes: string;
-  examNotes: string;
   shoppingNotes: string;
 }
