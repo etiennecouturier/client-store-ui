@@ -36,6 +36,7 @@ import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import {VisitComponent} from './visit/visit.component';
 import {PhoneMaskDirective} from './directives/phone-mask.directive';
 import {LoggingInterceptor} from './services/logging-interceptor.service';
+import { StatsComponent } from './stats/stats.component';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
   provide: HTTP_INTERCEPTORS ,
@@ -51,7 +52,8 @@ const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
     PhonePipe,
     ConfirmDialogComponent,
     VisitComponent,
-    PhoneMaskDirective
+    PhoneMaskDirective,
+    StatsComponent
   ],
   imports: [
     BrowserModule,

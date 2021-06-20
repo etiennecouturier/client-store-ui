@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {ClientsComponent} from './clients/clients.component';
 import {ClientDetailsComponent} from "./client-details/client-details.component";
 import {ClientResolver} from "./services/client-resolver.service";
+import {StatsComponent} from './stats/stats.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
     resolve: {
       client: ClientResolver
     }
+  },
+  {
+    path: 'stats',
+    component: StatsComponent
   },
   {
     path: '**',

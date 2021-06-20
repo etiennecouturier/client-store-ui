@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'app';
   navLinks = [
-    {location: '/clients', label: 'ügyfelek', icon: 'person'}
+    {location: '/clients', label: 'ügyfelek', icon: 'person'},
+    { location: '/stats', label: 'statisztikák', icon: 'check_circle' }
   ];
 }
