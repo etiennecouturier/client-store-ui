@@ -1,1 +1,10 @@
-<p>stats works!</p>
+<div class="stats-container">
+  <canvas baseChart
+          [datasets]="chartData"
+          [labels]="chartLabels"
+          [options]="chartOptions"
+          [colors]="chartColors"
+          [legend]="chartLegend"
+          [chartType]="chartType">
+  </canvas>
+</div>
