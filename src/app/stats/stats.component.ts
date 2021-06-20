@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ChartDataSets, ChartOptions, ChartType} from 'chart.js';
 import {Color, Label} from 'ng2-charts';
+import {ClientsService} from '../services/clients.service';
+import {CountPerDate} from '../model/count-per-date';
+import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'stats',
@@ -9,8 +12,8 @@ import {Color, Label} from 'ng2-charts';
 })
 export class StatsComponent implements OnInit {
 
-  // public product: Product;
-  public chartData: ChartDataSets[];
+  public data: CountPerDate[] = [];
+  public chartData: ChartDataSets[] = [];
   public chartLabels: Label[];
   public chartOptions: (ChartOptions & { annotation: any }) = {
     responsive: true,
@@ -56,14 +59,19 @@ export class StatsComponent implements OnInit {
   public chartLegend = true;
   public chartType: ChartType = 'line';
 
-  constructor() { }
+  constructor(private clientService: ClientsService) { }
 
   ngOnInit(): void {
-    this.chartData = [
-      // {data: [50, 4, 8, 6, 12], label: 'prices'},
-      {data: [65, 84, 99, 14, 102], label: 'quantities'}
-    ];
-    this.chartLabels = ['2020.03.31', '2020.03.31', '2020.03.31', '2020.03.31', '2020.03.31'];
+    this.clientService.findVisitCountForLast10Days()
+      .subscribe( res => {
+        this.data = res;
+        const dates = this.data.map(value => formatDate(value.date, 'yyyy-MM-dd', 'en-US'));
+        const counts = this.data.map(value => value.count);
+        this.chartData = [
+          {data: counts, label: 'látogatások'}
+        ];
+        this.chartLabels = dates;
+      });
   }
 
 }

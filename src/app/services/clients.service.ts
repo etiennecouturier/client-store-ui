@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Client} from '../model/client';
 import {Page} from '../model/page';
 import {environment} from '../../environments/environment';
+import {CountPerDate} from '../model/count-per-date';
 
 @Injectable()
 export class ClientsService {
@@ -18,6 +19,10 @@ export class ClientsService {
     params = params.set('page', offset);
     params = params.set('size', limit);
     return this.http.get<Page<Client>>(environment.baseUrl + '/clients/filter/', {params: params});
+  }
+
+  findVisitCountForLast10Days(): Observable<CountPerDate[]> {
+    return this.http.get<CountPerDate[]>(environment.baseUrl + '/clients/visit-count-last-10-days');
   }
 
 }
