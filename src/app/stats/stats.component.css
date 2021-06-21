@@ -1,6 +1,6 @@
 .stats-container {
   min-width: 300px;
-  max-width: 500px;
+  max-width: 900px;
   padding: 10px; /*margin on mobile, cant use margin, it is used for centering*/
   margin: 40px auto;
 }
