@@ -8,6 +8,7 @@ export class Constants {
       id: null,
       name: null,
       dob: null,
+      age: null,
       tel: null,
       email: null,
       visits: []

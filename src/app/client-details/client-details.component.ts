@@ -31,7 +31,6 @@ export class ClientDetailsComponent implements OnInit {
     this.client = this.route.snapshot.data['client'];
     if (!this.client) { this.client = Constants.emptyClient(); }
     console.log(this.client);
-    this.calculateAge();
     this.client.tel = this.phonePipe.transform(this.client.tel);
   }
 
@@ -79,7 +78,7 @@ export class ClientDetailsComponent implements OnInit {
   calculateAge() {
     if (this.client.dob) {
       const timeDiff = Math.abs(Date.now() - new Date(this.client.dob).getTime());
-      this.age = Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
+      this.client.age = Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
       console.log(this.age);
     }
   }
