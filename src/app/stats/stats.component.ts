@@ -13,6 +13,10 @@ export class StatsComponent implements OnInit {
 
   public chartData: ChartDataSets[] = [];
   public chartLabels: Label[];
+
+  public ageData: ChartDataSets[] = [];
+  public ageLabels: Label[];
+
   public chartOptions: (ChartOptions & { annotation: any }) = {
     responsive: true,
     scales: {
@@ -40,8 +44,6 @@ export class StatsComponent implements OnInit {
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     }
   ];
-  public chartLegend = true;
-  public chartType: ChartType = 'line';
 
   constructor(private clientService: ClientsService) { }
 
@@ -49,9 +51,17 @@ export class StatsComponent implements OnInit {
     this.clientService.findVisitCountForLast10Days()
       .subscribe( res => {
         this.chartData = [
-          {data: res.map(value => value.count), label: 'látogatások'}
+          {data: res.map(value => value.count), label: 'látogatások száma'}
         ];
         this.chartLabels = res.map(value => formatDate(value.date, 'yyyy-MM-dd', 'en-US'));
+      });
+
+    this.clientService.findVisitorCountPerAge()
+      .subscribe( res => {
+        this.ageData = [
+          {data: res.map(value => value.count), label: 'látogatók kora'}
+        ];
+        this.ageLabels = res.map(value => value.range);
       });
   }
 

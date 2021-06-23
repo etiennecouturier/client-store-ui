@@ -5,6 +5,7 @@ import {Client} from '../model/client';
 import {Page} from '../model/page';
 import {environment} from '../../environments/environment';
 import {CountPerDate} from '../model/count-per-date';
+import {CountPerAge} from '../model/count-per-age';
 
 @Injectable()
 export class ClientsService {
@@ -23,6 +24,10 @@ export class ClientsService {
 
   findVisitCountForLast10Days(): Observable<CountPerDate[]> {
     return this.http.get<CountPerDate[]>(environment.baseUrl + '/clients/visit-count-last-10-days');
+  }
+
+  findVisitorCountPerAge(): Observable<CountPerAge[]> {
+    return this.http.get<CountPerAge[]>(environment.baseUrl + '/clients/visitor-count-age');
   }
 
 }

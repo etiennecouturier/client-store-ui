@@ -4,7 +4,18 @@
           [labels]="chartLabels"
           [options]="chartOptions"
           [colors]="chartColors"
-          [legend]="chartLegend"
-          [chartType]="chartType">
+          [legend]="true"
+          [chartType]="'line'">
+  </canvas>
+</div>
+
+<div class="stats-container">
+  <canvas baseChart
+          [datasets]="ageData"
+          [labels]="ageLabels"
+          [options]="chartOptions"
+          [colors]="chartColors"
+          [legend]="true"
+          [chartType]="'bar'">
   </canvas>
 </div>
