@@ -12,7 +12,9 @@
              matSort matSortActive="name" matSortDirection="asc" matSortDisableClear>
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
-        <mat-icon aria-label="View" color="accent">person</mat-icon>
+        <mat-icon matTooltip="Név"
+                  aria-label="View"
+                  color="accent">person</mat-icon>
       </mat-header-cell>
       <mat-cell class="name" *matCellDef="let client">
         <span [matTooltip]="client.name" class="ellipsis">{{client.name}}</span>
@@ -21,7 +23,9 @@
 
     <ng-container matColumnDef="dob">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
-        <mat-icon aria-label="View" color="accent">perm_contact_calendar</mat-icon>
+        <mat-icon matTooltip="Születési dátum"
+                  aria-label="View"
+                  color="accent">perm_contact_calendar</mat-icon>
       </mat-header-cell>
       <mat-cell class="description-cell"
                 *matCellDef="let client">{{client.dob | date:'yyyy-MM-dd'}}</mat-cell>
@@ -29,7 +33,9 @@
 
     <ng-container matColumnDef="tel">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
-        <mat-icon aria-label="View" color="accent">phone</mat-icon>
+        <mat-icon matTooltip="Telefonszám"
+                  aria-label="View"
+                  color="accent">phone</mat-icon>
       </mat-header-cell>
       <mat-cell class="description-cell"
                 *matCellDef="let client">{{client.tel | phone}}</mat-cell>
@@ -37,7 +43,9 @@
 
     <ng-container matColumnDef="email">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
-        <mat-icon aria-label="View" color="accent">alternate_email</mat-icon>
+        <mat-icon matTooltip="E-mail"
+                  aria-label="View"
+                  color="accent">alternate_email</mat-icon>
       </mat-header-cell>
       <mat-cell class="description-cell"
                 *matCellDef="let client">
@@ -47,24 +55,26 @@
 
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef>
-        <button mat-icon-button color="accent" [routerLink]="['/clients/new']">
+        <button matTooltip="Ügyfél létrehozása"
+                mat-icon-button color="accent"
+                [routerLink]="['/clients/new']">
           <mat-icon aria-label="Add">add</mat-icon>
         </button>
       </mat-header-cell>
 
       <mat-cell *matCellDef="let client; let i=index;">
-        <button mat-icon-button color="accent" [routerLink]="['/clients', client.id]">
-          <mat-icon aria-label="View">list</mat-icon>
-        </button>
-
-        <button mat-icon-button color="accent" (click)="openDialog(client)">
+        <button matTooltip="Ügyfél törlése"
+                mat-icon-button color="accent"
+                (click)="$event.stopPropagation(); openDialog(client)">
           <mat-icon aria-label="Delete">delete</mat-icon>
         </button>
       </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="getDisplayedColumns()"></mat-header-row>
-    <mat-row *matRowDef="let client; columns: getDisplayedColumns()"></mat-row>
+    <mat-row [routerLink]="['/clients', client.id]"
+             *matRowDef="let client;
+             columns: getDisplayedColumns()"></mat-row>
 
   </mat-table>
 

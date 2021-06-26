@@ -25,3 +25,7 @@ mat-form-field {
   overflow: hidden;
   white-space: nowrap;
 }
+
+.mat-row:hover {
+  background-color: rgba(146, 146, 146, 0.25);
+}
