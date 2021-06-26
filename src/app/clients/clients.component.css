@@ -19,3 +19,9 @@ mat-form-field {
   display: flex !important;
   justify-content: flex-start !important;
 }
+
+.ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

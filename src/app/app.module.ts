@@ -37,6 +37,7 @@ import {VisitComponent} from './visit/visit.component';
 import {PhoneMaskDirective} from './directives/phone-mask.directive';
 import {LoggingInterceptor} from './services/logging-interceptor.service';
 import { StatsComponent } from './stats/stats.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
   provide: HTTP_INTERCEPTORS ,
@@ -80,7 +81,8 @@ const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
     ChartsModule,
     NotifierModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatTooltipModule
   ],
   providers: [
     ClientsService,

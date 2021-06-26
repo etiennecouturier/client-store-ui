@@ -14,7 +14,9 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         <mat-icon aria-label="View" color="accent">person</mat-icon>
       </mat-header-cell>
-      <mat-cell class="name" *matCellDef="let client">{{client.name}}</mat-cell>
+      <mat-cell class="name" *matCellDef="let client">
+        <span [matTooltip]="client.name" class="ellipsis">{{client.name}}</span>
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="dob">
@@ -39,7 +41,7 @@
       </mat-header-cell>
       <mat-cell class="description-cell"
                 *matCellDef="let client">
-        {{client.email}}
+        <span [matTooltip]="client.email" class="ellipsis">{{client.email}}</span>
       </mat-cell>
     </ng-container>
 
