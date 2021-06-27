@@ -71,7 +71,7 @@
       </mat-cell>
     </ng-container>
 
-    <mat-header-row *matHeaderRowDef="getDisplayedColumns()"></mat-header-row>
+    <mat-header-row *matHeaderRowDef="getDisplayedColumns(); sticky: true"></mat-header-row>
     <mat-row [routerLink]="['/clients', client.id]"
              *matRowDef="let client;
              columns: getDisplayedColumns()"></mat-row>

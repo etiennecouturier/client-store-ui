@@ -4,6 +4,14 @@
       <mat-form-field class="centralized">
         <input matInput type="text" [(ngModel)]="client.name" [disabled]="!edit"/>
       </mat-form-field>
+      <mat-icon *ngIf="client.sex == 'F'"
+                matTooltip="Nem"
+                aria-label="View"
+                color="accent">female</mat-icon>
+      <mat-icon *ngIf="client.sex == 'M'"
+                matTooltip="Nem"
+                aria-label="View"
+                color="accent">male</mat-icon>
     </mat-card-header>
     <mat-card-content class="flex-container">
       <div class="flex-child">

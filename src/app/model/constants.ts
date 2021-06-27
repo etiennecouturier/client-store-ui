@@ -9,6 +9,7 @@ export class Constants {
       name: null,
       dob: null,
       age: null,
+      sex: null,
       tel: null,
       email: null,
       visits: []
