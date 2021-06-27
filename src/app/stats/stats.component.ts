@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ChartDataSets, ChartOptions, ChartType} from 'chart.js';
+import {ChartDataSets, ChartOptions} from 'chart.js';
 import {Color, Label} from 'ng2-charts';
 import {ClientsService} from '../services/clients.service';
 import {formatDate} from '@angular/common';
@@ -16,6 +16,9 @@ export class StatsComponent implements OnInit {
 
   public ageData: ChartDataSets[] = [];
   public ageLabels: Label[];
+
+  public sexData: ChartDataSets[] = [];
+  public sexLabels: Label[];
 
   public chartOptions: (ChartOptions & { annotation: any }) = {
     responsive: true,
@@ -45,11 +48,12 @@ export class StatsComponent implements OnInit {
     }
   ];
 
-  constructor(private clientService: ClientsService) { }
+  constructor(private clientService: ClientsService) {
+  }
 
   ngOnInit(): void {
     this.clientService.findVisitCountForLast10Days()
-      .subscribe( res => {
+      .subscribe(res => {
         this.chartData = [
           {data: res.map(value => value.count), label: 'látogatások száma'}
         ];
@@ -57,11 +61,19 @@ export class StatsComponent implements OnInit {
       });
 
     this.clientService.findVisitorCountPerAge()
-      .subscribe( res => {
+      .subscribe(res => {
         this.ageData = [
           {data: res.map(value => value.count), label: 'látogatók kora'}
         ];
         this.ageLabels = res.map(value => value.range);
+      });
+
+    this.clientService.findVisitorCountPerSex()
+      .subscribe(res => {
+        this.sexData = [
+          {data: res.map(value => value.count), label: 'látogatók neme'}
+        ];
+        this.sexLabels = res.map(value => value.sex);
       });
   }
 
