@@ -37,6 +37,17 @@ export class StatsComponent implements OnInit {
       annotations: [],
     },
   };
+
+  public pieChartOptions: (ChartOptions & { annotation: any }) = {
+    scales: {
+      yAxes: [ { display: false } ],
+      xAxes: [ { display: false } ]
+    },
+    annotation: {
+      annotations: [],
+    },
+  };
+
   public chartColors: Color[] = [
     {
       backgroundColor: 'rgba(244,67,54,0.3)',
