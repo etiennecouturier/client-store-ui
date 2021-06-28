@@ -59,6 +59,16 @@ export class StatsComponent implements OnInit {
     }
   ];
 
+  public pieChartColors: Color[] = [
+    {
+      backgroundColor: [
+        'rgba(244,67,54,0.3)',
+        'rgba(146, 146, 146, 0.25)'
+      ],
+      borderColor: 'red'
+    }
+  ];
+
   constructor(private clientService: ClientsService) {
   }
 
