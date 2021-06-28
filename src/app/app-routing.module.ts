@@ -4,12 +4,17 @@ import {ClientsComponent} from './clients/clients.component';
 import {ClientDetailsComponent} from "./client-details/client-details.component";
 import {ClientResolver} from "./services/client-resolver.service";
 import {StatsComponent} from './stats/stats.component';
+import {LoginComponent} from './login/login.component';
 
 const routes: Routes = [
   {
     path: '',
     component: ClientsComponent
 
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: 'clients',

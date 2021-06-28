@@ -20,7 +20,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ClientsService} from './services/clients.service';
 import {ClientsComponent} from './clients/clients.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {HttpService} from './services/http.service';
@@ -38,6 +38,7 @@ import {PhoneMaskDirective} from './directives/phone-mask.directive';
 import {LoggingInterceptor} from './services/logging-interceptor.service';
 import { StatsComponent } from './stats/stats.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { LoginComponent } from './login/login.component';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
   provide: HTTP_INTERCEPTORS ,
@@ -54,7 +55,8 @@ const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
     ConfirmDialogComponent,
     VisitComponent,
     PhoneMaskDirective,
-    StatsComponent
+    StatsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +84,8 @@ const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
     NotifierModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatTooltipModule
+    MatTooltipModule,
+    ReactiveFormsModule
   ],
   providers: [
     ClientsService,
