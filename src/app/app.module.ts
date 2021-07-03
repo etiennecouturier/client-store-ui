@@ -39,6 +39,7 @@ import {LoggingInterceptor} from './services/logging-interceptor.service';
 import { StatsComponent } from './stats/stats.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { LoginComponent } from './login/login.component';
+import {LoginService} from './services/login.service';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
   provide: HTTP_INTERCEPTORS ,
@@ -90,6 +91,7 @@ const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
   providers: [
     ClientsService,
     HttpService,
+    LoginService,
     ClientResolver,
     PhonePipe,
     LOGGING_INTERCEPTOR_PROVIDER,
