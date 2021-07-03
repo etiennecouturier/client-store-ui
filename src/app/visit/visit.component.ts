@@ -23,4 +23,12 @@ export class VisitComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  calculateTotal() {
+    return this.visit.fees.frame
+      + this.visit.fees.rightLense
+      + this.visit.fees.leftLense
+      + this.visit.fees.service
+      + this.visit.fees.exam
+      + this.visit.fees.other;
+  }
 }

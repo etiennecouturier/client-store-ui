@@ -70,7 +70,15 @@ export class Constants {
         },
         notes: null
       },
-      shoppingNotes: null
+      shoppingNotes: null,
+      fees: {
+        frame: null,
+        rightLense: null,
+        leftLense: null,
+        service: null,
+        exam: null,
+        other: null
+      }
     };
   }
 

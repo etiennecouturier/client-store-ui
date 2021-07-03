@@ -1,4 +1,5 @@
 import {Exam} from './exam';
+import {Fees} from './fees';
 
 export interface Visit {
   date: Date;
@@ -6,4 +7,5 @@ export interface Visit {
   exam: Exam;
   contactLenseExam: Exam;
   shoppingNotes: string;
+  fees: Fees;
 }
