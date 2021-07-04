@@ -31,4 +31,12 @@ export class VisitComponent implements OnInit {
       + this.visit.fees.exam
       + this.visit.fees.other;
   }
+
+  calculateDiscount() {
+    return this.calculateTotal() * this.visit.fees.discount / 100;
+  }
+
+  calculateToBePaid() {
+    return this.calculateTotal() - this.calculateDiscount() - this.visit.fees.paid;
+  }
 }

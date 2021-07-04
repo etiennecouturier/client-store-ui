@@ -5,4 +5,6 @@ export interface Fees {
   service: number;
   exam: number;
   other: number;
+  discount: number;
+  paid: number;
 }

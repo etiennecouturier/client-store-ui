@@ -70,3 +70,25 @@
   flex: 1;
   border-right: 1px solid gray;
 }
+
+.flex-child-shopping {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  align-content: center;
+  padding: 10px;
+}
+
+.exam-number-container-shopping {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.border-bottom {
+  border-bottom: 1px solid red
+}
+
+.border-top {
+  border-top: 1px solid red
+}

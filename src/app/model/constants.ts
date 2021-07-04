@@ -77,7 +77,9 @@ export class Constants {
         leftLense: null,
         service: null,
         exam: null,
-        other: null
+        other: null,
+        discount: null,
+        paid: null
       }
     };
   }

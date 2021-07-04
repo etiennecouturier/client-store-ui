@@ -165,48 +165,72 @@
         </div>
       </div>
       <div class="exam-data-container">
-        <div class="exam-number-container">
-          <div class="flex-child">
+        <div class="exam-number-container-shopping">
+          <div class="flex-child-shopping">
             <div class="flex-line red">Keret</div>
             <mat-form-field class="flex-line">
               <input matInput type="number" [(ngModel)]="visit.fees.frame"
                      [disabled]="!edit"/>
             </mat-form-field>
           </div>
-          <div class="flex-child">
+          <div class="flex-child-shopping">
             <div class="flex-line red">J. lencse</div>
             <mat-form-field class="flex-line">
               <input matInput type="number" [(ngModel)]="visit.fees.rightLense" [disabled]="!edit"/>
             </mat-form-field>
           </div>
-          <div class="flex-child">
+          <div class="flex-child-shopping">
             <div class="flex-line red">B. lencse</div>
             <mat-form-field class="flex-line">
               <input matInput type="number" [(ngModel)]="visit.fees.leftLense" [disabled]="!edit"/>
             </mat-form-field>
           </div>
-          <div class="flex-child">
+          <div class="flex-child-shopping">
             <div class="flex-line red">Munka</div>
             <mat-form-field class="flex-line">
               <input matInput type="number" [(ngModel)]="visit.fees.service" [disabled]="!edit"/>
             </mat-form-field>
           </div>
-          <div class="flex-child">
+          <div class="flex-child-shopping">
             <div class="flex-line red">Vizsg.</div>
             <mat-form-field class="flex-line">
               <input matInput type="number" [(ngModel)]="visit.fees.exam" [disabled]="!edit"/>
             </mat-form-field>
           </div>
-          <div class="flex-child">
+          <div class="flex-child-shopping">
             <div class="flex-line red">Egyéb</div>
             <mat-form-field class="flex-line">
               <input matInput type="number" [(ngModel)]="visit.fees.other" [disabled]="!edit"/>
             </mat-form-field>
           </div>
-          <div class="flex-child">
+          <div class="flex-child-shopping border-top border-bottom">
             <div class="flex-line red">Végösszeg</div>
             <mat-form-field class="flex-line">
-              <input matInput type="number" [ngModel]="calculateTotal()" [disabled]="!edit"/>
+              <input matInput type="number" [ngModel]="calculateTotal()" [disabled]="true"/>
+            </mat-form-field>
+          </div>
+          <div class="flex-child-shopping">
+            <div class="flex-line red">Kedvezmény (%)</div>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.fees.discount" [disabled]="!edit"/>
+            </mat-form-field>
+          </div>
+          <div class="flex-child-shopping">
+            <div class="flex-line red">Kedvezmény (Ft)</div>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [ngModel]="calculateDiscount()" [disabled]="true"/>
+            </mat-form-field>
+          </div>
+          <div class="flex-child-shopping">
+            <div class="flex-line red">Fizetett</div>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.fees.paid" [disabled]="!edit"/>
+            </mat-form-field>
+          </div>
+          <div class="flex-child-shopping border-top">
+            <div class="flex-line red">Fizetendő</div>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [ngModel]="calculateToBePaid()" [disabled]="true"/>
             </mat-form-field>
           </div>
         </div>
