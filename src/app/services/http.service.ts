@@ -21,4 +21,10 @@ export class HttpService {
     return this.http.post<T>(environment.baseUrl + url, elem, {});
   }
 
+  download(): Observable<Blob> {
+    return this.http.get(`${environment.baseUrl}/pdf/download/60e0cc765749c0376dd34f78`, {
+      responseType: 'blob'
+    });
+  }
+
 }

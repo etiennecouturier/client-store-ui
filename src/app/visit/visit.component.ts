@@ -1,5 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Visit} from '../model/visit';
+import {HttpService} from '../services/http.service';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'visit',
@@ -18,7 +20,7 @@ export class VisitComponent implements OnInit {
   today = new Date();
   edit = false;
 
-  constructor() { }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
   }
@@ -39,4 +41,11 @@ export class VisitComponent implements OnInit {
   calculateToBePaid() {
     return this.calculateTotal() - this.calculateDiscount() - this.visit.fees.paid;
   }
+
+  downloadFile(): void {
+    this.httpService
+      .download()
+      .subscribe(blob => saveAs(blob, 'visit.pdf'));
+  }
+
 }

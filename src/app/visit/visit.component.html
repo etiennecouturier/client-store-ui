@@ -261,5 +261,9 @@
     <button mat-icon-button color="accent" (click)="cancel.emit(); edit=false" *ngIf="edit">
       <mat-icon aria-label="Cancel">cancel</mat-icon>
     </button>
+
+    <button mat-icon-button color="accent" (click)="downloadFile()" *ngIf="!edit">
+      <mat-icon aria-label="Download">download</mat-icon>
+    </button>
   </mat-card-actions>
 </mat-card>
