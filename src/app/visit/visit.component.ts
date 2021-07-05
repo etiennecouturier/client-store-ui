@@ -20,10 +20,9 @@ export class VisitComponent implements OnInit {
   today = new Date();
   edit = false;
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   calculateTotal() {
     return this.visit.fees.frame
@@ -44,7 +43,7 @@ export class VisitComponent implements OnInit {
 
   downloadFile(): void {
     this.httpService
-      .download()
+      .download(this.visit.id)
       .subscribe(blob => saveAs(blob, 'visit.pdf'));
   }
 

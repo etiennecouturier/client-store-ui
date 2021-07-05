@@ -21,8 +21,9 @@ export class HttpService {
     return this.http.post<T>(environment.baseUrl + url, elem, {});
   }
 
-  download(): Observable<Blob> {
-    return this.http.get(`${environment.baseUrl}/pdf/download/60e0da6394d37002c7386abf`, {
+  download(visitId: String): Observable<Blob> {
+    console.log(visitId);
+    return this.http.get(`${environment.baseUrl}/pdf/download/${visitId}`, {
       responseType: 'blob'
     });
   }

@@ -24,15 +24,15 @@ export class ClientsService {
   }
 
   findVisitCountForLast10Days(): Observable<CountPerDate[]> {
-    return this.http.get<CountPerDate[]>(environment.baseUrl + '/clients/visit-count-last-10-days');
+    return this.http.get<CountPerDate[]>(environment.baseUrl + '/stats/visit-count-last-10-days');
   }
 
   findVisitorCountPerAge(): Observable<CountPerAge[]> {
-    return this.http.get<CountPerAge[]>(environment.baseUrl + '/clients/visitor-count-age');
+    return this.http.get<CountPerAge[]>(environment.baseUrl + '/stats/visitor-count-age');
   }
 
   findVisitorCountPerSex(): Observable<CountPerSex[]> {
-    return this.http.get<CountPerSex[]>(environment.baseUrl + '/clients/visitor-count-sex');
+    return this.http.get<CountPerSex[]>(environment.baseUrl + '/stats/visitor-count-sex');
   }
 
 }

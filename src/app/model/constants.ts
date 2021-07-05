@@ -18,6 +18,7 @@ export class Constants {
 
   static emptyVisit(): Visit {
     return {
+      id: null,
       date: new Date(),
       historicExam: {
         rightEye: {
