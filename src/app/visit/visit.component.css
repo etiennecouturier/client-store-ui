@@ -76,13 +76,18 @@
   flex-direction: row;
   flex: 1;
   align-content: center;
-  padding: 10px;
 }
 
 .exam-number-container-shopping {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+}
+
+.flex-line-shopping {
+  width: 50%;
+  max-width: 70px;
+  margin: auto;
 }
 
 .border-bottom {
