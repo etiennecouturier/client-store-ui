@@ -48,7 +48,7 @@ export class VisitComponent implements OnInit {
   downloadFile(): void {
     this.httpService
       .download(this.visit.id)
-      .subscribe(blob => saveAs(blob, 'visit.pdf'));
+      .subscribe(blob => saveAs(blob, `visit_${this.visit.id}.pdf`));
   }
 
 }

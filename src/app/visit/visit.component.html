@@ -262,7 +262,9 @@
       <mat-icon aria-label="Cancel">cancel</mat-icon>
     </button>
 
-    <button mat-icon-button color="accent" (click)="downloadFile()" *ngIf="!edit">
+    <button mat-icon-button color="accent" (click)="downloadFile()"
+            *ngIf="!edit"
+            [disabled]="anyUnderEdit && !edit">
       <mat-icon aria-label="Download">download</mat-icon>
     </button>
   </mat-card-actions>
