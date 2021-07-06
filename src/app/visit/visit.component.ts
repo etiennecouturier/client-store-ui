@@ -25,20 +25,24 @@ export class VisitComponent implements OnInit {
   ngOnInit(): void {}
 
   calculateTotal() {
-    return this.visit.fees.frame
+    this.visit.fees.total =
+      this.visit.fees.frame
       + this.visit.fees.rightLense
       + this.visit.fees.leftLense
       + this.visit.fees.service
       + this.visit.fees.exam
       + this.visit.fees.other;
+    return this.visit.fees.total;
   }
 
   calculateDiscount() {
-    return this.calculateTotal() * this.visit.fees.discount / 100;
+    this.visit.fees.discountAmount = this.calculateTotal() * this.visit.fees.discountPercent / 100;
+    return this.visit.fees.discountAmount;
   }
 
   calculateToBePaid() {
-    return this.calculateTotal() - this.calculateDiscount() - this.visit.fees.paid;
+    this.visit.fees.toBePaid = this.calculateTotal() - this.calculateDiscount() - this.visit.fees.paid;
+    return this.visit.fees.toBePaid;
   }
 
   downloadFile(): void {

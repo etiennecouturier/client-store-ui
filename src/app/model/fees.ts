@@ -5,6 +5,9 @@ export interface Fees {
   service: number;
   exam: number;
   other: number;
-  discount: number;
+  discountPercent: number;
   paid: number;
+  total: number;
+  discountAmount: number;
+  toBePaid: number;
 }

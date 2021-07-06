@@ -79,8 +79,11 @@ export class Constants {
         service: null,
         exam: null,
         other: null,
-        discount: null,
-        paid: null
+        discountPercent: null,
+        paid: null,
+        total: null,
+        discountAmount: null,
+        toBePaid: null,
       }
     };
   }
