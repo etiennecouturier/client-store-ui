@@ -36,7 +36,7 @@ export class VisitComponent implements OnInit {
   }
 
   calculateDiscount() {
-    this.visit.fees.discountAmount = this.calculateTotal() * this.visit.fees.discountPercent / 100;
+    this.visit.fees.discountAmount = Math.round(this.calculateTotal() * this.visit.fees.discountPercent / 100);
     return this.visit.fees.discountAmount;
   }
 
