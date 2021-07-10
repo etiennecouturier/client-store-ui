@@ -7,6 +7,7 @@ export interface Visit {
   historicExam: Exam;
   exam: Exam;
   contactLenseExam: Exam;
-  shoppingNotes: string;
   fees: Fees;
+  frame: string;
+  lense: string;
 }
