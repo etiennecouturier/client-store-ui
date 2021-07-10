@@ -4,4 +4,7 @@ export interface Eye {
   fok: number;
   vizus: number;
   szaruGorbulet: number;
+  add: number;
+  pd: number;
+  bifoMag: number;
 }

@@ -26,14 +26,20 @@ export class Constants {
           cilinder: null,
           fok: null,
           vizus: null,
-          szaruGorbulet: null
+          szaruGorbulet: null,
+          add: null,
+          pd: null,
+          bifoMag: null
         },
         leftEye: {
           dioptria: null,
           cilinder: null,
           fok: null,
           vizus: null,
-          szaruGorbulet: null
+          szaruGorbulet: null,
+          add: null,
+          pd: null,
+          bifoMag: null
         },
         notes: null
       },
@@ -43,14 +49,20 @@ export class Constants {
           cilinder: null,
           fok: null,
           vizus: null,
-          szaruGorbulet: null
+          szaruGorbulet: null,
+          add: null,
+          pd: null,
+          bifoMag: null
         },
         leftEye: {
           dioptria: null,
           cilinder: null,
           fok: null,
           vizus: null,
-          szaruGorbulet: null
+          szaruGorbulet: null,
+          add: null,
+          pd: null,
+          bifoMag: null
         },
         notes: null
       },
@@ -60,18 +72,23 @@ export class Constants {
           cilinder: null,
           fok: null,
           vizus: null,
-          szaruGorbulet: null
+          szaruGorbulet: null,
+          add: null,
+          pd: null,
+          bifoMag: null
         },
         leftEye: {
           dioptria: null,
           cilinder: null,
           fok: null,
           vizus: null,
-          szaruGorbulet: null
+          szaruGorbulet: null,
+          add: null,
+          pd: null,
+          bifoMag: null
         },
         notes: null
       },
-      shoppingNotes: null,
       fees: {
         frame: null,
         rightLense: null,
@@ -84,7 +101,9 @@ export class Constants {
         total: null,
         discountAmount: null,
         toBePaid: null,
-      }
+      },
+      frame: null,
+      lense: null
     };
   }
 

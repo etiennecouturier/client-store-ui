@@ -99,9 +99,39 @@
             </mat-form-field>
           </div>
         </div>
+        <div class="exam-number-container">
+          <div class="flex-child">
+            <div class="flex-line red">Add.</div>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.exam.rightEye.add" [disabled]="!edit"/>
+            </mat-form-field>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.exam.leftEye.add" [disabled]="!edit"/>
+            </mat-form-field>
+          </div>
+          <div class="flex-child">
+            <div class="flex-line red">PD</div>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.exam.rightEye.pd" [disabled]="!edit"/>
+            </mat-form-field>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.exam.leftEye.pd" [disabled]="!edit"/>
+            </mat-form-field>
+          </div>
+          <div class="flex-child">
+            <div class="flex-line red">Bifo. mag.</div>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.exam.rightEye.bifoMag" [disabled]="!edit"/>
+            </mat-form-field>
+            <mat-form-field class="flex-line">
+              <input matInput type="number" [(ngModel)]="visit.exam.leftEye.bifoMag" [disabled]="!edit"/>
+            </mat-form-field>
+          </div>
+        </div>
         <mat-form-field class="note-full-width">
-      <textarea matInput matTextareaAutosize placeholder="Megjegyzés" [(ngModel)]="visit.exam.notes"
-                [disabled]="!edit"></textarea>
+          <textarea matInput matTextareaAutosize placeholder="Megjegyzés"
+                    [(ngModel)]="visit.exam.notes"
+                    [disabled]="!edit"></textarea>
         </mat-form-field>
       </div>
     </div>
