@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Visit} from '../model/visit';
 import {HttpService} from '../services/http.service';
 import { saveAs } from 'file-saver';
+import {NotifierService} from 'angular-notifier';
 
 @Component({
   selector: 'visit',
@@ -20,7 +21,8 @@ export class VisitComponent implements OnInit {
   today = new Date();
   edit = false;
 
-  constructor(private httpService: HttpService) {}
+  constructor(private httpService: HttpService,
+              private notifierService: NotifierService) {}
 
   ngOnInit(): void {}
 
@@ -52,6 +54,7 @@ export class VisitComponent implements OnInit {
   }
 
   sendEmail() {
+    this.notifierService.notify('success', 'az email küldés alatt van');
     this.httpService
       .sendMail(this.visit.id)
       .subscribe(() => {
