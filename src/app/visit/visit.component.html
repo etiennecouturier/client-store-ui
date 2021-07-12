@@ -301,5 +301,10 @@
             [disabled]="anyUnderEdit && !edit">
       <mat-icon aria-label="Download">download</mat-icon>
     </button>
+    <button mat-icon-button color="accent" (click)="sendEmail()"
+            *ngIf="!edit"
+            [disabled]="anyUnderEdit && !edit">
+      <mat-icon aria-label="Email">email</mat-icon>
+    </button>
   </mat-card-actions>
 </mat-card>

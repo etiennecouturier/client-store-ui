@@ -51,4 +51,11 @@ export class VisitComponent implements OnInit {
       .subscribe(blob => saveAs(blob, `visit_${this.visit.id}.pdf`));
   }
 
+  sendEmail() {
+    this.httpService
+      .sendMail(this.visit.id)
+      .subscribe(() => {
+        console.log('mail successfully sent');
+      });
+  }
 }

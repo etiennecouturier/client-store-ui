@@ -22,10 +22,13 @@ export class HttpService {
   }
 
   download(visitId: String): Observable<Blob> {
-    console.log(visitId);
     return this.http.get(`${environment.baseUrl}/pdf/download/${visitId}`, {
       responseType: 'blob'
     });
+  }
+
+  sendMail(visitId: String) {
+    return this.http.post(`${environment.baseUrl}/mail/send/${visitId}`, {});
   }
 
 }
