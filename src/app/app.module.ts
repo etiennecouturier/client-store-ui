@@ -40,6 +40,8 @@ import { StatsComponent } from './stats/stats.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { LoginComponent } from './login/login.component';
 import {LoginService} from './services/login.service';
+import {AuthService} from './services/auth.service';
+import {JwtModule} from '@auth0/angular-jwt';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
   provide: HTTP_INTERCEPTORS ,
@@ -86,9 +88,19 @@ const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
     MatDatepickerModule,
     MatNativeDateModule,
     MatTooltipModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('id_token');
+        },
+        allowedDomains: ['localhost:8080'],
+        disallowedRoutes: []
+      }
+    })
   ],
   providers: [
+    AuthService,
     ClientsService,
     HttpService,
     LoginService,
