@@ -42,6 +42,7 @@ import { LoginComponent } from './login/login.component';
 import {LoginService} from './services/login.service';
 import {AuthService} from './services/auth.service';
 import {JwtModule} from '@auth0/angular-jwt';
+import {AuthGuardService} from './services/auth-guard.service';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
   provide: HTTP_INTERCEPTORS ,
@@ -101,6 +102,7 @@ const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
   ],
   providers: [
     AuthService,
+    AuthGuardService,
     ClientsService,
     HttpService,
     LoginService,
