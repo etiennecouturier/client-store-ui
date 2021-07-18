@@ -1,16 +1,22 @@
 <mat-sidenav-container>
 
-  <nav mat-tab-nav-bar class="mat-elevation-z8" backgroundColor="primary">
+  <nav mat-tab-nav-bar class="mat-elevation-z8" backgroundColor="primary" *ngIf="userLoggedIn()">
     <a
       mat-tab-link
       *ngFor="let link of navLinks"
       routerLink="{{ link.location }}"
       routerLinkActive
       #rla="routerLinkActive"
-      [active]="rla.isActive">
+      [active]="rla.isActive"
+      (click)="link.action()">
       <mat-icon>{{ link.icon }}</mat-icon>
       <span>{{ link.label | uppercase }}</span>
     </a>
+    <button matTooltip="Kijelentkezés"
+            mat-icon-button color="accent"
+            [routerLink]="['/login']">
+      <mat-icon aria-label="Logout">add</mat-icon>
+    </button>
   </nav>
 
   <router-outlet></router-outlet>

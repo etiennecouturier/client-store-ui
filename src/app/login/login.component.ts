@@ -40,7 +40,7 @@ export class LoginComponent {
           authResult => {
             localStorage.setItem('id_token', authResult.jwt);
             console.log('User is logged in');
-            // this.router.navigateByUrl('/');
+            this.router.navigateByUrl('/');
           }
         );
     // }

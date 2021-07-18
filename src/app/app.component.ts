@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {AuthService} from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,16 @@ export class AppComponent {
   title = 'app';
   navLinks = [
     {location: '/clients', label: 'ügyfelek', icon: 'person'},
-    { location: '/stats', label: 'statisztikák', icon: 'check_circle' }
+    {location: '/stats', label: 'statisztikák', icon: 'check_circle'},
+    {location: '/login', label: 'kijelentkezés', icon: 'logout', action: () => this.authService.logout()}
   ];
+
+
+  constructor(private authService: AuthService) {
+  }
+
+  userLoggedIn() {
+    return this.authService.isLoggedIn();
+  }
+
 }
