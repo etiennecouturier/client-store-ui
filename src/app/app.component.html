@@ -1,4 +1,4 @@
-<mat-sidenav-container>
+<mat-sidenav-container [ngClass]="{'background-image' : !userLoggedIn()}">
 
   <nav mat-tab-nav-bar class="mat-elevation-z8" backgroundColor="primary" *ngIf="userLoggedIn()">
     <a

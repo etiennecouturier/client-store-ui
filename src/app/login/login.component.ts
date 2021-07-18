@@ -35,7 +35,7 @@ export class LoginComponent {
     const val = this.form.value;
 
     // if (val.email && val.password) {
-      this.authService.login(val.email, val.password)
+      this.authService.login(val.username, val.password)
         .subscribe(
           authResult => {
             localStorage.setItem('id_token', authResult.jwt);
