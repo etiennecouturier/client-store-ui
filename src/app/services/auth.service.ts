@@ -14,7 +14,7 @@ export class AuthService {
 
   login(username: string, password: string) {
     console.log(username);
-    return this.http.post<AuthResponse>(environment.baseUrl + '/auth', {username, password});
+    return this.http.post<AuthResponse>(environment.baseUrl + '/auth/generate-token', {username, password});
   }
 
   logout() {
