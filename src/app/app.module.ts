@@ -43,10 +43,17 @@ import {LoginService} from './services/login.service';
 import {AuthService} from './services/auth.service';
 import {JwtModule} from '@auth0/angular-jwt';
 import {AuthGuardService} from './services/auth-guard.service';
+import {UrlInterceptor} from './services/url-interceptor.service';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
-  provide: HTTP_INTERCEPTORS ,
+  provide: HTTP_INTERCEPTORS,
   useClass: LoggingInterceptor,
+  multi: true
+};
+
+const URL_INTERCEPTOR_PROVIDER: ClassProvider = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: UrlInterceptor,
   multi: true
 };
 
@@ -93,7 +100,7 @@ const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
-          return localStorage.getItem('id_token');
+          return localStorage.getItem('access_token');
         },
         allowedDomains: ['localhost:8080'],
         disallowedRoutes: []
@@ -109,6 +116,7 @@ const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
     ClientResolver,
     PhonePipe,
     LOGGING_INTERCEPTOR_PROVIDER,
+    URL_INTERCEPTOR_PROVIDER,
     {provide: MAT_DATE_LOCALE, useValue: 'hu'}
   ],
   bootstrap: [AppComponent]

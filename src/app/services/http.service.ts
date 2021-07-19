@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {environment} from '../../environments/environment';
 
 
 @Injectable()
@@ -9,26 +8,26 @@ export class HttpService {
 
   constructor(private http: HttpClient) {}
 
-  find<T>(url: String, params: any = {}): Observable<T> {
-    return this.http.get<T>(environment.baseUrl + url, { params : params });
+  find<T>(url: string, params: any = {}): Observable<T> {
+    return this.http.get<T>(url, { params : params });
   }
 
-  deleteById(url: String, id: number): Observable<Object> {
-    return this.http.delete(environment.baseUrl + url + id);
+  deleteById(url: string, id: number): Observable<Object> {
+    return this.http.delete(url + id);
   }
 
-  save<T>(url: String, elem: T) {
-    return this.http.post<T>(environment.baseUrl + url, elem, {});
+  save<T>(url: string, elem: T) {
+    return this.http.post<T>(url, elem, {});
   }
 
   download(visitId: String): Observable<Blob> {
-    return this.http.get(`${environment.baseUrl}/pdf/download/${visitId}`, {
+    return this.http.get(`/pdf/download/${visitId}`, {
       responseType: 'blob'
     });
   }
 
   sendMail(visitId: String) {
-    return this.http.post(`${environment.baseUrl}/mail/send/${visitId}`, {});
+    return this.http.post(`/mail/send/${visitId}`, {});
   }
 
 }

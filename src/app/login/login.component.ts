@@ -1,8 +1,7 @@
-import { Input, Component, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthService} from '../services/auth.service';
-import {AuthResponse} from '../model/auth-response';
 
 @Component({
   selector: 'login',
@@ -20,8 +19,9 @@ export class LoginComponent {
     password: new FormControl(''),
   });
 
-  constructor( private authService: AuthService,
-               private router: Router) {}
+  constructor(private authService: AuthService,
+              private router: Router) {
+  }
 
   submit() {
     if (this.form.valid) {
@@ -33,17 +33,14 @@ export class LoginComponent {
 
   login() {
     const val = this.form.value;
-
-    // if (val.email && val.password) {
-      this.authService.login(val.username, val.password)
-        .subscribe(
-          authResult => {
-            localStorage.setItem('id_token', authResult.jwt);
-            console.log('User is logged in');
-            this.router.navigateByUrl('/');
-          }
-        );
-    // }
+    this.authService.login(val.username, val.password)
+      .subscribe(
+        authResult => {
+          localStorage.setItem('access_token', authResult.jwt);
+          console.log('User is logged in');
+          this.router.navigateByUrl('/');
+        }
+      );
   }
 
 }
