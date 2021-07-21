@@ -296,12 +296,16 @@
       <mat-icon aria-label="Cancel">cancel</mat-icon>
     </button>
 
-    <button mat-icon-button color="accent" (click)="downloadFile()"
+    <button mat-icon-button
+            color="accent"
+            (click)="downloadFile()"
             *ngIf="!edit"
             [disabled]="anyUnderEdit && !edit">
       <mat-icon aria-label="Download">download</mat-icon>
     </button>
-    <button mat-icon-button color="accent" (click)="sendEmail()"
+    <button mat-icon-button
+            color="accent"
+            (click)="sendEmail()"
             *ngIf="!edit"
             [disabled]="anyUnderEdit && !edit">
       <mat-icon aria-label="Email">email</mat-icon>

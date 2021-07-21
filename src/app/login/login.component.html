@@ -20,14 +20,17 @@
         {{ error }}
       </p>
 
-      <div class="button">
-        <button mat-icon-button
-                color="accent"
-                type="submit">
-          <mat-icon aria-label="Login">login</mat-icon>
-        </button>
-      </div>
-
+      <button mat-icon-button
+              color="accent"
+              type="submit">
+        <mat-icon aria-label="Login">login</mat-icon>
+      </button>
+      <button mat-icon-button
+              color="accent"
+              type="submit"
+              [routerLink]="['/register']">
+        <mat-icon aria-label="Login">person_add</mat-icon>
+      </button>
     </form>
   </mat-card-content>
 </mat-card>
