@@ -7,30 +7,35 @@
       <p>
         <mat-form-field>
           <input type="text" matInput placeholder="Felhasználó név" formControlName="username">
+          <mat-error *ngIf="hasError('username', 'required')">kötelező mező</mat-error>
+          <mat-error *ngIf="hasError('username', 'minlength')">legalább 4 karakter hosszú</mat-error>
         </mat-form-field>
       </p>
+
       <p>
         <mat-form-field>
           <input type="text" matInput placeholder="Email" formControlName="email">
+          <mat-error *ngIf="hasError('email', 'required')">kötelező mező</mat-error>
+          <mat-error *ngIf="hasError('email', 'email')">rossz email formátum</mat-error>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field>
           <input type="password" matInput placeholder="Jelszó" formControlName="password">
+          <mat-error *ngIf="hasError('password', 'required')">kötelező mező</mat-error>
+          <mat-error *ngIf="hasError('password', 'minlength')">legalább 6 karakter hosszú</mat-error>
         </mat-form-field>
-      </p>
-      <p *ngIf="error" class="error">
-        {{ error }}
       </p>
       <button mat-icon-button
               color="accent"
-              type="submit">
-        <mat-icon aria-label="Login">person_add</mat-icon>
+              type="submit"
+              [disabled]="!userForm.valid">
+        <mat-icon aria-label="Register">check</mat-icon>
       </button>
       <button mat-icon-button
               color="accent"
               [routerLink]="['/login']">
-        <mat-icon aria-label="Login">login</mat-icon>
+        <mat-icon aria-label="Login">cancel</mat-icon>
       </button>
     </form>
   </mat-card-content>

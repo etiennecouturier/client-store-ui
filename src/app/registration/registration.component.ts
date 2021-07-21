@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../services/auth.service';
 import {Router} from '@angular/router';
 import {UserService} from '../services/user.service';
@@ -11,14 +11,10 @@ import {UserService} from '../services/user.service';
 })
 export class RegistrationComponent {
 
-  @Input() error: string | null;
-
-  @Output() submitEM = new EventEmitter();
-
   userForm: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    email: new FormControl(''),
-    password: new FormControl(''),
+    username: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
 
   constructor(private userService: UserService,
@@ -26,18 +22,18 @@ export class RegistrationComponent {
   }
 
   submit() {
-    if (this.userForm.valid) {
-      this.submitEM.emit(this.userForm.value);
-    }
-    this.register();
+    if (this.userForm.valid) { this.register(); }
   }
 
   register() {
     this.userService.createUser(this.userForm.value)
-      .subscribe(newUser => {
-        console.log(newUser);
+      .subscribe(() => {
         this.router.navigate(['login']);
       });
+  }
+
+  public hasError (controlName: string, errorName: string) {
+    return this.userForm.controls[controlName].hasError(errorName);
   }
 
 }
