@@ -11,8 +11,8 @@ import {AuthService} from '../services/auth.service';
 export class LoginComponent {
 
   userForm: FormGroup = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.minLength(4)]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)])
+    username: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required])
   });
 
   constructor(private authService: AuthService,

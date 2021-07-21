@@ -8,7 +8,6 @@
         <mat-form-field>
           <input type="text" matInput placeholder="Felhasználó név" formControlName="username">
           <mat-error *ngIf="hasError('username', 'required')">kötelező mező</mat-error>
-          <mat-error *ngIf="hasError('username', 'minlength')">legalább 4 karakter hosszú</mat-error>
         </mat-form-field>
       </p>
 
@@ -16,7 +15,6 @@
         <mat-form-field>
           <input type="password" matInput placeholder="Jelszó" formControlName="password">
           <mat-error *ngIf="hasError('password', 'required')">kötelező mező</mat-error>
-          <mat-error *ngIf="hasError('password', 'minlength')">legalább 6 karakter hosszú</mat-error>
         </mat-form-field>
       </p>
 
