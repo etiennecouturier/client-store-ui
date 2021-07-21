@@ -9,7 +9,12 @@
   min-width: 300px;
 }
 
-mat-card-title,
+mat-card-title {
+  display: flex;
+  justify-content: center;
+  color: red;
+}
+
 mat-card-content {
   display: flex;
   justify-content: center;

@@ -1,43 +1,45 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {ClientsComponent} from './clients/clients.component';
-import {ClientDetailsComponent} from "./client-details/client-details.component";
-import {ClientResolver} from "./services/client-resolver.service";
+import {ClientDetailsComponent} from './client-details/client-details.component';
+import {ClientResolver} from './resolvers/client-resolver.service';
 import {StatsComponent} from './stats/stats.component';
 import {LoginComponent} from './login/login.component';
+import {
+  AuthGuardInterceptorService as AuthGuard
+} from './interceptors/auth-guard-interceptor.service';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: ClientsComponent
-
-  },
   {
     path: 'login',
     component: LoginComponent
   },
   {
     path: 'clients',
-    component: ClientsComponent
+    component: ClientsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'clients/new',
-    component: ClientDetailsComponent
+    component: ClientDetailsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'clients/:id',
     component: ClientDetailsComponent,
     resolve: {
       client: ClientResolver
-    }
+    },
+    canActivate: [AuthGuard]
   },
   {
     path: 'stats',
-    component: StatsComponent
+    component: StatsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '**',
-    redirectTo: '/'
+    redirectTo: '/clients'
   }
 ];
 

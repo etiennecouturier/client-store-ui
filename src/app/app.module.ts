@@ -23,9 +23,8 @@ import {ClientsComponent} from './clients/clients.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
-import {HttpService} from './services/http.service';
 import {ChartsModule} from 'ng2-charts';
-import {ClientResolver} from './services/client-resolver.service';
+import {ClientResolver} from './resolvers/client-resolver.service';
 import {ClientDetailsComponent} from './client-details/client-details.component';
 import {PhonePipe} from './pipes/phone.pipe';
 import {CommonModule} from '@angular/common';
@@ -35,15 +34,28 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import {VisitComponent} from './visit/visit.component';
 import {PhoneMaskDirective} from './directives/phone-mask.directive';
-import {LoggingInterceptor} from './services/logging-interceptor.service';
-import { StatsComponent } from './stats/stats.component';
+import {LoggingInterceptor} from './interceptors/logging-interceptor.service';
+import {StatsComponent} from './stats/stats.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import { LoginComponent } from './login/login.component';
-import {LoginService} from './services/login.service';
+import {LoginComponent} from './login/login.component';
+import {AuthService} from './services/auth.service';
+import {JwtModule} from '@auth0/angular-jwt';
+import {AuthGuardInterceptorService} from './interceptors/auth-guard-interceptor.service';
+import {UrlInterceptor} from './interceptors/url-interceptor.service';
+import {RegistrationComponent} from './registration/registration.component';
+import {StatsService} from './services/stats.service';
+import {PdfService} from './services/pdf.service';
+import {MailService} from './services/mail.service';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
-  provide: HTTP_INTERCEPTORS ,
+  provide: HTTP_INTERCEPTORS,
   useClass: LoggingInterceptor,
+  multi: true
+};
+
+const URL_INTERCEPTOR_PROVIDER: ClassProvider = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: UrlInterceptor,
   multi: true
 };
 
@@ -57,7 +69,8 @@ const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
     VisitComponent,
     PhoneMaskDirective,
     StatsComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -86,15 +99,28 @@ const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
     MatDatepickerModule,
     MatNativeDateModule,
     MatTooltipModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('access_token');
+        },
+        allowedDomains: ['localhost:8080'],
+        disallowedRoutes: []
+      }
+    })
   ],
   providers: [
+    AuthService,
+    AuthGuardInterceptorService,
     ClientsService,
-    HttpService,
-    LoginService,
     ClientResolver,
+    MailService,
+    PdfService,
     PhonePipe,
+    StatsService,
     LOGGING_INTERCEPTOR_PROVIDER,
+    URL_INTERCEPTOR_PROVIDER,
     {provide: MAT_DATE_LOCALE, useValue: 'hu'}
   ],
   bootstrap: [AppComponent]

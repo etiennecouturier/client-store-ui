@@ -2,7 +2,7 @@ import {CollectionViewer, DataSource} from '@angular/cdk/collections';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {catchError, finalize} from 'rxjs/operators';
 import {Client} from '../model/client';
-import {ClientsService} from './clients.service';
+import {ClientsService} from '../services/clients.service';
 import {Page} from '../model/page';
 
 

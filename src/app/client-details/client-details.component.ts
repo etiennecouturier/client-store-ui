@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Client} from '../model/client';
-import {HttpService} from '../services/http.service';
 import {Constants} from '../model/constants';
 import {PhonePipe} from '../pipes/phone.pipe';
 import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
+import {ClientsService} from '../services/clients.service';
 
 
 @Component({
@@ -23,7 +23,7 @@ export class ClientDetailsComponent implements OnInit {
 
   constructor(private dialog: MatDialog,
               private route: ActivatedRoute,
-              private httpService: HttpService,
+              private clientsService: ClientsService,
               private phonePipe: PhonePipe) {
   }
 
@@ -35,7 +35,7 @@ export class ClientDetailsComponent implements OnInit {
   }
 
   save() {
-    this.httpService.save('/clients/new', this.client)
+    this.clientsService.save(this.client)
       .subscribe(resp => {
         this.client = resp;
         this.edit = false;
@@ -44,8 +44,7 @@ export class ClientDetailsComponent implements OnInit {
   }
 
   cancel() {
-    this.httpService.find<Client>(
-      '/clients/id',
+    this.clientsService.find<Client>(
       {id: this.client.id}
     ).subscribe(resp => {
       this.client = resp;
