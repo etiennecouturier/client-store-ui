@@ -86,20 +86,21 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   }
 
   deleteItem(id) {
-    const response = this.clientsService.deleteById(id);
-    response.subscribe(() => {
-      this.loadClientsPage();
-    });
+    this.clientsService.deleteById(id)
+      .subscribe(() => {
+        this.loadClientsPage();
+      });
   }
 
   openDialog(client): void {
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    this.dialog.open(ConfirmDialogComponent, {
       width: '500px',
       data: client
-    });
-
-    dialogRef.componentInstance.del.subscribe(() => {
-      this.deleteItem(client.id);
-    });
+    }).componentInstance
+      .del
+      .subscribe(() => {
+        this.deleteItem(client.id);
+      });
   }
+
 }
