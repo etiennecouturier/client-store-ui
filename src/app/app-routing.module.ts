@@ -8,11 +8,16 @@ import {LoginComponent} from './login/login.component';
 import {
   AuthGuardInterceptorService as AuthGuard
 } from './interceptors/auth-guard-interceptor.service';
+import {RegistrationComponent} from './registration/registration.component';
 
 const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegistrationComponent
   },
   {
     path: 'clients',

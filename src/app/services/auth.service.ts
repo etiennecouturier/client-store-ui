@@ -12,7 +12,6 @@ export class AuthService {
               private jwtHelperService: JwtHelperService) {}
 
   login(username: string, password: string) {
-    console.log(username);
     return this.http.post<AuthResponse>('/auth/generate-token', {username, password});
   }
 

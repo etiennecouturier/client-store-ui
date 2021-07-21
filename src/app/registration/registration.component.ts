@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AuthService} from '../services/auth.service';
 import {Router} from '@angular/router';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'registration',
@@ -14,24 +15,29 @@ export class RegistrationComponent {
 
   @Output() submitEM = new EventEmitter();
 
-  form: FormGroup = new FormGroup({
+  userForm: FormGroup = new FormGroup({
     username: new FormControl(''),
+    email: new FormControl(''),
     password: new FormControl(''),
   });
 
-  constructor(private authService: AuthService,
+  constructor(private userService: UserService,
               private router: Router) {
   }
 
   submit() {
-    if (this.form.valid) {
-      this.submitEM.emit(this.form.value);
+    if (this.userForm.valid) {
+      this.submitEM.emit(this.userForm.value);
     }
-
+    this.register();
   }
 
   register() {
-
+    this.userService.createUser(this.userForm.value)
+      .subscribe(newUser => {
+        console.log(newUser);
+        this.router.navigate(['login']);
+      });
   }
 
 }
