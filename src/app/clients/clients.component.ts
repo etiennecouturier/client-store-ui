@@ -6,7 +6,6 @@ import {debounceTime, distinctUntilChanged, tap} from 'rxjs/operators';
 import {fromEvent, merge} from 'rxjs';
 import {ClientsDataSource} from '../datasources/clientsDataSource';
 import {ClientsService} from '../services/clients.service';
-import {HttpService} from '../services/http.service';
 import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {DeviceDetectorService} from 'ngx-device-detector';
@@ -39,7 +38,6 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   constructor(public dialog: MatDialog,
               private route: ActivatedRoute,
               private clientsService: ClientsService,
-              private httpService: HttpService,
               private deviceService: DeviceDetectorService) {
   }
 
@@ -88,7 +86,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   }
 
   deleteItem(id) {
-    const response = this.httpService.deleteById('/clients/', id);
+    const response = this.clientsService.deleteById(id);
     response.subscribe(() => {
       this.loadClientsPage();
     });

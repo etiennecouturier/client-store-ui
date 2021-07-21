@@ -19,4 +19,16 @@ export class ClientsService {
     return this.http.get<Page<Client>>('/clients/filter/', {params: params});
   }
 
+  find<T>(params: any = {}): Observable<T> {
+    return this.http.get<T>('/clients/id', { params : params });
+  }
+
+  deleteById(id: number): Observable<Object> {
+    return this.http.delete(`/clients/${id}`);
+  }
+
+  save<T>(elem: T) {
+    return this.http.post<T>('/clients/new', elem, {});
+  }
+
 }

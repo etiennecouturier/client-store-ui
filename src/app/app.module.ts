@@ -23,7 +23,6 @@ import {ClientsComponent} from './clients/clients.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
-import {HttpService} from './services/http.service';
 import {ChartsModule} from 'ng2-charts';
 import {ClientResolver} from './resolvers/client-resolver.service';
 import {ClientDetailsComponent} from './client-details/client-details.component';
@@ -45,6 +44,8 @@ import {AuthGuardInterceptorService} from './interceptors/auth-guard-interceptor
 import {UrlInterceptor} from './interceptors/url-interceptor.service';
 import {RegistrationComponent} from './registration/registration.component';
 import {StatsService} from './services/stats.service';
+import {PdfService} from './services/pdf.service';
+import {MailService} from './services/mail.service';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
   provide: HTTP_INTERCEPTORS,
@@ -113,8 +114,9 @@ const URL_INTERCEPTOR_PROVIDER: ClassProvider = {
     AuthService,
     AuthGuardInterceptorService,
     ClientsService,
-    HttpService,
     ClientResolver,
+    MailService,
+    PdfService,
     PhonePipe,
     StatsService,
     LOGGING_INTERCEPTOR_PROVIDER,

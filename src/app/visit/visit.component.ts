@@ -1,8 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Visit} from '../model/visit';
-import {HttpService} from '../services/http.service';
 import { saveAs } from 'file-saver';
 import {NotifierService} from 'angular-notifier';
+import {MailService} from '../services/mail.service';
+import {PdfService} from '../services/pdf.service';
 
 @Component({
   selector: 'visit',
@@ -21,7 +22,8 @@ export class VisitComponent implements OnInit {
   today = new Date();
   edit = false;
 
-  constructor(private httpService: HttpService,
+  constructor(private mailService: MailService,
+              private pdfService: PdfService,
               private notifierService: NotifierService) {}
 
   ngOnInit(): void {}
@@ -48,14 +50,14 @@ export class VisitComponent implements OnInit {
   }
 
   downloadFile(): void {
-    this.httpService
+    this.pdfService
       .download(this.visit.id)
       .subscribe(blob => saveAs(blob, `visit_${this.visit.id}.pdf`));
   }
 
   sendEmail() {
     this.notifierService.notify('success', 'az email küldés alatt van');
-    this.httpService
+    this.mailService
       .sendMail(this.visit.id)
       .subscribe(() => {
         console.log('mail successfully sent');
