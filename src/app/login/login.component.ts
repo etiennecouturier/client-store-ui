@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthService} from '../services/auth.service';
 
@@ -10,13 +10,9 @@ import {AuthService} from '../services/auth.service';
 })
 export class LoginComponent {
 
-  @Input() error: string | null;
-
-  @Output() submitEM = new EventEmitter();
-
-  form: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
+  userForm: FormGroup = new FormGroup({
+    username: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
 
   constructor(private authService: AuthService,
@@ -24,23 +20,22 @@ export class LoginComponent {
   }
 
   submit() {
-    if (this.form.valid) {
-      this.submitEM.emit(this.form.value);
-    }
-    console.log('hello');
-    this.login();
+    if (this.userForm.valid) { this.login(); }
   }
 
   login() {
-    const val = this.form.value;
+    const val = this.userForm.value;
     this.authService.login(val.username, val.password)
       .subscribe(
         authResult => {
           localStorage.setItem('access_token', authResult.jwt);
-          console.log('User is logged in');
           this.router.navigateByUrl('/');
         }
       );
+  }
+
+  public hasError (controlName: string, errorName: string) {
+    return this.userForm.controls[controlName].hasError(errorName);
   }
 
 }

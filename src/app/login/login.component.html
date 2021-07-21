@@ -3,33 +3,34 @@
     <mat-card-title>Bejelentkezés</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form [formGroup]="form" (ngSubmit)="submit()">
+    <form [formGroup]="userForm" (ngSubmit)="submit()">
       <p>
         <mat-form-field>
           <input type="text" matInput placeholder="Felhasználó név" formControlName="username">
+          <mat-error *ngIf="hasError('username', 'required')">kötelező mező</mat-error>
+          <mat-error *ngIf="hasError('username', 'minlength')">legalább 4 karakter hosszú</mat-error>
         </mat-form-field>
       </p>
 
       <p>
         <mat-form-field>
           <input type="password" matInput placeholder="Jelszó" formControlName="password">
+          <mat-error *ngIf="hasError('password', 'required')">kötelező mező</mat-error>
+          <mat-error *ngIf="hasError('password', 'minlength')">legalább 6 karakter hosszú</mat-error>
         </mat-form-field>
-      </p>
-
-      <p *ngIf="error" class="error">
-        {{ error }}
       </p>
 
       <button mat-icon-button
               color="accent"
-              type="submit">
+              type="submit"
+              [disabled]="!userForm.valid">
         <mat-icon aria-label="Login">login</mat-icon>
       </button>
       <button mat-icon-button
               color="accent"
               type="submit"
               [routerLink]="['/register']">
-        <mat-icon aria-label="Login">person_add</mat-icon>
+        <mat-icon aria-label="Register">person_add</mat-icon>
       </button>
     </form>
   </mat-card-content>
