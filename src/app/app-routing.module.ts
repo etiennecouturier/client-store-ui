@@ -2,12 +2,12 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {ClientsComponent} from './clients/clients.component';
 import {ClientDetailsComponent} from './client-details/client-details.component';
-import {ClientResolver} from './services/client-resolver.service';
+import {ClientResolver} from './resolvers/client-resolver.service';
 import {StatsComponent} from './stats/stats.component';
 import {LoginComponent} from './login/login.component';
 import {
-  AuthGuardService as AuthGuard
-} from './services/auth-guard.service';
+  AuthGuardInterceptorService as AuthGuard
+} from './interceptors/auth-guard-interceptor.service';
 
 const routes: Routes = [
   {

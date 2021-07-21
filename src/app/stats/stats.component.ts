@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ChartDataSets, ChartOptions} from 'chart.js';
 import {Color, Label} from 'ng2-charts';
-import {ClientsService} from '../services/clients.service';
 import {formatDate} from '@angular/common';
+import {StatsService} from '../services/stats.service';
 
 @Component({
   selector: 'stats',
@@ -69,11 +69,11 @@ export class StatsComponent implements OnInit {
     }
   ];
 
-  constructor(private clientService: ClientsService) {
+  constructor(private statsService: StatsService) {
   }
 
   ngOnInit(): void {
-    this.clientService.findVisitCountForLast10Days()
+    this.statsService.findVisitCountForLast10Days()
       .subscribe(res => {
         this.chartData = [
           {data: res.map(value => value.count), label: 'látogatások száma'}
@@ -81,7 +81,7 @@ export class StatsComponent implements OnInit {
         this.chartLabels = res.map(value => formatDate(value.date, 'yyyy-MM-dd', 'en-US'));
       });
 
-    this.clientService.findVisitorCountPerAge()
+    this.statsService.findVisitorCountPerAge()
       .subscribe(res => {
         this.ageData = [
           {data: res.map(value => value.count), label: 'látogatók kora'}
@@ -89,7 +89,7 @@ export class StatsComponent implements OnInit {
         this.ageLabels = res.map(value => value.range);
       });
 
-    this.clientService.findVisitorCountPerSex()
+    this.statsService.findVisitorCountPerSex()
       .subscribe(res => {
         this.sexData = [
           {data: res.map(value => value.count), label: 'látogatók neme'}

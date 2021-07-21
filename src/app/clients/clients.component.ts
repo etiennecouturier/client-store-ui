@@ -4,7 +4,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {debounceTime, distinctUntilChanged, tap} from 'rxjs/operators';
 import {fromEvent, merge} from 'rxjs';
-import {ClientsDataSource} from '../services/clientsDataSource';
+import {ClientsDataSource} from '../datasources/clientsDataSource';
 import {ClientsService} from '../services/clients.service';
 import {HttpService} from '../services/http.service';
 import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';

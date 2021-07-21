@@ -7,10 +7,11 @@ import {environment} from '../../environments/environment';
 export class UrlInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    req = req.clone({
-      url: environment.baseUrl + req.url
-    });
-    return next.handle(req);
+    return next.handle(
+      req.clone({
+        url: environment.baseUrl + req.url
+      })
+    );
   }
 
 }
