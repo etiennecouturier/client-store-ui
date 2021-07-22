@@ -12,13 +12,7 @@ export class LoggingInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       tap(
-        response => {
-          if (response instanceof HttpResponse) {
-            if (response.status === 201 || response.status === 204) {
-              this.notifierService.notify('success', 'sikeres művelet');
-            }
-          }
-        },
+        () => {},
         error => this.notifierService.notify('error', error.error.message)
       ));
   }

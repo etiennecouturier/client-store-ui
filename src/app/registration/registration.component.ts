@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {UserService} from '../services/user.service';
+import {NotifierService} from 'angular-notifier';
 
 @Component({
   selector: 'registration',
@@ -17,7 +18,8 @@ export class RegistrationComponent {
   });
 
   constructor(private userService: UserService,
-              private router: Router) {
+              private router: Router,
+              private notifierService: NotifierService) {
   }
 
   submit() {
@@ -27,6 +29,7 @@ export class RegistrationComponent {
   register() {
     this.userService.createUser(this.userForm.value)
       .subscribe(() => {
+        this.notifierService.notify('success', 'sikeres regisztráció');
         this.router.navigate(['login']);
       });
   }

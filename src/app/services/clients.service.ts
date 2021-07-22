@@ -3,11 +3,14 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Client} from '../model/client';
 import {Page} from '../model/page';
+import {NotifierService} from 'angular-notifier';
+import {tap} from 'rxjs/operators';
 
 @Injectable()
 export class ClientsService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+              private notifierService: NotifierService) {}
 
   findClients(name, sortBy, sortDirection, offset, limit): Observable<Page<Client>> {
     let params = new HttpParams();
@@ -24,11 +27,19 @@ export class ClientsService {
   }
 
   deleteById(id: number): Observable<Object> {
-    return this.http.delete(`/clients/${id}`);
+    return this.http.delete(`/clients/${id}`)
+      .pipe(
+        tap(
+          () => this.notifierService.notify('success', 'ügyfél sikeresen törölve')
+        ));
   }
 
   save<T>(elem: T) {
-    return this.http.post<T>('/clients/new', elem, {});
+    return this.http.post<T>('/clients/new', elem, {})
+      .pipe(
+        tap(
+          () => this.notifierService.notify('success', 'ügyfél adatai sikeresen mentve')
+        ));
   }
 
 }
