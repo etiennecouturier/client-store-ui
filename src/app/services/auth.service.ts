@@ -19,8 +19,14 @@ export class AuthService {
     localStorage.removeItem('access_token');
   }
 
-  public isLoggedIn() {
+  isLoggedIn() {
     return !this.jwtHelperService.isTokenExpired(localStorage.getItem('access_token'));
+  }
+
+  getUser() {
+    return this.jwtHelperService
+      .decodeToken(localStorage.getItem('access_token'))
+      .sub;
   }
 
 }

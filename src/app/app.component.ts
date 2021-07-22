@@ -22,4 +22,8 @@ export class AppComponent {
     return this.authService.isLoggedIn();
   }
 
+  getUser() {
+    return this.authService.getUser();
+  }
+
 }

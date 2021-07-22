@@ -19,7 +19,7 @@ export class LoggingInterceptor implements HttpInterceptor {
             }
           }
         },
-        error => this.notifierService.notify('error', 'sikertelen művelet: ' + error.error.message)
+        error => this.notifierService.notify('error', error.error.message)
       ));
   }
 
