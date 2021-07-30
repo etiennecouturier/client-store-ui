@@ -17,3 +17,11 @@ main {
 .mat-sidenav-container {
   height: 100%;
 }
+
+.float-right {
+  float: right;
+}
+
+.image {
+  height: 100%;
+}

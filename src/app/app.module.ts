@@ -47,6 +47,7 @@ import {StatsService} from './services/stats.service';
 import {PdfService} from './services/pdf.service';
 import {MailService} from './services/mail.service';
 import {UserService} from './services/user.service';
+import {PhotoService} from './services/photo.service';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
   provide: HTTP_INTERCEPTORS,
@@ -119,6 +120,7 @@ const URL_INTERCEPTOR_PROVIDER: ClassProvider = {
     MailService,
     PdfService,
     PhonePipe,
+    PhotoService,
     StatsService,
     UserService,
     LOGGING_INTERCEPTOR_PROVIDER,
