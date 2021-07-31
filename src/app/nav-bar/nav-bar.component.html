@@ -11,7 +11,7 @@
       <span>{{ link.label | uppercase }}</span>
     </a>
     <div mat-tab-link [disabled]="true">
-      <img class="image" [src]="imageToShow">
+      <img class="image" [alt]="getUser()" [src]="imageToShow">
     </div>
   </div>
 </nav>

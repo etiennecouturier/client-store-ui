@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../services/auth.service';
 import {PhotoService} from '../services/photo.service';
 import {DomSanitizer} from '@angular/platform-browser';
@@ -16,7 +16,6 @@ export class NavBarComponent implements OnInit {
     {location: '/login', label: 'kijelentkezés', icon: 'logout', action: () => this.authService.logout()}
   ];
   imageToShow: any;
-  isImageLoading: any;
 
   constructor(private authService: AuthService,
               private photoService: PhotoService,
@@ -33,14 +32,11 @@ export class NavBarComponent implements OnInit {
 
   // https://stackoverflow.com/questions/45530752/getting-image-from-api-in-angular-4-5
   getImageFromService() {
-    this.isImageLoading = true;
-    this.photoService.findPhotoByUserName(this.getUser()).subscribe(data => {
-      this.createImageFromBlob(data);
-      this.isImageLoading = false;
-    }, error => {
-      this.isImageLoading = false;
-      console.log(error);
-    });
+    this.photoService
+      .findPhotoByUserName(this.getUser())
+      .subscribe(data => {
+        this.createImageFromBlob(data);
+      });
   }
 
   createImageFromBlob(image: Blob) {
