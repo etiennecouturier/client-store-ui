@@ -48,6 +48,7 @@ import {PdfService} from './services/pdf.service';
 import {MailService} from './services/mail.service';
 import {UserService} from './services/user.service';
 import {PhotoService} from './services/photo.service';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
   provide: HTTP_INTERCEPTORS,
@@ -72,7 +73,8 @@ const URL_INTERCEPTOR_PROVIDER: ClassProvider = {
     PhoneMaskDirective,
     StatsComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,17 @@
+<nav mat-tab-nav-bar mat-align-tabs="end" class="mat-elevation-z8" backgroundColor="primary">
+  <div class="float-right">
+    <a mat-tab-link
+       *ngFor="let link of navLinks"
+       routerLink="{{ link.location }}"
+       routerLinkActive
+       #rla="routerLinkActive"
+       [active]="rla.isActive"
+       (click)="link.action()">
+      <mat-icon>{{ link.icon }}</mat-icon>
+      <span>{{ link.label | uppercase }}</span>
+    </a>
+    <div mat-tab-link [disabled]="true">
+      <img class="image" [src]="imageToShow">
+    </div>
+  </div>
+</nav>
