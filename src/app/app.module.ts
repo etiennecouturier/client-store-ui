@@ -53,6 +53,7 @@ import {ContactLenseComponent} from './visit/contact-lense/contact-lense.compone
 import {AccountingComponent} from './visit/accounting/accounting.component';
 import {ExamComponent} from './visit/exam/exam.component';
 import {HistoricalDataComponent} from './visit/historical-data/historical-data.component';
+import { OtherInfoComponent } from './visit/other-info/other-info.component';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
   provide: HTTP_INTERCEPTORS,
@@ -82,7 +83,8 @@ const URL_INTERCEPTOR_PROVIDER: ClassProvider = {
     HistoricalDataComponent,
     ExamComponent,
     ContactLenseComponent,
-    AccountingComponent
+    AccountingComponent,
+    OtherInfoComponent
   ],
   imports: [
     BrowserModule,

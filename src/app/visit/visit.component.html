@@ -16,14 +16,7 @@
     <exam [exam]="visit.exam" [edit]="edit"></exam>
     <contact-lense [contactLenseExam]="visit.contactLenseExam" [edit]="edit"></contact-lense>
     <accounting [fees]="visit.fees" [edit]="edit"></accounting>
-    <mat-form-field class="note-full-width">
-      <textarea matInput matTextareaAutosize placeholder="Keret típusa" [(ngModel)]="visit.frame"
-                [disabled]="!edit"></textarea>
-    </mat-form-field>
-    <mat-form-field class="note-full-width">
-      <textarea matInput matTextareaAutosize placeholder="Lencse típusa" [(ngModel)]="visit.lense"
-                [disabled]="!edit"></textarea>
-    </mat-form-field>
+    <other-info [visit]="visit" [edit]="edit"></other-info>
   </mat-card-content>
   <mat-card-actions>
     <button mat-icon-button color="accent"
