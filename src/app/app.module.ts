@@ -49,10 +49,10 @@ import {MailService} from './services/mail.service';
 import {UserService} from './services/user.service';
 import {PhotoService} from './services/photo.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { HistoricalDataComponent } from './historical-data/historical-data.component';
-import { ExamComponent } from './exam/exam.component';
-import { ContactLenseComponent } from './contact-lense/contact-lense.component';
-import { AccountingComponent } from './accounting/accounting.component';
+import {ContactLenseComponent} from './visit/contact-lense/contact-lense.component';
+import {AccountingComponent} from './visit/accounting/accounting.component';
+import {ExamComponent} from './visit/exam/exam.component';
+import {HistoricalDataComponent} from './visit/historical-data/historical-data.component';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
   provide: HTTP_INTERCEPTORS,

@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Fees} from '../model/fees';
+import {Fees} from '../../model/fees';
 
 @Component({
   selector: 'accounting',
