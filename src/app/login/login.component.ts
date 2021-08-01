@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthService} from '../services/auth.service';
@@ -20,7 +20,9 @@ export class LoginComponent {
   }
 
   submit() {
-    if (this.userForm.valid) { this.login(); }
+    if (this.userForm.valid) {
+      this.login();
+    }
   }
 
   login() {
@@ -34,8 +36,12 @@ export class LoginComponent {
       );
   }
 
-  public hasError (controlName: string, errorName: string) {
+  hasError(controlName: string, errorName: string) {
     return this.userForm.controls[controlName].hasError(errorName);
+  }
+
+  isUserFormInValid() {
+    return !this.userForm.valid;
   }
 
 }

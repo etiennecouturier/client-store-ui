@@ -13,7 +13,7 @@ export class NavBarComponent implements OnInit {
   navLinks = [
     {location: '/clients', label: 'ügyfelek', icon: 'person'},
     {location: '/stats', label: 'statisztikák', icon: 'check_circle'},
-    {location: '/login', label: 'kijelentkezés', icon: 'logout', action: () => this.authService.logout()}
+    {location: '/login', label: 'kijelentkezés', icon: 'logout', action: () => this.authService.removeAccessToken()}
   ];
   imageToShow: any;
 

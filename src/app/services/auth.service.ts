@@ -15,7 +15,7 @@ export class AuthService {
     return this.http.post<AuthResponse>('/auth/generate-token', {username, password});
   }
 
-  logout() {
+  removeAccessToken() {
     localStorage.removeItem('access_token');
   }
 

@@ -9,6 +9,7 @@ export class AuthGuardInterceptorService implements CanActivate {
 
   canActivate(): boolean {
     if (!this.auth.isLoggedIn()) {
+      this.auth.removeAccessToken();
       this.router.navigate(['login']);
       return false;
     }

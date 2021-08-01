@@ -49,6 +49,7 @@ import {MailService} from './services/mail.service';
 import {UserService} from './services/user.service';
 import {PhotoService} from './services/photo.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { HistoricalDataComponent } from './historical-data/historical-data.component';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
   provide: HTTP_INTERCEPTORS,
@@ -74,7 +75,8 @@ const URL_INTERCEPTOR_PROVIDER: ClassProvider = {
     StatsComponent,
     LoginComponent,
     RegistrationComponent,
-    NavBarComponent
+    NavBarComponent,
+    HistoricalDataComponent
   ],
   imports: [
     BrowserModule,

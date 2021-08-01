@@ -12,48 +12,7 @@
     <div mat-card-avatar class="exam-header-image"></div>
   </div>
   <mat-card-content>
-    <div class="exam-container">
-      <div class="label-border">
-        <div class="exam-label">
-          <div class="vertical red">ELŐZMÉNYEK</div>
-        </div>
-      </div>
-      <div class="exam-data-container">
-        <div class="exam-number-container">
-          <div class="flex-child">
-            <div class="flex-line red">Sph.</div>
-            <mat-form-field class="flex-line">
-              <input matInput type="number" [(ngModel)]="visit.historicExam.rightEye.dioptria" [disabled]="!edit"/>
-            </mat-form-field>
-            <mat-form-field class="flex-line">
-              <input matInput type="number" [(ngModel)]="visit.historicExam.leftEye.dioptria" [disabled]="!edit"/>
-            </mat-form-field>
-          </div>
-          <div class="flex-child">
-            <div class="flex-line red">Cyl.</div>
-            <mat-form-field class="flex-line">
-              <input matInput type="number" [(ngModel)]="visit.historicExam.rightEye.cilinder" [disabled]="!edit"/>
-            </mat-form-field>
-            <mat-form-field class="flex-line">
-              <input matInput type="number" [(ngModel)]="visit.historicExam.leftEye.cilinder" [disabled]="!edit"/>
-            </mat-form-field>
-          </div>
-          <div class="flex-child">
-            <div class="flex-line red">Fok</div>
-            <mat-form-field class="flex-line">
-              <input matInput type="number" [(ngModel)]="visit.historicExam.rightEye.fok" [disabled]="!edit"/>
-            </mat-form-field>
-            <mat-form-field class="flex-line">
-              <input matInput type="number" [(ngModel)]="visit.historicExam.leftEye.fok" [disabled]="!edit"/>
-            </mat-form-field>
-          </div>
-        </div>
-        <mat-form-field class="note-full-width">
-          <textarea matInput matTextareaAutosize placeholder="Megjegyzés" [(ngModel)]="visit.historicExam.notes"
-                    [disabled]="!edit"></textarea>
-        </mat-form-field>
-      </div>
-    </div>
+    <historical-data [historicExam]="visit.historicExam" [edit]="edit"></historical-data>
     <div class="exam-container">
       <div class="label-border">
         <div class="exam-label">
