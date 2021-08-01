@@ -30,3 +30,17 @@ body {
 .red {
   color: red;
 }
+
+/*visit*/
+
+.vertical {
+  transform: rotate(180deg);
+  writing-mode: vertical-lr;
+  text-align: center;
+  margin: auto;
+}
+
+.flex-line {
+  max-width: 70px;
+  margin: auto;
+}

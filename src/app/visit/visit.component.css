@@ -24,11 +24,6 @@
   padding: 10px;
 }
 
-.flex-line {
-  max-width: 70px;
-  margin: auto;
-}
-
 .date {
   float: right;
 }
@@ -40,13 +35,6 @@
 
 .select {
   margin: 10px;
-}
-
-.vertical {
-  transform: rotate(180deg);
-  writing-mode: vertical-lr;
-  text-align: center;
-  margin: auto;
 }
 
 .exam-data-container {

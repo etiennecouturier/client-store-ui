@@ -27,7 +27,10 @@
       <div class="flex-child">
         <div class="flex-line red">Fok</div>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="historicExam.rightEye.fok" [disabled]="!edit"/>
+          <input matInput
+                 type="number"
+                 [(ngModel)]="historicExam.rightEye.fok"
+                 [disabled]="!edit"/>
         </mat-form-field>
         <mat-form-field class="flex-line">
           <input matInput type="number" [(ngModel)]="historicExam.leftEye.fok" [disabled]="!edit"/>
@@ -35,7 +38,10 @@
       </div>
     </div>
     <mat-form-field class="note-full-width">
-          <textarea matInput matTextareaAutosize placeholder="Megjegyzés" [(ngModel)]="historicExam.notes"
+          <textarea matInput
+                    matTextareaAutosize
+                    placeholder="Megjegyzés"
+                    [(ngModel)]="historicExam.notes"
                     [disabled]="!edit"></textarea>
     </mat-form-field>
   </div>
