@@ -50,6 +50,7 @@ import {UserService} from './services/user.service';
 import {PhotoService} from './services/photo.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HistoricalDataComponent } from './historical-data/historical-data.component';
+import { ExamComponent } from './exam/exam.component';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
   provide: HTTP_INTERCEPTORS,
@@ -76,7 +77,8 @@ const URL_INTERCEPTOR_PROVIDER: ClassProvider = {
     LoginComponent,
     RegistrationComponent,
     NavBarComponent,
-    HistoricalDataComponent
+    HistoricalDataComponent,
+    ExamComponent
   ],
   imports: [
     BrowserModule,
