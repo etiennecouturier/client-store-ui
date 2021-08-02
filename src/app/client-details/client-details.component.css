@@ -32,3 +32,8 @@
 span {
   color: #f44336;
 }
+
+.flex-line {
+  max-width: 150px;
+  margin: auto;
+}
