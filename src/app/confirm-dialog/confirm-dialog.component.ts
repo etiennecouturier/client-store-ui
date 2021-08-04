@@ -12,8 +12,6 @@ export class ConfirmDialogComponent {
   @Output() del: EventEmitter<any> = new EventEmitter();
 
   constructor(public dialogRef: MatDialogRef<ConfirmDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: Client) {
-    console.log(data);
-  }
+              @Inject(MAT_DIALOG_DATA) public data: Client) { }
 
 }

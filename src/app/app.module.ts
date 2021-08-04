@@ -54,6 +54,7 @@ import {AccountingComponent} from './visit/accounting/accounting.component';
 import {ExamComponent} from './visit/exam/exam.component';
 import {HistoricalDataComponent} from './visit/historical-data/historical-data.component';
 import { OtherInfoComponent } from './visit/other-info/other-info.component';
+import { MailDialogComponent } from './mail-dialog/mail-dialog.component';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
   provide: HTTP_INTERCEPTORS,
@@ -84,7 +85,8 @@ const URL_INTERCEPTOR_PROVIDER: ClassProvider = {
     ExamComponent,
     ContactLenseComponent,
     AccountingComponent,
-    OtherInfoComponent
+    OtherInfoComponent,
+    MailDialogComponent
   ],
   imports: [
     BrowserModule,
