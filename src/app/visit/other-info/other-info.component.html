@@ -3,12 +3,16 @@
       <textarea matInput
                 matTextareaAutosize
                 placeholder="Keret típusa"
-                formControlName="frame"></textarea>
+                formControlName="frame"
+                (blur)="onTouched()">
+      </textarea>
   </mat-form-field>
   <mat-form-field class="note-full-width">
       <textarea matInput
                 matTextareaAutosize
                 placeholder="Lencse típusa"
-                formControlName="lense"></textarea>
+                formControlName="lense"
+                (blur)="onTouched()">
+      </textarea>
   </mat-form-field>
 </form>

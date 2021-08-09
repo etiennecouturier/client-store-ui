@@ -1,9 +1,8 @@
-<mat-card class="visit-card">
+<mat-card class="visit-card" [formGroup]="visitForm">
   <div class="card-header">
     <mat-form-field class="date">
       <input matInput [max]="today"
-             [ngModel]="visit.date | date:'yyyy-MM-dd'"
-             (ngModelChange)="visit.date = $event"
+             formControlName="date"
              [matDatepicker]="picker">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
@@ -11,11 +10,11 @@
     <div mat-card-avatar class="exam-header-image"></div>
   </div>
   <mat-card-content>
-    <historical-data [historicExam]="visit.historicExam"></historical-data>
-    <exam [exam]="visit.exam"></exam>
-    <contact-lense [contactLenseExam]="visit.contactLenseExam"></contact-lense>
-    <accounting [fees]="visit.fees"></accounting>
-    <other-info [visit]="visit"></other-info>
+<!--    <historical-data [historicExam]="visit.historicExam" formControlName="historicExam"></historical-data>-->
+<!--    <exam [exam]="visit.exam" formControlName="exam"></exam>-->
+<!--    <contact-lense [contactLenseExam]="visit.contactLenseExam" formControlName="contactLenseExam"></contact-lense>-->
+<!--    <accounting [fees]="visit.fees" formControlName="fees"></accounting>-->
+    <other-info formControlName="otherInfo"></other-info>
   </mat-card-content>
   <mat-card-actions>
     <button mat-icon-button color="accent"
