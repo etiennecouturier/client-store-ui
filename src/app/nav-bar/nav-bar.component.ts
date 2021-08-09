@@ -10,9 +10,10 @@ import {DomSanitizer} from '@angular/platform-browser';
 })
 export class NavBarComponent implements OnInit {
 
+  // TODO for action find another way
   navLinks = [
-    {location: '/clients', label: 'ügyfelek', icon: 'person'},
-    {location: '/stats', label: 'statisztikák', icon: 'check_circle'},
+    {location: '/clients', label: 'ügyfelek', icon: 'person', action: () => {}},
+    {location: '/stats', label: 'statisztikák', icon: 'check_circle', action: () => {}},
     {location: '/login', label: 'kijelentkezés', icon: 'logout', action: () => this.authService.removeAccessToken()}
   ];
   imageToShow: any;
