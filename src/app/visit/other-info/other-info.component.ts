@@ -12,7 +12,7 @@ import {Subscription} from 'rxjs';
     useExisting: OtherInfoComponent
   }]
 })
-export class OtherInfoComponent implements OnInit, OnDestroy, ControlValueAccessor {
+export class OtherInfoComponent implements OnDestroy, ControlValueAccessor {
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -25,14 +25,12 @@ export class OtherInfoComponent implements OnInit, OnDestroy, ControlValueAccess
 
   private onTouched = () => {};
 
-  ngOnInit(): void {
-    console.log('INIT');
-  }
-
-  writeValue(obj: any): void {
-    if (obj) {
-      this.otherInfoForm.setValue(obj);
-      console.log(this.otherInfoForm.value);
+  writeValue(visit: any): void {
+    if (visit) {
+      this.otherInfoForm.setValue({
+        frame: visit.frame,
+        lense: visit.lense
+      });
     }
   }
 

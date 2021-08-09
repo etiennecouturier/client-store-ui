@@ -4,7 +4,7 @@ import {saveAs} from 'file-saver';
 import {NotifierService} from 'angular-notifier';
 import {MailService} from '../services/mail.service';
 import {PdfService} from '../services/pdf.service';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {debounceTime, switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
 
@@ -35,13 +35,10 @@ export class VisitComponent implements OnInit {
     this.visitForm = this.formBuilder.group({
       date: [this.visit.date],
       // historicExam: [this.visit.historicExam],
-      // exam: [this.visit.exam],
+      exam: [this.visit.exam],
       // contactLenseExam: [this.visit.contactLenseExam],
       // fees: [this.visit.fees],
-      otherInfo: [{
-        frame: this.visit.frame,
-        lense: this.visit.lense
-      }]
+      otherInfo: [this.visit]
     });
     this.visitForm.valueChanges.pipe(
       debounceTime(500),
