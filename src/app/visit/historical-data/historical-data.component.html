@@ -9,19 +9,19 @@
       <div class="flex-child">
         <div class="flex-line red">Sph.</div>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="historicExam.rightEye.dioptria" [disabled]="!edit"/>
+          <input matInput type="number" [(ngModel)]="historicExam.rightEye.dioptria" />
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="historicExam.leftEye.dioptria" [disabled]="!edit"/>
+          <input matInput type="number" [(ngModel)]="historicExam.leftEye.dioptria" />
         </mat-form-field>
       </div>
       <div class="flex-child">
         <div class="flex-line red">Cyl.</div>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="historicExam.rightEye.cilinder" [disabled]="!edit"/>
+          <input matInput type="number" [(ngModel)]="historicExam.rightEye.cilinder" />
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="historicExam.leftEye.cilinder" [disabled]="!edit"/>
+          <input matInput type="number" [(ngModel)]="historicExam.leftEye.cilinder" />
         </mat-form-field>
       </div>
       <div class="flex-child">
@@ -30,10 +30,10 @@
           <input matInput
                  type="number"
                  [(ngModel)]="historicExam.rightEye.fok"
-                 [disabled]="!edit"/>
+                 />
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="historicExam.leftEye.fok" [disabled]="!edit"/>
+          <input matInput type="number" [(ngModel)]="historicExam.leftEye.fok" />
         </mat-form-field>
       </div>
     </div>
@@ -42,7 +42,7 @@
                     matTextareaAutosize
                     placeholder="Megjegyzés"
                     [(ngModel)]="historicExam.notes"
-                    [disabled]="!edit"></textarea>
+                    ></textarea>
     </mat-form-field>
   </div>
 </div>

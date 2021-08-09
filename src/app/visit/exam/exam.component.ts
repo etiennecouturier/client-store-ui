@@ -9,6 +9,5 @@ import {Exam} from '../../model/exam';
 export class ExamComponent {
 
   @Input() exam: Exam;
-  @Input() edit: boolean;
 
 }

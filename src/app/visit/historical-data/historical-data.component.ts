@@ -9,6 +9,5 @@ import {Exam} from '../../model/exam';
 export class HistoricalDataComponent {
 
   @Input() historicExam: Exam;
-  @Input() edit: boolean;
 
 }

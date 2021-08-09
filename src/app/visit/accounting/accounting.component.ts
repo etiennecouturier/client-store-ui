@@ -9,7 +9,6 @@ import {Fees} from '../../model/fees';
 export class AccountingComponent {
 
   @Input() fees: Fees;
-  @Input() edit: boolean;
 
   calculateTotal() {
     this.fees.total =

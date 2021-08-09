@@ -38,19 +38,7 @@ export class ClientDetailsComponent implements OnInit {
     this.clientsService.save(this.client)
       .subscribe(resp => {
         this.client = resp;
-        this.edit = false;
-        this.anyUnderEdit = false;
       });
-  }
-
-  cancel() {
-    this.clientsService.find<Client>(
-      {id: this.client.id}
-    ).subscribe(resp => {
-      this.client = resp;
-      this.edit = false;
-      this.anyUnderEdit = false;
-    });
   }
 
   addNewVisit() {

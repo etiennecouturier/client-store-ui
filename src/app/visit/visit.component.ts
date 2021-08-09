@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Visit} from '../model/visit';
-import { saveAs } from 'file-saver';
+import {saveAs} from 'file-saver';
 import {NotifierService} from 'angular-notifier';
 import {MailService} from '../services/mail.service';
 import {PdfService} from '../services/pdf.service';
@@ -10,7 +10,7 @@ import {PdfService} from '../services/pdf.service';
   templateUrl: './visit.component.html',
   styleUrls: ['./visit.component.css']
 })
-export class VisitComponent implements OnInit {
+export class VisitComponent {
 
   @Input() visit: Visit;
   @Input() anyUnderEdit: boolean;
@@ -24,9 +24,8 @@ export class VisitComponent implements OnInit {
 
   constructor(private mailService: MailService,
               private pdfService: PdfService,
-              private notifierService: NotifierService) {}
-
-  ngOnInit(): void {}
+              private notifierService: NotifierService) {
+  }
 
   downloadFile(): void {
     this.pdfService

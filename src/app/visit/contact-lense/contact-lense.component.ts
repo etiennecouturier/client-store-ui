@@ -9,6 +9,5 @@ import {Exam} from '../../model/exam';
 export class ContactLenseComponent {
 
   @Input() contactLenseExam: Exam;
-  @Input() edit: boolean;
 
 }

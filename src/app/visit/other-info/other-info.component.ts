@@ -9,6 +9,5 @@ import {Visit} from '../../model/visit';
 export class OtherInfoComponent {
 
   @Input() visit: Visit;
-  @Input() edit: boolean;
 
 }

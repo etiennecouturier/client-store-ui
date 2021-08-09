@@ -9,45 +9,45 @@
       <div class="flex-child">
         <div class="flex-line red">B.C</div>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="contactLenseExam.rightEye.szaruGorbulet"
-                 [disabled]="!edit"/>
+          <input [(ngModel)]="contactLenseExam.rightEye.szaruGorbulet" matInput type="number"
+          />
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="contactLenseExam.leftEye.szaruGorbulet"
-                 [disabled]="!edit"/>
+          <input [(ngModel)]="contactLenseExam.leftEye.szaruGorbulet" matInput type="number"
+          />
         </mat-form-field>
       </div>
       <div class="flex-child">
         <div class="flex-line red">Sph.</div>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="contactLenseExam.rightEye.dioptria" [disabled]="!edit"/>
+          <input [(ngModel)]="contactLenseExam.rightEye.dioptria" matInput type="number"/>
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="contactLenseExam.leftEye.dioptria" [disabled]="!edit"/>
+          <input [(ngModel)]="contactLenseExam.leftEye.dioptria" matInput type="number"/>
         </mat-form-field>
       </div>
       <div class="flex-child">
         <div class="flex-line red">Cyl.</div>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="contactLenseExam.rightEye.cilinder" [disabled]="!edit"/>
+          <input [(ngModel)]="contactLenseExam.rightEye.cilinder" matInput type="number"/>
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="contactLenseExam.leftEye.cilinder" [disabled]="!edit"/>
+          <input [(ngModel)]="contactLenseExam.leftEye.cilinder" matInput type="number"/>
         </mat-form-field>
       </div>
       <div class="flex-child">
         <div class="flex-line red">Fok</div>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="contactLenseExam.rightEye.fok" [disabled]="!edit"/>
+          <input [(ngModel)]="contactLenseExam.rightEye.fok" matInput type="number"/>
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="contactLenseExam.leftEye.fok" [disabled]="!edit"/>
+          <input [(ngModel)]="contactLenseExam.leftEye.fok" matInput type="number"/>
         </mat-form-field>
       </div>
     </div>
     <mat-form-field class="note-full-width">
-      <textarea matInput matTextareaAutosize placeholder="Megjegyzés" [(ngModel)]="contactLenseExam.notes"
-                [disabled]="!edit"></textarea>
+      <textarea [(ngModel)]="contactLenseExam.notes" matInput matTextareaAutosize placeholder="Megjegyzés"
+      ></textarea>
     </mat-form-field>
   </div>
 </div>

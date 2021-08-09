@@ -38,7 +38,7 @@ export class ClientsService {
     return this.http.post<T>('/clients/new', elem, {})
       .pipe(
         tap(
-          () => this.notifierService.notify('success', 'ügyfél adatai sikeresen mentve')
+          // () => this.notifierService.notify('success', 'ügyfél adatai sikeresen mentve')
         ));
   }
 
