@@ -4,24 +4,24 @@
       <div class="vertical red">ELŐZMÉNYEK</div>
     </div>
   </div>
-  <div class="exam-data-container">
+  <div [formGroup]="historicExamForm" class="exam-data-container">
     <div class="exam-number-container">
       <div class="flex-child">
         <div class="flex-line red">Sph.</div>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="historicExam.rightEye.dioptria" />
+          <input matInput type="number" formControlName="rightDioptria" />
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="historicExam.leftEye.dioptria" />
+          <input matInput type="number" formControlName="leftDioptria" />
         </mat-form-field>
       </div>
       <div class="flex-child">
         <div class="flex-line red">Cyl.</div>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="historicExam.rightEye.cilinder" />
+          <input matInput type="number" formControlName="rightCilinder" />
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="historicExam.leftEye.cilinder" />
+          <input matInput type="number" formControlName="leftCilinder" />
         </mat-form-field>
       </div>
       <div class="flex-child">
@@ -29,11 +29,11 @@
         <mat-form-field class="flex-line">
           <input matInput
                  type="number"
-                 [(ngModel)]="historicExam.rightEye.fok"
+                 formControlName="rightFok"
                  />
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="historicExam.leftEye.fok" />
+          <input matInput type="number" formControlName="leftFok" />
         </mat-form-field>
       </div>
     </div>
@@ -41,8 +41,8 @@
           <textarea matInput
                     matTextareaAutosize
                     placeholder="Megjegyzés"
-                    [(ngModel)]="historicExam.notes"
-                    ></textarea>
+                    formControlName="notes">
+          </textarea>
     </mat-form-field>
   </div>
 </div>

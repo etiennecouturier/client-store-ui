@@ -1,12 +1,14 @@
-<mat-form-field class="note-full-width">
+<form [formGroup]="otherInfoForm">
+  <mat-form-field class="note-full-width">
       <textarea matInput
                 matTextareaAutosize
                 placeholder="Keret típusa"
-                [(ngModel)]="visit.frame"></textarea>
-</mat-form-field>
-<mat-form-field class="note-full-width">
+                formControlName="frame"></textarea>
+  </mat-form-field>
+  <mat-form-field class="note-full-width">
       <textarea matInput
                 matTextareaAutosize
                 placeholder="Lencse típusa"
-                [(ngModel)]="visit.lense"></textarea>
-</mat-form-field>
+                formControlName="lense"></textarea>
+  </mat-form-field>
+</form>

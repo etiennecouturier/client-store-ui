@@ -4,42 +4,42 @@
       <div class="vertical red">VISZGÁLAT</div>
     </div>
   </div>
-  <div class="exam-data-container">
+  <div class="exam-data-container" [formGroup]="examForm">
     <div class="exam-number-container">
       <div class="flex-child">
         <div class="flex-line red">Sph.</div>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="exam.rightEye.dioptria" />
+          <input matInput type="number" formControlName="rightDioptria" />
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="exam.leftEye.dioptria" />
+          <input matInput type="number" formControlName="leftDioptria" />
         </mat-form-field>
       </div>
       <div class="flex-child">
         <div class="flex-line red">Cyl.</div>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="exam.rightEye.cilinder" />
+          <input matInput type="number" formControlName="rightCilinder" />
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="exam.leftEye.cilinder" />
+          <input matInput type="number" formControlName="leftCilinder" />
         </mat-form-field>
       </div>
       <div class="flex-child">
         <div class="flex-line red">Fok</div>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="exam.rightEye.fok" />
+          <input matInput type="number" formControlName="rightFok" />
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="exam.leftEye.fok" />
+          <input matInput type="number" formControlName="leftFok" />
         </mat-form-field>
       </div>
       <div class="flex-child">
         <div class="flex-line red">Visus</div>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="exam.rightEye.vizus" />
+          <input matInput type="number" formControlName="rightVizus" />
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="exam.leftEye.vizus" />
+          <input matInput type="number" formControlName="leftVizus" />
         </mat-form-field>
       </div>
     </div>
@@ -47,35 +47,35 @@
       <div class="flex-child">
         <div class="flex-line red">Add.</div>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="exam.rightEye.add" />
+          <input matInput type="number" formControlName="rightAdd" />
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="exam.leftEye.add" />
+          <input matInput type="number" formControlName="leftAdd" />
         </mat-form-field>
       </div>
       <div class="flex-child">
         <div class="flex-line red">PD</div>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="exam.rightEye.pd" />
+          <input matInput type="number" formControlName="rightPd" />
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="exam.leftEye.pd" />
+          <input matInput type="number" formControlName="leftPd" />
         </mat-form-field>
       </div>
       <div class="flex-child">
         <div class="flex-line red">Bifo. mag.</div>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="exam.rightEye.bifoMag" />
+          <input matInput type="number" formControlName="rightBifoMag" />
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="exam.leftEye.bifoMag" />
+          <input matInput type="number" formControlName="leftBifoMag" />
         </mat-form-field>
       </div>
     </div>
     <mat-form-field class="note-full-width">
           <textarea matInput matTextareaAutosize placeholder="Megjegyzés"
-                    [(ngModel)]="exam.notes"
-                    ></textarea>
+                    formControlName="notes">
+          </textarea>
     </mat-form-field>
   </div>
 </div>
