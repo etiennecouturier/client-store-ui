@@ -3,7 +3,7 @@ import {ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from '@
 import {Subscription} from 'rxjs';
 
 @Component({
-  selector: 'other-info',
+  selector: 'app-other-info',
   templateUrl: './other-info.component.html',
   styleUrls: ['./other-info.component.css'],
   providers: [{

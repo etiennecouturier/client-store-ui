@@ -3,7 +3,7 @@ import {ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from '@
 import {Subscription} from 'rxjs';
 
 @Component({
-  selector: 'contact-lense',
+  selector: 'app-contact-lense',
   templateUrl: './contact-lense.component.html',
   styleUrls: ['./contact-lense.component.css'],
   providers: [{

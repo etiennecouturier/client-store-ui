@@ -8,7 +8,7 @@ import {ControlValueAccessor, FormBuilder, NG_VALUE_ACCESSOR} from '@angular/for
 import {Subscription} from 'rxjs';
 
 @Component({
-  selector: 'visit',
+  selector: 'app-visit',
   templateUrl: './visit.component.html',
   styleUrls: ['./visit.component.css'],
   providers: [{

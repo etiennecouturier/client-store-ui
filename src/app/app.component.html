@@ -1,6 +1,6 @@
 <mat-sidenav-container [ngClass]="{'background-image' : !userLoggedIn()}">
 
-  <nav-bar *ngIf="userLoggedIn()"></nav-bar>
+  <app-nav-bar *ngIf="userLoggedIn()"></app-nav-bar>
 
   <router-outlet></router-outlet>
 

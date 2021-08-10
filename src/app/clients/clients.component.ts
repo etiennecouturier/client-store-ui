@@ -12,7 +12,7 @@ import {DeviceDetectorService} from 'ngx-device-detector';
 
 
 @Component({
-  selector: 'app-products-table',
+  selector: 'app-clients',
   templateUrl: './clients.component.html',
   styleUrls: ['./clients.component.css']
 })

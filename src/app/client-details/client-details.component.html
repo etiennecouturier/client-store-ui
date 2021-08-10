@@ -62,10 +62,10 @@
   <div class="clients-container"
        formArrayName="visits">
     <div *ngFor="let visitForm of visits.controls;let i = index">
-      <visit (save)="save()"
-             (del)="openDialog(i)"
-             [formControlName]='i'>
-      </visit>
+      <app-visit (save)="save()"
+                 (del)="openDialog(i)"
+                 [formControlName]='i'>
+      </app-visit>
     </div>
   </div>
 </div>

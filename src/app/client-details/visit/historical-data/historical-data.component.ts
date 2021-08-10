@@ -3,7 +3,7 @@ import {ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from '@
 import {Subscription} from 'rxjs';
 
 @Component({
-  selector: 'historical-data',
+  selector: 'app-historical-data',
   templateUrl: './historical-data.component.html',
   styleUrls: ['./historical-data.component.css'],
   providers: [{

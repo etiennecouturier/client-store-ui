@@ -4,7 +4,7 @@ import {PhotoService} from '../services/photo.service';
 import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
-  selector: 'nav-bar',
+  selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })

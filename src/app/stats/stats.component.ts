@@ -5,7 +5,7 @@ import {formatDate} from '@angular/common';
 import {StatsService} from '../services/stats.service';
 
 @Component({
-  selector: 'stats',
+  selector: 'app-stats',
   templateUrl: './stats.component.html',
   styleUrls: ['./stats.component.css']
 })

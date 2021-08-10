@@ -8,12 +8,12 @@ import {MatDialog} from '@angular/material/dialog';
 import {ClientsService} from '../services/clients.service';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import {debounceTime, switchMap} from 'rxjs/operators';
-import {of, Subscription} from 'rxjs';
+import {Subscription} from 'rxjs';
 import {NotifierService} from 'angular-notifier';
 
 
 @Component({
-  selector: 'client-details',
+  selector: 'app-client-details',
   templateUrl: './client-details.component.html',
   styleUrls: ['./client-details.component.css']
 })

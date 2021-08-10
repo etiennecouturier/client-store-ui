@@ -3,7 +3,7 @@ import {ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from '@
 import {Subscription} from 'rxjs';
 
 @Component({
-  selector: 'exam',
+  selector: 'app-exam',
   templateUrl: './exam.component.html',
   styleUrls: ['./exam.component.css'],
   providers: [{

@@ -3,7 +3,7 @@ import {ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from '@
 import {Subscription} from 'rxjs';
 
 @Component({
-  selector: 'accounting',
+  selector: 'app-accounting',
   templateUrl: './accounting.component.html',
   styleUrls: ['./accounting.component.css'],
   providers: [{
