@@ -36,7 +36,7 @@ export class VisitComponent implements OnInit {
       date: [this.visit.date],
       historicExam: [this.visit.historicExam],
       exam: [this.visit.exam],
-      // contactLenseExam: [this.visit.contactLenseExam],
+      contactLenseExam: [this.visit.contactLenseExam],
       // fees: [this.visit.fees],
       otherInfo: [this.visit]
     });

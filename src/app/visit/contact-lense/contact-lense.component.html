@@ -9,44 +9,70 @@
       <div class="flex-child">
         <div class="flex-line red">B.C</div>
         <mat-form-field class="flex-line">
-          <input formControlName="rightSzaruGorbulet" matInput type="number"
-          />
+          <input matInput
+                 type="number"
+                 formControlName="rightSzaruGorbulet"
+                 (blur)="onTouched()"/>
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input formControlName="leftSzaruGorbulet" matInput type="number"
-          />
+          <input matInput
+                 type="number"
+                 formControlName="leftSzaruGorbulet"
+                 (blur)="onTouched()"/>
         </mat-form-field>
       </div>
       <div class="flex-child">
         <div class="flex-line red">Sph.</div>
         <mat-form-field class="flex-line">
-          <input formControlName="rightDioptria" matInput type="number"/>
+          <input matInput
+                 type="number"
+                 formControlName="rightDioptria"
+                 (blur)="onTouched()"/>
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input formControlName="leftDioptria" matInput type="number"/>
+          <input matInput
+                 type="number"
+                 formControlName="leftDioptria"
+                 (blur)="onTouched()"/>
         </mat-form-field>
       </div>
       <div class="flex-child">
         <div class="flex-line red">Cyl.</div>
         <mat-form-field class="flex-line">
-          <input formControlName="rightCilinder" matInput type="number"/>
+          <input matInput
+                 type="number"
+                 formControlName="rightCilinder"
+                 (blur)="onTouched()"/>
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input formControlName="leftCilinder" matInput type="number"/>
+          <input matInput
+                 type="number"
+                 formControlName="leftCilinder"
+                 (blur)="onTouched()"/>
         </mat-form-field>
       </div>
       <div class="flex-child">
         <div class="flex-line red">Fok</div>
         <mat-form-field class="flex-line">
-          <input formControlName="rightFok" matInput type="number"/>
+          <input matInput
+                 type="number"
+                 formControlName="rightFok"
+                 (blur)="onTouched()"/>
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input formControlName="leftFok" matInput type="number"/>
+          <input matInput
+                 type="number"
+                 formControlName="leftFok"
+                 (blur)="onTouched()"/>
         </mat-form-field>
       </div>
     </div>
     <mat-form-field class="note-full-width">
-      <textarea formControlName="notes" matInput matTextareaAutosize placeholder="Megjegyzés"></textarea>
+      <textarea matInput
+                matTextareaAutosize
+                placeholder="Megjegyzés"
+                formControlName="notes"
+                (blur)="onTouched()"></textarea>
     </mat-form-field>
   </div>
 </div>

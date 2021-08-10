@@ -1,40 +1,73 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Exam} from '../../model/exam';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import {debounceTime, switchMap} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {Component, OnDestroy} from '@angular/core';
+import {ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'contact-lense',
   templateUrl: './contact-lense.component.html',
-  styleUrls: ['./contact-lense.component.css']
+  styleUrls: ['./contact-lense.component.css'],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    multi: true,
+    useExisting: ContactLenseComponent
+  }]
 })
-export class ContactLenseComponent implements OnInit {
+export class ContactLenseComponent implements OnDestroy, ControlValueAccessor {
 
-  @Input() contactLenseExam: Exam;
+  contactLenseForm: FormGroup = this.formBuilder.group({
+    rightSzaruGorbulet: [],
+    rightDioptria: [],
+    rightCilinder: [],
+    rightFok: [],
+    leftSzaruGorbulet: [],
+    leftDioptria: [],
+    leftCilinder: [],
+    leftFok: [],
+    notes: []
+  });
 
-  contactLenseForm: FormGroup;
+  onChangeSub: Subscription;
+
+  private onTouched = () => {};
 
   constructor(private formBuilder: FormBuilder) {
   }
 
-  ngOnInit(): void {
-    this.contactLenseForm = this.formBuilder.group({
-      rightSzaruGorbulet: [this.contactLenseExam.rightEye.szaruGorbulet],
-      rightDioptria: [this.contactLenseExam.rightEye.dioptria],
-      rightCilinder: [this.contactLenseExam.rightEye.cilinder],
-      rightFok: [this.contactLenseExam.rightEye.fok],
-      leftSzaruGorbulet: [this.contactLenseExam.leftEye.szaruGorbulet],
-      leftDioptria: [this.contactLenseExam.leftEye.dioptria],
-      leftCilinder: [this.contactLenseExam.leftEye.cilinder],
-      leftFok: [this.contactLenseExam.leftEye.fok],
-      notes: [this.contactLenseExam.notes]
-    });
+  writeValue(contactLenseExam: any): void {
+    if (contactLenseExam) {
+      this.contactLenseForm.setValue({
+        rightSzaruGorbulet: contactLenseExam.rightEye.szaruGorbulet,
+        rightDioptria: contactLenseExam.rightEye.dioptria,
+        rightCilinder: contactLenseExam.rightEye.cilinder,
+        rightFok: contactLenseExam.rightEye.fok,
+        leftSzaruGorbulet: contactLenseExam.leftEye.szaruGorbulet,
+        leftDioptria: contactLenseExam.leftEye.dioptria,
+        leftCilinder: contactLenseExam.leftEye.cilinder,
+        leftFok: contactLenseExam.leftEye.fok,
+        notes: contactLenseExam.notes
+      });
+    }
+  }
 
-    this.contactLenseForm.valueChanges.pipe(
-      debounceTime(500),
-      switchMap(formValue => Observable.create(console.log(this.contactLenseForm))),
-    ).subscribe(res => console.log('Saved'));
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    if (isDisabled) {
+      this.contactLenseForm.disable();
+    } else {
+      this.contactLenseForm.enable();
+    }
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChangeSub = this.contactLenseForm.valueChanges
+      .subscribe(fn);
+  }
+
+  ngOnDestroy(): void {
+    this.onChangeSub.unsubscribe();
   }
 
 }
