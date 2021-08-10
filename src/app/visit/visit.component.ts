@@ -1,19 +1,19 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {Visit} from '../model/visit';
 import {saveAs} from 'file-saver';
 import {NotifierService} from 'angular-notifier';
 import {MailService} from '../services/mail.service';
 import {PdfService} from '../services/pdf.service';
-import {FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {debounceTime, switchMap} from 'rxjs/operators';
-import {of} from 'rxjs';
+import {of, Subscription} from 'rxjs';
 
 @Component({
   selector: 'visit',
   templateUrl: './visit.component.html',
   styleUrls: ['./visit.component.css']
 })
-export class VisitComponent implements OnInit {
+export class VisitComponent implements OnInit, OnDestroy {
 
   @Input() visit: Visit;
   @Output() save: EventEmitter<any> = new EventEmitter();
@@ -22,6 +22,7 @@ export class VisitComponent implements OnInit {
   today = new Date();
   edit = false;
   visitForm: FormGroup;
+  onChangeSub: Subscription;
 
   constructor(private mailService: MailService,
               private pdfService: PdfService,
@@ -30,7 +31,6 @@ export class VisitComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.visit);
     this.visitForm = this.formBuilder.group({
       date: [this.visit.date],
       historicExam: [this.visit.historicExam],
@@ -40,7 +40,7 @@ export class VisitComponent implements OnInit {
       otherInfo: [this.visit]
     });
 
-    this.visitForm.valueChanges.pipe(
+    this.onChangeSub = this.visitForm.valueChanges.pipe(
       debounceTime(500),
       switchMap(formValue => of(formValue)),
     ).subscribe((a) => console.log(a));
@@ -60,4 +60,10 @@ export class VisitComponent implements OnInit {
         console.log('mail successfully sent');
       });
   }
+
+
+  ngOnDestroy(): void {
+    this.onChangeSub.unsubscribe();
+  }
+
 }

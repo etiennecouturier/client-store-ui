@@ -32,8 +32,7 @@ export class AccountingComponent implements OnDestroy, ControlValueAccessor {
 
   private onTouched = () => {};
 
-  constructor(private formBuilder: FormBuilder) {
-  }
+  constructor(private formBuilder: FormBuilder) {}
 
   // calculateTotal() {
   //   this.accountingForm.controls['total'].setValue(

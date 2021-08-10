@@ -2,7 +2,7 @@
   <mat-card class="personal-info-card light-grey-background">
     <mat-card-header>
       <mat-form-field class="centralized">
-        <input #inputTag matInput type="text" [(ngModel)]="client.name"/>
+        <input matInput type="text" [(ngModel)]="client.name"/>
       </mat-form-field>
       <mat-icon *ngIf="client.sex == 'F'"
                 matTooltip="Nem"
@@ -27,13 +27,16 @@
         </mat-form-field>
         <div class="flex-line red">kor</div>
         <mat-form-field class="flex-line">
-          <input #inputTag matInput type="text" [(ngModel)]="client.age" [disabled]="true"/>
+          <input matInput
+                 type="text"
+                 [(ngModel)]="client.age"
+                 [disabled]="true"/>
         </mat-form-field>
       </div>
       <div class="flex-child">
         <div class="flex-line red">tel</div>
         <mat-form-field class="flex-line">
-          <input #inputTag matInput
+          <input matInput
                  type="text"
                  phoneMask
                  [ngModel]="client.tel"
@@ -41,7 +44,7 @@
         </mat-form-field>
         <div class="flex-line red">email</div>
         <mat-form-field class="flex-line">
-          <input #inputTag matInput type="text" [(ngModel)]="client.email"/>
+          <input matInput type="text" [(ngModel)]="client.email"/>
         </mat-form-field>
       </div>
     </mat-card-content>
@@ -58,7 +61,6 @@
   <visit *ngFor="let visit of client.visits;let i = index"
          [visit]="visit"
          (save)="save()"
-         (del)="openDialog(i)"
-         (cancel)="cancel()">
+         (del)="openDialog(i)">
   </visit>
 </div>
