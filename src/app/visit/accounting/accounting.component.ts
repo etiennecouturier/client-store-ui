@@ -91,7 +91,7 @@ export class AccountingComponent implements OnDestroy, ControlValueAccessor {
   }
 
   ngOnDestroy(): void {
-    this.onChangeSub.unsubscribe();
+    // this.onChangeSub.unsubscribe();
   }
 
 }

@@ -52,7 +52,7 @@ export class OtherInfoComponent implements OnDestroy, ControlValueAccessor {
   }
 
   ngOnDestroy(): void {
-    this.onChangeSub.unsubscribe();
+    // this.onChangeSub.unsubscribe();
   }
 
 }

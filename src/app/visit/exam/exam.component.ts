@@ -34,8 +34,7 @@ export class ExamComponent implements OnDestroy, ControlValueAccessor {
 
   onChangeSub: Subscription;
 
-  private onTouched = () => {
-  };
+  private onTouched = () => {};
 
   constructor(private formBuilder: FormBuilder) {
   }
@@ -100,7 +99,7 @@ export class ExamComponent implements OnDestroy, ControlValueAccessor {
   }
 
   ngOnDestroy(): void {
-    this.onChangeSub.unsubscribe();
+    // this.onChangeSub.unsubscribe();
   }
 
 }

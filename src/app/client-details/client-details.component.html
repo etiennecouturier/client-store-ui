@@ -1,66 +1,71 @@
-<div class="clients-container">
-  <mat-card class="personal-info-card light-grey-background">
-    <mat-card-header>
-      <mat-form-field class="centralized">
-        <input matInput type="text" [(ngModel)]="client.name"/>
-      </mat-form-field>
-      <mat-icon *ngIf="client.sex == 'F'"
-                matTooltip="Nem"
-                aria-label="View"
-                color="accent">female</mat-icon>
-      <mat-icon *ngIf="client.sex == 'M'"
-                matTooltip="Nem"
-                aria-label="View"
-                color="accent">male</mat-icon>
-    </mat-card-header>
-    <mat-card-content class="flex-container">
-      <div class="flex-child">
-        <div class="flex-line red">szül. év</div>
-        <mat-form-field class="flex-line">
-          <input #inputTag
-                 matInput [max]="today"
-                 [ngModel]="client.dob"
-                 (ngModelChange)="client.dob = $event; calculateAge()"
-                 [matDatepicker]="picker">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <div class="flex-line red">kor</div>
-        <mat-form-field class="flex-line">
+<div [formGroup]="clientDetailsForm">
+  <div class="clients-container">
+    <mat-card class="personal-info-card light-grey-background">
+      <mat-card-header>
+        <mat-form-field class="centralized">
           <input matInput
                  type="text"
-                 [(ngModel)]="client.age"
-                 [disabled]="true"/>
+                 formControlName="name"/>
         </mat-form-field>
-      </div>
-      <div class="flex-child">
-        <div class="flex-line red">tel</div>
-        <mat-form-field class="flex-line">
-          <input matInput
-                 type="text"
-                 phoneMask
-                 [ngModel]="client.tel"
-                 (ngModelChange)="client.tel = $event"/>
-        </mat-form-field>
-        <div class="flex-line red">email</div>
-        <mat-form-field class="flex-line">
-          <input matInput type="text" [(ngModel)]="client.email"/>
-        </mat-form-field>
-      </div>
-    </mat-card-content>
-  </mat-card>
-  <mat-card-actions>
-    <button mat-icon-button color="accent"
-            (click)="addNewVisit()">
-      <mat-icon aria-label="Add">add</mat-icon>
-    </button>
-  </mat-card-actions>
-</div>
+        <mat-icon *ngIf="client.sex == 'F'"
+                  matTooltip="Nem"
+                  aria-label="View"
+                  color="accent">female
+        </mat-icon>
+        <mat-icon *ngIf="client.sex == 'M'"
+                  matTooltip="Nem"
+                  aria-label="View"
+                  color="accent">male
+        </mat-icon>
+      </mat-card-header>
+      <mat-card-content class="flex-container">
+        <div class="flex-child">
+          <div class="flex-line red">szül. év</div>
+          <mat-form-field class="flex-line">
+            <input matInput [max]="today"
+                   [matDatepicker]="picker"
+                   formControlName="dob">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <div class="flex-line red">kor</div>
+<!--          <mat-form-field class="flex-line">-->
+<!--            <input matInput-->
+<!--                   type="text"-->
+<!--                   [(ngModel)]="client.age"-->
+<!--                   [disabled]="true"/>-->
+<!--          </mat-form-field>-->
+        </div>
+        <div class="flex-child">
+          <div class="flex-line red">tel</div>
+          <mat-form-field class="flex-line">
+            <input matInput
+                   type="text"
+                   phoneMask
+                   formControlName="tel"/>
+          </mat-form-field>
+          <div class="flex-line red">email</div>
+          <mat-form-field class="flex-line">
+            <input matInput type="text"/>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card-actions>
+      <button mat-icon-button color="accent"
+              (click)="addNewVisit()">
+        <mat-icon aria-label="Add">add</mat-icon>
+      </button>
+    </mat-card-actions>
+  </div>
 
-<div class="clients-container">
-  <visit *ngFor="let visit of client.visits;let i = index"
-         [visit]="visit"
-         (save)="save()"
-         (del)="openDialog(i)">
-  </visit>
+  <div class="clients-container"
+       formArrayName="visits">
+    <div *ngFor="let visitForm of visits.controls;let i = index">
+      <visit (save)="save()"
+             (del)="openDialog(i)"
+             [formControlName]='i'>
+      </visit>
+    </div>
+  </div>
 </div>
