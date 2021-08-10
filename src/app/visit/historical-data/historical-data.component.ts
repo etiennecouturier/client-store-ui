@@ -1,38 +1,69 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Exam} from '../../model/exam';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import {debounceTime, switchMap} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {Component, OnDestroy} from '@angular/core';
+import {ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'historical-data',
   templateUrl: './historical-data.component.html',
-  styleUrls: ['./historical-data.component.css']
+  styleUrls: ['./historical-data.component.css'],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    multi: true,
+    useExisting: HistoricalDataComponent
+  }]
 })
-export class HistoricalDataComponent implements OnInit {
+export class HistoricalDataComponent implements OnDestroy, ControlValueAccessor {
 
-  @Input() historicExam: Exam;
-
-  historicExamForm: FormGroup;
+  historicExamForm: FormGroup = this.formBuilder.group({
+    rightDioptria: [],
+    rightCilinder: [],
+    rightFok: [],
+    leftDioptria: [],
+    leftCilinder: [],
+    leftFok: [],
+    notes: []
+  });
 
   constructor(private formBuilder: FormBuilder) {
   }
 
-  ngOnInit(): void {
-    this.historicExamForm = this.formBuilder.group({
-      rightDioptria: [this.historicExam.rightEye.dioptria],
-      rightCilinder: [this.historicExam.rightEye.cilinder],
-      rightFok: [this.historicExam.rightEye.fok],
-      leftDioptria: [this.historicExam.leftEye.dioptria],
-      leftCilinder: [this.historicExam.leftEye.cilinder],
-      leftFok: [this.historicExam.leftEye.fok],
-      notes: [this.historicExam.notes]
-    });
+  onChangeSub: Subscription;
 
-    this.historicExamForm.valueChanges.pipe(
-      debounceTime(500),
-      switchMap(formValue => Observable.create(console.log(this.historicExamForm))),
-    ).subscribe(res => console.log('Saved'));
+  private onTouched = () => {};
+
+  writeValue(historicExam: any): void {
+    if (historicExam) {
+      this.historicExamForm.setValue({
+        rightDioptria: historicExam.rightEye.dioptria,
+        rightCilinder: historicExam.rightEye.cilinder,
+        rightFok: historicExam.rightEye.fok,
+        leftDioptria: historicExam.leftEye.dioptria,
+        leftCilinder: historicExam.leftEye.cilinder,
+        leftFok: historicExam.leftEye.fok,
+        notes: historicExam.notes
+      });
+    }
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    if (isDisabled) {
+      this.historicExamForm.disable();
+    } else {
+      this.historicExamForm.enable();
+    }
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChangeSub = this.historicExamForm.valueChanges
+      .subscribe(fn);
+  }
+
+  ngOnDestroy(): void {
+    this.onChangeSub.unsubscribe();
   }
 
 }

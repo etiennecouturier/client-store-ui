@@ -34,7 +34,7 @@ export class VisitComponent implements OnInit {
     console.log('hello');
     this.visitForm = this.formBuilder.group({
       date: [this.visit.date],
-      // historicExam: [this.visit.historicExam],
+      historicExam: [this.visit.historicExam],
       exam: [this.visit.exam],
       // contactLenseExam: [this.visit.contactLenseExam],
       // fees: [this.visit.fees],

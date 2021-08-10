@@ -15,8 +15,6 @@ import {Subscription} from 'rxjs';
 })
 export class ExamComponent implements OnDestroy, ControlValueAccessor {
 
-  @Input() exam: Exam;
-
   examForm: FormGroup = this.formBuilder.group({
     rightDioptria: [],
     rightCilinder: [],
@@ -45,21 +43,21 @@ export class ExamComponent implements OnDestroy, ControlValueAccessor {
   writeValue(exam: any): void {
     if (exam) {
       this.examForm.setValue({
-        rightDioptria: this.exam.rightEye.dioptria,
-        rightCilinder: this.exam.rightEye.cilinder,
-        rightFok: this.exam.rightEye.fok,
-        rightVizus: this.exam.rightEye.vizus,
-        rightAdd: this.exam.rightEye.add,
-        rightPd: this.exam.rightEye.pd,
-        rightBifoMag: this.exam.rightEye.bifoMag,
-        leftDioptria: this.exam.leftEye.dioptria,
-        leftCilinder: this.exam.leftEye.cilinder,
-        leftFok: this.exam.leftEye.fok,
-        leftVizus: this.exam.leftEye.vizus,
-        leftAdd: this.exam.leftEye.add,
-        leftPd: this.exam.leftEye.pd,
-        leftBifoMag: this.exam.leftEye.bifoMag,
-        notes: this.exam.notes
+        rightDioptria: exam.rightEye.dioptria,
+        rightCilinder: exam.rightEye.cilinder,
+        rightFok: exam.rightEye.fok,
+        rightVizus: exam.rightEye.vizus,
+        rightAdd: exam.rightEye.add,
+        rightPd: exam.rightEye.pd,
+        rightBifoMag: exam.rightEye.bifoMag,
+        leftDioptria: exam.leftEye.dioptria,
+        leftCilinder: exam.leftEye.cilinder,
+        leftFok: exam.leftEye.fok,
+        leftVizus: exam.leftEye.vizus,
+        leftAdd: exam.leftEye.add,
+        leftPd: exam.leftEye.pd,
+        leftBifoMag: exam.leftEye.bifoMag,
+        notes: exam.notes
       });
     }
   }
