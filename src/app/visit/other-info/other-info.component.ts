@@ -23,14 +23,11 @@ export class OtherInfoComponent implements OnDestroy, ControlValueAccessor {
 
   onChangeSub: Subscription;
 
-  private onTouched = () => {};
+  onTouched = () => {};
 
-  writeValue(visit: any): void {
-    if (visit) {
-      this.otherInfoForm.setValue({
-        frame: visit.frame,
-        lense: visit.lense
-      });
+  writeValue(otherInfo: any): void {
+    if (otherInfo) {
+      this.otherInfoForm.setValue(otherInfo);
     }
   }
 

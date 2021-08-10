@@ -65,7 +65,7 @@ export class VisitComponent implements ControlValueAccessor, OnDestroy {
         exam: visit.exam,
         contactLenseExam: visit.contactLenseExam,
         fees: visit.fees,
-        otherInfo: visit
+        otherInfo: visit.otherInfo
       });
     }
   }

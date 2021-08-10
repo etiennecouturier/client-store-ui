@@ -1,5 +1,6 @@
 import {Exam} from './exam';
 import {Fees} from './fees';
+import {OtherInfo} from './other-info';
 
 export interface Visit {
   id: string;
@@ -8,6 +9,5 @@ export interface Visit {
   exam: Exam;
   contactLenseExam: Exam;
   fees: Fees;
-  frame: string;
-  lense: string;
+  otherInfo: OtherInfo;
 }

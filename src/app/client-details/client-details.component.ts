@@ -9,6 +9,7 @@ import {ClientsService} from '../services/clients.service';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import {debounceTime, switchMap} from 'rxjs/operators';
 import {of, Subscription} from 'rxjs';
+import {NotifierService} from 'angular-notifier';
 
 
 @Component({
@@ -29,14 +30,15 @@ export class ClientDetailsComponent implements OnInit {
               private route: ActivatedRoute,
               private clientsService: ClientsService,
               private phonePipe: PhonePipe,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private notifierService: NotifierService) {
   }
 
   ngOnInit(): void {
     this.client = this.route.snapshot.data['client'];
     if (!this.client) { this.client = Constants.emptyClient(); }
     this.client.tel = this.phonePipe.transform(this.client.tel);
-
+    console.log(this.client);
     this.clientDetailsForm = this.formBuilder.group({
       name: [this.client.name],
       dob: [this.client.dob],
@@ -52,7 +54,7 @@ export class ClientDetailsComponent implements OnInit {
         formValue.id = this.client.id;
         return this.clientsService.save(formValue);
       }),
-    ).subscribe((a) => console.log(a));
+    ).subscribe(() => this.notifierService.notify('success', 'sikeres mentés'));
   }
 
   get visits() {

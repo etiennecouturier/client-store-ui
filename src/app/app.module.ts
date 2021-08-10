@@ -111,7 +111,11 @@ const URL_INTERCEPTOR_PROVIDER: ClassProvider = {
     FormsModule,
     MatSelectModule,
     ChartsModule,
-    NotifierModule,
+    NotifierModule.withConfig({
+      behaviour: {
+        autoHide: 1000
+      }
+    }),
     MatDatepickerModule,
     MatNativeDateModule,
     MatTooltipModule,

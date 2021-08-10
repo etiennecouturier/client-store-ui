@@ -28,7 +28,7 @@ export class ContactLenseComponent implements OnDestroy, ControlValueAccessor {
 
   onChangeSub: Subscription;
 
-  private onTouched = () => {};
+  onTouched = () => {};
 
   constructor(private formBuilder: FormBuilder) {
   }
