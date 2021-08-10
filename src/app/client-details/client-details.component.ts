@@ -21,7 +21,6 @@ export class ClientDetailsComponent implements OnInit {
 
   public client: Client;
   today = new Date();
-  public age: number;
 
   clientDetailsForm: FormGroup;
   private onChangeSub: Subscription;
@@ -36,7 +35,9 @@ export class ClientDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.client = this.route.snapshot.data['client'];
-    if (!this.client) { this.client = Constants.emptyClient(); }
+    if (!this.client) {
+      this.client = Constants.emptyClient();
+    }
     this.client.tel = this.phonePipe.transform(this.client.tel);
     console.log(this.client);
     this.clientDetailsForm = this.formBuilder.group({
@@ -52,6 +53,7 @@ export class ClientDetailsComponent implements OnInit {
       debounceTime(3000),
       switchMap(formValue => {
         formValue.id = this.client.id;
+        formValue.age = this.calculateAge();
         return this.clientsService.save(formValue);
       }),
     ).subscribe(() => this.notifierService.notify('success', 'sikeres mentés'));
@@ -90,11 +92,14 @@ export class ClientDetailsComponent implements OnInit {
   }
 
   calculateAge() {
-    if (this.client.dob) {
-      const timeDiff = Math.abs(Date.now() - new Date(this.client.dob).getTime());
-      this.client.age = Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
-      console.log(this.age);
+    if (this.dob) {
+      const timeDiff = Math.abs(Date.now() - new Date(this.dob).getTime());
+      return Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
     }
+  }
+
+  get dob() {
+    return this.clientDetailsForm.controls['dob'].value;
   }
 
 }

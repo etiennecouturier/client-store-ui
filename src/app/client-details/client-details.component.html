@@ -29,12 +29,9 @@
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
           <div class="flex-line red">kor</div>
-<!--          <mat-form-field class="flex-line">-->
-<!--            <input matInput-->
-<!--                   type="text"-->
-<!--                   [(ngModel)]="client.age"-->
-<!--                   [disabled]="true"/>-->
-<!--          </mat-form-field>-->
+          <div class="flex-line padding-vertical">
+            {{calculateAge()}}
+          </div>
         </div>
         <div class="flex-child">
           <div class="flex-line red">tel</div>
