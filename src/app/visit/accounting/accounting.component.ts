@@ -1,63 +1,98 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Fees} from '../../model/fees';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import {debounceTime, switchMap} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {Component, OnDestroy} from '@angular/core';
+import {ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'accounting',
   templateUrl: './accounting.component.html',
-  styleUrls: ['./accounting.component.css']
+  styleUrls: ['./accounting.component.css'],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    multi: true,
+    useExisting: AccountingComponent
+  }]
 })
-export class AccountingComponent implements OnInit {
+export class AccountingComponent implements OnDestroy, ControlValueAccessor {
 
-  @Input() fees: Fees;
+  accountingForm: FormGroup = this.formBuilder.group({
+    frame: [],
+    rightLense: [],
+    leftLense: [],
+    service: [],
+    exam: [],
+    other: [],
+    discountPercent: [],
+    paid: [],
+    total: [{value: 0, disabled: true}],
+    discountAmount: [{value: 0, disabled: true}],
+    toBePaid: [{value: 0, disabled: true}]
+  });
 
-  accountingForm: FormGroup;
+  onChangeSub: Subscription;
+
+  private onTouched = () => {};
 
   constructor(private formBuilder: FormBuilder) {
   }
 
-  ngOnInit(): void {
-    this.accountingForm = this.formBuilder.group({
-      frame: [this.fees.frame],
-      rightLense: [this.fees.rightLense],
-      leftLense: [this.fees.leftLense],
-      service: [this.fees.service],
-      exam: [this.fees.exam],
-      other: [this.fees.other],
-      discountPercent: [this.fees.discountPercent],
-      paid: [this.fees.paid],
-      total: [{value: this.fees.total, disabled: true}],
-      discountAmount: [{value: this.fees.discountAmount, disabled: true}],
-      toBePaid: [{value: this.fees.toBePaid, disabled: true}]
-    });
+  // calculateTotal() {
+  //   this.accountingForm.controls['total'].setValue(
+  //     this.fees.frame
+  //     + this.fees.rightLense
+  //     + this.fees.leftLense
+  //     + this.fees.service
+  //     + this.fees.exam
+  //     + this.fees.other);
+  //   return this.fees.total;
+  // }
+  //
+  // calculateDiscount() {
+  //   this.fees.discountAmount = Math.round(this.calculateTotal() * this.fees.discountPercent / 100);
+  //   return this.fees.discountAmount;
+  // }
+  //
+  // calculateToBePaid() {
+  //   this.fees.toBePaid = this.calculateTotal() - this.calculateDiscount() - this.fees.paid;
+  //   return this.fees.toBePaid;
+  // }
 
-    this.accountingForm.valueChanges.pipe(
-      debounceTime(500),
-      switchMap(formValue => Observable.create(console.log(this.accountingForm))),
-    ).subscribe(res => console.log('Saved'));
+  writeValue(fees: any): void {
+    if (fees) {
+      this.accountingForm.setValue({
+        frame: fees.frame,
+        rightLense: fees.rightLense,
+        leftLense: fees.leftLense,
+        service: fees.service,
+        exam: fees.exam,
+        other: fees.other,
+        discountPercent: fees.discountPercent,
+        paid: fees.paid,
+        total: fees.total,
+        discountAmount: fees.discountAmount,
+        toBePaid: fees.toBePaid
+      });
+    }
   }
 
-  calculateTotal() {
-    this.fees.total =
-      this.fees.frame
-      + this.fees.rightLense
-      + this.fees.leftLense
-      + this.fees.service
-      + this.fees.exam
-      + this.fees.other;
-    return this.fees.total;
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
   }
 
-  calculateDiscount() {
-    this.fees.discountAmount = Math.round(this.calculateTotal() * this.fees.discountPercent / 100);
-    return this.fees.discountAmount;
+  setDisabledState(isDisabled: boolean): void {
+    if (isDisabled) {
+      this.accountingForm.disable();
+    } else {
+      this.accountingForm.enable();
+    }
   }
 
-  calculateToBePaid() {
-    this.fees.toBePaid = this.calculateTotal() - this.calculateDiscount() - this.fees.paid;
-    return this.fees.toBePaid;
+  registerOnChange(fn: any): void {
+    this.onChangeSub = this.accountingForm.valueChanges
+      .subscribe(fn);
+  }
+
+  ngOnDestroy(): void {
+    this.onChangeSub.unsubscribe();
   }
 
 }

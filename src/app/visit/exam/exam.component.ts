@@ -1,5 +1,4 @@
-import {Component, Input, OnDestroy} from '@angular/core';
-import {Exam} from '../../model/exam';
+import {Component, OnDestroy} from '@angular/core';
 import {ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {Subscription} from 'rxjs';
 
@@ -35,7 +34,8 @@ export class ExamComponent implements OnDestroy, ControlValueAccessor {
 
   onChangeSub: Subscription;
 
-  private onTouched = () => {};
+  private onTouched = () => {
+  };
 
   constructor(private formBuilder: FormBuilder) {
   }
@@ -76,7 +76,31 @@ export class ExamComponent implements OnDestroy, ControlValueAccessor {
 
   registerOnChange(fn: any): void {
     this.onChangeSub = this.examForm.valueChanges
-      .subscribe(fn);
+      .subscribe(form => fn({
+        exam: {
+          rightEye: {
+            dioptria: this.examForm.controls['rightDioptria'].value,
+            cilinder: null,
+            fok: null,
+            vizus: null,
+            szaruGorbulet: null,
+            add: null,
+            pd: null,
+            bifoMag: null
+          },
+          leftEye: {
+            dioptria: null,
+            cilinder: null,
+            fok: null,
+            vizus: null,
+            szaruGorbulet: null,
+            add: null,
+            pd: null,
+            bifoMag: null
+          },
+          notes: null
+        }
+      }));
   }
 
   ngOnDestroy(): void {

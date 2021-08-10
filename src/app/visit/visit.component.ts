@@ -37,9 +37,10 @@ export class VisitComponent implements OnInit {
       historicExam: [this.visit.historicExam],
       exam: [this.visit.exam],
       contactLenseExam: [this.visit.contactLenseExam],
-      // fees: [this.visit.fees],
+      fees: [this.visit.fees],
       otherInfo: [this.visit]
     });
+
     this.visitForm.valueChanges.pipe(
       debounceTime(500),
       switchMap(formValue => of(formValue)),
