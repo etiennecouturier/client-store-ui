@@ -49,7 +49,7 @@ export class ClientDetailsComponent implements OnInit {
     this.client.visits.forEach(visit => this.visits.push(this.formBuilder.control(visit)));
 
     this.onChangeSub = this.clientDetailsForm.valueChanges.pipe(
-      debounceTime(500),
+      debounceTime(3000),
       switchMap(formValue => {
         formValue.id = this.client.id;
         return this.clientsService.save(formValue);
