@@ -63,7 +63,23 @@ export class ContactLenseComponent implements OnDestroy, ControlValueAccessor {
 
   registerOnChange(fn: any): void {
     this.onChangeSub = this.contactLenseForm.valueChanges
-      .subscribe(fn);
+      .subscribe(form => fn(
+        {
+          rightEye: {
+            szaruGorbulet: this.contactLenseForm.controls['rightSzaruGorbulet'].value,
+            dioptria: this.contactLenseForm.controls['rightDioptria'].value,
+            cilinder: this.contactLenseForm.controls['rightCilinder'].value,
+            fok: this.contactLenseForm.controls['rightFok'].value,
+          },
+          leftEye: {
+            szaruGorbulet: this.contactLenseForm.controls['leftSzaruGorbulet'].value,
+            dioptria: this.contactLenseForm.controls['leftDioptria'].value,
+            cilinder: this.contactLenseForm.controls['leftCilinder'].value,
+            fok: this.contactLenseForm.controls['leftFok'].value,
+          },
+          notes: this.contactLenseForm.controls['notes'].value
+        }
+      ));
   }
 
   ngOnDestroy(): void {

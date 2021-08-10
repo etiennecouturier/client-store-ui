@@ -77,29 +77,25 @@ export class ExamComponent implements OnDestroy, ControlValueAccessor {
   registerOnChange(fn: any): void {
     this.onChangeSub = this.examForm.valueChanges
       .subscribe(form => fn({
-        exam: {
-          rightEye: {
-            dioptria: this.examForm.controls['rightDioptria'].value,
-            cilinder: null,
-            fok: null,
-            vizus: null,
-            szaruGorbulet: null,
-            add: null,
-            pd: null,
-            bifoMag: null
-          },
-          leftEye: {
-            dioptria: null,
-            cilinder: null,
-            fok: null,
-            vizus: null,
-            szaruGorbulet: null,
-            add: null,
-            pd: null,
-            bifoMag: null
-          },
-          notes: null
-        }
+        rightEye: {
+          dioptria: this.examForm.controls['rightDioptria'].value,
+          cilinder: this.examForm.controls['rightCilinder'].value,
+          fok: this.examForm.controls['rightFok'].value,
+          vizus: this.examForm.controls['rightVizus'].value,
+          add: this.examForm.controls['rightAdd'].value,
+          pd: this.examForm.controls['rightPd'].value,
+          bifoMag: this.examForm.controls['rightBifoMag'].value
+        },
+        leftEye: {
+          dioptria: this.examForm.controls['leftDioptria'].value,
+          cilinder: this.examForm.controls['leftCilinder'].value,
+          fok: this.examForm.controls['leftFok'].value,
+          vizus: this.examForm.controls['leftVizus'].value,
+          add: this.examForm.controls['leftAdd'].value,
+          pd: this.examForm.controls['leftPd'].value,
+          bifoMag: this.examForm.controls['leftBifoMag'].value
+        },
+        notes: this.examForm.controls['notes'].value
       }));
   }
 

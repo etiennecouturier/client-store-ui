@@ -4,7 +4,7 @@ import {saveAs} from 'file-saver';
 import {NotifierService} from 'angular-notifier';
 import {MailService} from '../services/mail.service';
 import {PdfService} from '../services/pdf.service';
-import {FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
 import {debounceTime, switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
 
@@ -31,7 +31,6 @@ export class VisitComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.visit);
-    console.log('hello');
     this.visitForm = this.formBuilder.group({
       date: [this.visit.date],
       historicExam: [this.visit.historicExam],

@@ -48,7 +48,7 @@ export class OtherInfoComponent implements OnDestroy, ControlValueAccessor {
 
   registerOnChange(fn: any): void {
     this.onChangeSub = this.otherInfoForm.valueChanges
-      .subscribe(fn);
+      .subscribe(form => fn(this.otherInfoForm.value));
   }
 
   ngOnDestroy(): void {

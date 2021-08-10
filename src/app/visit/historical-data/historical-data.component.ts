@@ -29,7 +29,8 @@ export class HistoricalDataComponent implements OnDestroy, ControlValueAccessor 
 
   onChangeSub: Subscription;
 
-  private onTouched = () => {};
+  private onTouched = () => {
+  };
 
   writeValue(historicExam: any): void {
     if (historicExam) {
@@ -59,7 +60,19 @@ export class HistoricalDataComponent implements OnDestroy, ControlValueAccessor 
 
   registerOnChange(fn: any): void {
     this.onChangeSub = this.historicExamForm.valueChanges
-      .subscribe(fn);
+      .subscribe(form => fn({
+        rightEye: {
+          dioptria: this.historicExamForm.controls['rightDioptria'].value,
+          cilinder: this.historicExamForm.controls['rightCilinder'].value,
+          fok: this.historicExamForm.controls['rightFok'].value,
+        },
+        leftEye: {
+          dioptria: this.historicExamForm.controls['leftDioptria'].value,
+          cilinder: this.historicExamForm.controls['leftCilinder'].value,
+          fok: this.historicExamForm.controls['leftFok'].value,
+        },
+        notes: this.historicExamForm.controls['notes'].value
+      }));
   }
 
   ngOnDestroy(): void {

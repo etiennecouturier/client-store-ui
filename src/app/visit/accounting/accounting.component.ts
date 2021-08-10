@@ -88,7 +88,7 @@ export class AccountingComponent implements OnDestroy, ControlValueAccessor {
 
   registerOnChange(fn: any): void {
     this.onChangeSub = this.accountingForm.valueChanges
-      .subscribe(fn);
+      .subscribe(form => fn(this.accountingForm.value));
   }
 
   ngOnDestroy(): void {
