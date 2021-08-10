@@ -22,38 +22,37 @@ export class AccountingComponent implements OnDestroy, ControlValueAccessor {
     exam: [],
     other: [],
     discountPercent: [],
-    paid: [],
-    total: [{value: 0, disabled: true}],
-    discountAmount: [{value: 0, disabled: true}],
-    toBePaid: [{value: 0, disabled: true}]
+    paid: []
   });
 
   onChangeSub: Subscription;
 
-  onTouched = () => {};
+  onTouched = () => {
+  };
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) {
+  }
 
-  // calculateTotal() {
-  //   this.accountingForm.controls['total'].setValue(
-  //     this.fees.frame
-  //     + this.fees.rightLense
-  //     + this.fees.leftLense
-  //     + this.fees.service
-  //     + this.fees.exam
-  //     + this.fees.other);
-  //   return this.fees.total;
-  // }
-  //
-  // calculateDiscount() {
-  //   this.fees.discountAmount = Math.round(this.calculateTotal() * this.fees.discountPercent / 100);
-  //   return this.fees.discountAmount;
-  // }
-  //
-  // calculateToBePaid() {
-  //   this.fees.toBePaid = this.calculateTotal() - this.calculateDiscount() - this.fees.paid;
-  //   return this.fees.toBePaid;
-  // }
+  fees(conotrolName) {
+    return this.accountingForm.controls[conotrolName].value;
+  }
+
+  calculateTotal() {
+    return this.fees('frame')
+      + this.fees('rightLense')
+      + this.fees('leftLense')
+      + this.fees('service')
+      + this.fees('exam')
+      + this.fees('other');
+  }
+
+  calculateDiscountAmount() {
+    return Math.round(this.calculateTotal() * this.fees('discountPercent') / 100);
+  }
+
+  calculateToBePaid() {
+    return this.calculateTotal() - this.calculateDiscountAmount() - this.fees('paid');
+  }
 
   writeValue(fees: any): void {
     if (fees) {
@@ -65,10 +64,7 @@ export class AccountingComponent implements OnDestroy, ControlValueAccessor {
         exam: fees.exam,
         other: fees.other,
         discountPercent: fees.discountPercent,
-        paid: fees.paid,
-        total: fees.total,
-        discountAmount: fees.discountAmount,
-        toBePaid: fees.toBePaid
+        paid: fees.paid
       });
     }
   }
@@ -87,7 +83,12 @@ export class AccountingComponent implements OnDestroy, ControlValueAccessor {
 
   registerOnChange(fn: any): void {
     this.onChangeSub = this.accountingForm.valueChanges
-      .subscribe(form => fn(this.accountingForm.value));
+      .subscribe(formValue => {
+        formValue.total = this.calculateTotal();
+        formValue.discountAmount = this.calculateDiscountAmount();
+        formValue.toBePaid = this.calculateToBePaid();
+        fn(formValue);
+      });
   }
 
   ngOnDestroy(): void {

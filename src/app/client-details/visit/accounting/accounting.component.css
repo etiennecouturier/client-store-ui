@@ -85,3 +85,8 @@
 .border-top {
   border-top: 1px solid red
 }
+
+.padding-vertical {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
