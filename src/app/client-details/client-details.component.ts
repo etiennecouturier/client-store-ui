@@ -7,6 +7,8 @@ import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component
 import {MatDialog} from '@angular/material/dialog';
 import {ClientsService} from '../services/clients.service';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
+import {debounceTime, switchMap} from 'rxjs/operators';
+import {of, Subscription} from 'rxjs';
 
 
 @Component({
@@ -21,6 +23,7 @@ export class ClientDetailsComponent implements OnInit {
   public age: number;
 
   clientDetailsForm: FormGroup;
+  private onChangeSub: Subscription;
 
   constructor(private dialog: MatDialog,
               private route: ActivatedRoute,
@@ -42,6 +45,14 @@ export class ClientDetailsComponent implements OnInit {
       visits: this.formBuilder.array([])
     });
     this.client.visits.forEach(visit => this.visits.push(this.formBuilder.control(visit)));
+
+    this.onChangeSub = this.clientDetailsForm.valueChanges.pipe(
+      debounceTime(500),
+      switchMap(formValue => {
+        formValue.id = this.client.id;
+        return this.clientsService.save(formValue);
+      }),
+    ).subscribe((a) => console.log(a));
   }
 
   get visits() {
