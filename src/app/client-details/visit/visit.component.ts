@@ -1,9 +1,9 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {Visit} from '../model/visit';
+import {Visit} from '../../model/visit';
 import {saveAs} from 'file-saver';
 import {NotifierService} from 'angular-notifier';
-import {MailService} from '../services/mail.service';
-import {PdfService} from '../services/pdf.service';
+import {MailService} from '../../services/mail.service';
+import {PdfService} from '../../services/pdf.service';
 import {ControlValueAccessor, FormBuilder, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {Subscription} from 'rxjs';
 

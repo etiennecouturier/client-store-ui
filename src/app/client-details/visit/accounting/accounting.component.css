@@ -3,7 +3,7 @@
 }
 
 .exam-header-image {
-  background-image: url('../../../assets/exam.png');
+  background-image: url('../../../../assets/exam.png');
   background-size: cover;
   margin-bottom: 30px;
 }
