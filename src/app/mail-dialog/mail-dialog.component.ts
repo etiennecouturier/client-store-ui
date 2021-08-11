@@ -5,7 +5,7 @@ import {MailService} from '../services/mail.service';
 import {NotifierService} from 'angular-notifier';
 
 @Component({
-  selector: 'mail-dialog',
+  selector: 'app-mail-dialog',
   templateUrl: './mail-dialog.component.html',
   styleUrls: ['./mail-dialog.component.css']
 })
@@ -24,7 +24,7 @@ export class MailDialogComponent implements OnInit {
     this.mailService
       .sendMail('')
       .subscribe(() => {
-        console.log('mail successfully sent');
+        // console.log('mail successfully sent');
       });
   }
 

@@ -32,7 +32,6 @@ export class HistoricalDataComponent implements OnDestroy, ControlValueAccessor 
   onTouched = () => {};
 
   writeValue(historicExam: any): void {
-    console.log(historicExam);
     if (historicExam) {
       this.historicExamForm.setValue({
         rightDioptria: historicExam.rightEye.dioptria,

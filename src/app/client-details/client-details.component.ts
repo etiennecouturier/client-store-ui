@@ -42,7 +42,6 @@ export class ClientDetailsComponent implements OnInit {
     this.id = client.id;
     this.sex = client.sex;
     client.tel = this.phonePipe.transform(client.tel);
-    console.log(client);
     this.clientDetailsForm = this.formBuilder.group({
       name: [client.name],
       dob: [client.dob],
@@ -57,7 +56,6 @@ export class ClientDetailsComponent implements OnInit {
       switchMap(formValue => {
         formValue.id = this.id;
         formValue.age = this.calculateAge();
-        console.log(formValue);
         return this.clientsService.save(formValue);
       }),
     ).subscribe(res => {

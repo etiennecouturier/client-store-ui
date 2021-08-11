@@ -32,7 +32,6 @@ export class ClientsDataSource implements DataSource<Client> {
       catchError(() => of([])),
       finalize(() => this.loadingSubject.next(false))
     ).subscribe((page: Page<Client>) => {
-      console.log(page);
       this.dataLength$ = page.totalElements;
       this.clientsSubject.next(page.content);
     });
@@ -40,7 +39,6 @@ export class ClientsDataSource implements DataSource<Client> {
   }
 
   connect(collectionViewer: CollectionViewer): Observable<Client[]> {
-    console.log('Connecting data source');
     return this.clientsSubject.asObservable();
   }
 

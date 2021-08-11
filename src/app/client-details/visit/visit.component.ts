@@ -52,9 +52,7 @@ export class VisitComponent implements ControlValueAccessor, OnDestroy {
     this.notifierService.notify('success', 'az email küldés alatt van');
     this.mailService
       .sendMail(this.id)
-      .subscribe(() => {
-        console.log('mail successfully sent');
-      });
+      .subscribe(() => {});
   }
 
   writeValue(visit: any): void {
