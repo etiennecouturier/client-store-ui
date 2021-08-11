@@ -53,14 +53,6 @@ export class ContactLenseComponent implements OnDestroy, ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  setDisabledState(isDisabled: boolean): void {
-    if (isDisabled) {
-      this.contactLenseForm.disable();
-    } else {
-      this.contactLenseForm.enable();
-    }
-  }
-
   registerOnChange(fn: any): void {
     this.onChangeSub = this.contactLenseForm.valueChanges
       .subscribe(form => fn(

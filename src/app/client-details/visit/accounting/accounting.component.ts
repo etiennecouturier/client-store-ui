@@ -73,14 +73,6 @@ export class AccountingComponent implements OnDestroy, ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  setDisabledState(isDisabled: boolean): void {
-    if (isDisabled) {
-      this.accountingForm.disable();
-    } else {
-      this.accountingForm.enable();
-    }
-  }
-
   registerOnChange(fn: any): void {
     this.onChangeSub = this.accountingForm.valueChanges
       .subscribe(formValue => {

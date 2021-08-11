@@ -65,14 +65,6 @@ export class ExamComponent implements OnDestroy, ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  setDisabledState(isDisabled: boolean): void {
-    if (isDisabled) {
-      this.examForm.disable();
-    } else {
-      this.examForm.enable();
-    }
-  }
-
   registerOnChange(fn: any): void {
     this.onChangeSub = this.examForm.valueChanges
       .subscribe(form => fn({

@@ -73,14 +73,6 @@ export class VisitComponent implements ControlValueAccessor, OnDestroy {
     this.onTouched = fn;
   }
 
-  setDisabledState(isDisabled: boolean): void {
-    if (isDisabled) {
-      this.visitForm.disable();
-    } else {
-      this.visitForm.enable();
-    }
-  }
-
   registerOnChange(fn: any): void {
     this.onChangeSub = this.visitForm.valueChanges
       .subscribe(fn);

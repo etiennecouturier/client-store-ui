@@ -50,14 +50,6 @@ export class HistoricalDataComponent implements OnDestroy, ControlValueAccessor 
     this.onTouched = fn;
   }
 
-  setDisabledState(isDisabled: boolean): void {
-    if (isDisabled) {
-      this.historicExamForm.disable();
-    } else {
-      this.historicExamForm.enable();
-    }
-  }
-
   registerOnChange(fn: any): void {
     this.onChangeSub = this.historicExamForm.valueChanges
       .subscribe(form => fn({

@@ -19,7 +19,8 @@ import {NotifierService} from 'angular-notifier';
 })
 export class ClientDetailsComponent implements OnInit {
 
-  public client: Client;
+  id;
+  sex;
   today = new Date();
 
   clientDetailsForm: FormGroup;
@@ -34,40 +35,36 @@ export class ClientDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.client = this.route.snapshot.data['client'];
-    if (!this.client) {
-      this.client = Constants.emptyClient();
+    let client: Client = this.route.snapshot.data['client'];
+    if (!client) {
+      client = Constants.emptyClient();
     }
-    this.client.tel = this.phonePipe.transform(this.client.tel);
-    console.log(this.client);
+    this.id = client.id;
+    this.sex = client.sex;
+    client.tel = this.phonePipe.transform(client.tel);
+    console.log(client);
     this.clientDetailsForm = this.formBuilder.group({
-      name: [this.client.name],
-      dob: [this.client.dob],
-      tel: [this.client.tel],
-      email: [this.client.email],
+      name: [client.name],
+      dob: [client.dob],
+      tel: [client.tel],
+      email: [client.email],
       visits: this.formBuilder.array([])
     });
-    this.client.visits.forEach(visit => this.visits.push(this.formBuilder.control(visit)));
+    client.visits.forEach(visit => this.visits.push(this.formBuilder.control(visit)));
 
     this.onChangeSub = this.clientDetailsForm.valueChanges.pipe(
       debounceTime(3000),
       switchMap(formValue => {
-        formValue.id = this.client.id;
+        formValue.id = this.id;
         formValue.age = this.calculateAge();
+        console.log(formValue);
         return this.clientsService.save(formValue);
       }),
-    ).subscribe(() => this.notifierService.notify('success', 'sikeres mentés'));
-  }
-
-  get visits() {
-    return this.clientDetailsForm.controls['visits'] as FormArray;
-  }
-
-  save() {
-    this.clientsService.save(this.client)
-      .subscribe(resp => {
-        this.client = resp;
-      });
+    ).subscribe(res => {
+      this.id = res.id;
+      this.sex = res.sex;
+      this.notifierService.notify('success', 'sikeres mentés');
+    });
   }
 
   addNewVisit() {
@@ -79,12 +76,10 @@ export class ClientDetailsComponent implements OnInit {
   }
 
   openDialog(index): void {
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    this.dialog.open(ConfirmDialogComponent, {
       width: '500px',
-      data: this.client
-    });
-
-    dialogRef.componentInstance.del.subscribe(() => {
+      data: this.clientDetailsForm.value
+    }).componentInstance.del.subscribe(() => {
       this.deleteVisit(index);
     });
   }
@@ -98,6 +93,10 @@ export class ClientDetailsComponent implements OnInit {
 
   get dob() {
     return this.clientDetailsForm.controls['dob'].value;
+  }
+
+  get visits() {
+    return this.clientDetailsForm.controls['visits'] as FormArray;
   }
 
 }
