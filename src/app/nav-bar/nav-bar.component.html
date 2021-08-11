@@ -8,7 +8,7 @@
        [active]="rla.isActive"
        (click)="link.action()">
       <mat-icon>{{ link.icon }}</mat-icon>
-      <span>{{ link.label | uppercase }}</span>
+      <span *ngIf="!mobile">{{ link.label | uppercase }}</span>
     </a>
     <div mat-tab-link [disabled]="true">
       <img class="image" [alt]="getUser()" [src]="imageToShow">
