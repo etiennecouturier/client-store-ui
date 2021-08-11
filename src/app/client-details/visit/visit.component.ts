@@ -1,5 +1,4 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {Visit} from '../../model/visit';
+import {Component, EventEmitter, OnDestroy, Output} from '@angular/core';
 import {saveAs} from 'file-saver';
 import {NotifierService} from 'angular-notifier';
 import {MailService} from '../../services/mail.service';
@@ -20,6 +19,8 @@ import {Subscription} from 'rxjs';
 export class VisitComponent implements ControlValueAccessor, OnDestroy {
 
   @Output() del: EventEmitter<any> = new EventEmitter();
+
+  id;
 
   visitForm = this.formBuilder.group({
     date: [],
@@ -42,21 +43,22 @@ export class VisitComponent implements ControlValueAccessor, OnDestroy {
   }
 
   downloadFile(): void {
-    // this.pdfService
-    //   .download(this.visit.id)
-    //   .subscribe(blob => saveAs(blob, `visit_${this.visit.id}.pdf`));
+    this.pdfService
+      .download(this.id)
+      .subscribe(blob => saveAs(blob, `visit_${this.id}.pdf`));
   }
 
   sendEmail() {
-    // this.notifierService.notify('success', 'az email küldés alatt van');
-    // this.mailService
-    //   .sendMail(this.visit.id)
-    //   .subscribe(() => {
-    //     console.log('mail successfully sent');
-    //   });
+    this.notifierService.notify('success', 'az email küldés alatt van');
+    this.mailService
+      .sendMail(this.id)
+      .subscribe(() => {
+        console.log('mail successfully sent');
+      });
   }
 
   writeValue(visit: any): void {
+    this.id = visit.id;
     if (visit) {
       this.visitForm.setValue({
         date: visit.date,
