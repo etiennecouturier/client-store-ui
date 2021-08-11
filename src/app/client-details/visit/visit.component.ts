@@ -19,7 +19,6 @@ import {Subscription} from 'rxjs';
 })
 export class VisitComponent implements ControlValueAccessor, OnDestroy {
 
-  @Output() save: EventEmitter<any> = new EventEmitter();
   @Output() del: EventEmitter<any> = new EventEmitter();
 
   visitForm = this.formBuilder.group({

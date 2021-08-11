@@ -71,13 +71,11 @@ export class ClientDetailsComponent implements OnInit {
   }
 
   addNewVisit() {
-    this.client.visits.unshift(Constants.emptyVisit());
-    this.save();
+    this.visits.push(this.formBuilder.control(Constants.emptyVisit()));
   }
 
   deleteVisit(i) {
-    this.client.visits.splice(i, 1);
-    this.save();
+    this.visits.removeAt(i);
   }
 
   openDialog(index): void {

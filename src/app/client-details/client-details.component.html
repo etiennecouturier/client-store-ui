@@ -22,7 +22,8 @@
         <div class="flex-child">
           <div class="flex-line red">szül. év</div>
           <mat-form-field class="flex-line">
-            <input matInput [max]="today"
+            <input matInput
+                   [max]="today"
                    [matDatepicker]="picker"
                    formControlName="dob">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -61,8 +62,7 @@
   <div class="clients-container"
        formArrayName="visits">
     <div *ngFor="let visitForm of visits.controls;let i = index">
-      <app-visit (save)="save()"
-                 (del)="openDialog(i)"
+      <app-visit (del)="openDialog(i)"
                  [formControlName]='i'>
       </app-visit>
     </div>
