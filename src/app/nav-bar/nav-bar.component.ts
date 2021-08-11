@@ -2,28 +2,33 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../services/auth.service';
 import {PhotoService} from '../services/photo.service';
 import {DomSanitizer} from '@angular/platform-browser';
+import {DeviceDetectorService} from 'ngx-device-detector';
 
 @Component({
-  selector: 'nav-bar',
+  selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
 
+  // TODO for action find another way
   navLinks = [
-    {location: '/clients', label: 'ügyfelek', icon: 'person'},
-    {location: '/stats', label: 'statisztikák', icon: 'check_circle'},
+    {location: '/clients', label: 'ügyfelek', icon: 'person', action: () => {}},
+    {location: '/stats', label: 'statisztikák', icon: 'bar_chart', action: () => {}},
     {location: '/login', label: 'kijelentkezés', icon: 'logout', action: () => this.authService.removeAccessToken()}
   ];
   imageToShow: any;
+  mobile: boolean;
 
   constructor(private authService: AuthService,
               private photoService: PhotoService,
-              private sanitizer: DomSanitizer) {
+              private sanitizer: DomSanitizer,
+              private deviceService: DeviceDetectorService) {
   }
 
   ngOnInit(): void {
     this.getImageFromService();
+    this.mobile = this.deviceService.isMobile();
   }
 
   getUser() {

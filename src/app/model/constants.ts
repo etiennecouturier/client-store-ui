@@ -102,8 +102,10 @@ export class Constants {
         discountAmount: null,
         toBePaid: null,
       },
-      frame: null,
-      lense: null
+      otherInfo: {
+        frame: null,
+        lense: null
+      }
     };
   }
 

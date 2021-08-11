@@ -5,7 +5,7 @@ import {UserService} from '../services/user.service';
 import {NotifierService} from 'angular-notifier';
 
 @Component({
-  selector: 'registration',
+  selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })

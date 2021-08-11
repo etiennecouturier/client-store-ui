@@ -1,0 +1,35 @@
+<mat-card class="visit-card" [formGroup]="visitForm">
+  <div class="card-header">
+    <mat-form-field class="date">
+      <input matInput [max]="today"
+             formControlName="date"
+             [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <div mat-card-avatar class="exam-header-image"></div>
+  </div>
+  <mat-card-content>
+    <app-historical-data formControlName="historicExam"></app-historical-data>
+    <app-exam formControlName="exam"></app-exam>
+    <app-contact-lense formControlName="contactLenseExam"></app-contact-lense>
+    <app-accounting formControlName="fees"></app-accounting>
+    <app-other-info formControlName="otherInfo"></app-other-info>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-icon-button color="accent"
+            (click)="del.emit()">
+      <mat-icon aria-label="Delete">delete</mat-icon>
+    </button>
+    <button mat-icon-button
+            color="accent"
+            (click)="downloadFile()">
+      <mat-icon aria-label="Download">download</mat-icon>
+    </button>
+    <button mat-icon-button
+            color="accent"
+            (click)="sendEmail()">
+      <mat-icon aria-label="Email">email</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

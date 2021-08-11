@@ -32,7 +32,7 @@ import {NotifierModule} from 'angular-notifier';
 import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
-import {VisitComponent} from './visit/visit.component';
+import {VisitComponent} from './client-details/visit/visit.component';
 import {PhoneMaskDirective} from './directives/phone-mask.directive';
 import {LoggingInterceptor} from './interceptors/logging-interceptor.service';
 import {StatsComponent} from './stats/stats.component';
@@ -49,11 +49,11 @@ import {MailService} from './services/mail.service';
 import {UserService} from './services/user.service';
 import {PhotoService} from './services/photo.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import {ContactLenseComponent} from './visit/contact-lense/contact-lense.component';
-import {AccountingComponent} from './visit/accounting/accounting.component';
-import {ExamComponent} from './visit/exam/exam.component';
-import {HistoricalDataComponent} from './visit/historical-data/historical-data.component';
-import { OtherInfoComponent } from './visit/other-info/other-info.component';
+import {ContactLenseComponent} from './client-details/visit/contact-lense/contact-lense.component';
+import {AccountingComponent} from './client-details/visit/accounting/accounting.component';
+import {ExamComponent} from './client-details/visit/exam/exam.component';
+import {HistoricalDataComponent} from './client-details/visit/historical-data/historical-data.component';
+import { OtherInfoComponent } from './client-details/visit/other-info/other-info.component';
 import { MailDialogComponent } from './mail-dialog/mail-dialog.component';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
@@ -111,7 +111,11 @@ const URL_INTERCEPTOR_PROVIDER: ClassProvider = {
     FormsModule,
     MatSelectModule,
     ChartsModule,
-    NotifierModule,
+    NotifierModule.withConfig({
+      behaviour: {
+        autoHide: 1000
+      }
+    }),
     MatDatepickerModule,
     MatNativeDateModule,
     MatTooltipModule,

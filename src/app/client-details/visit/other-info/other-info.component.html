@@ -1,0 +1,18 @@
+<form [formGroup]="otherInfoForm">
+  <mat-form-field class="note-full-width">
+      <textarea matInput
+                matTextareaAutosize
+                placeholder="Keret típusa"
+                formControlName="frame"
+                (blur)="onTouched()">
+      </textarea>
+  </mat-form-field>
+  <mat-form-field class="note-full-width">
+      <textarea matInput
+                matTextareaAutosize
+                placeholder="Lencse típusa"
+                formControlName="lense"
+                (blur)="onTouched()">
+      </textarea>
+  </mat-form-field>
+</form>

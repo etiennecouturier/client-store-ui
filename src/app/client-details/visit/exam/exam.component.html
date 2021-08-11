@@ -1,0 +1,126 @@
+<div class="exam-container">
+  <div class="label-border">
+    <div class="exam-label">
+      <div class="vertical red">VISZGÁLAT</div>
+    </div>
+  </div>
+  <div class="exam-data-container" [formGroup]="examForm">
+    <div class="exam-number-container">
+      <div class="flex-child">
+        <div class="flex-line red">Sph.</div>
+        <mat-form-field class="flex-line">
+          <input matInput
+                 type="number"
+                 formControlName="rightDioptria"
+                 (blur)="onTouched()"/>
+        </mat-form-field>
+        <mat-form-field class="flex-line">
+          <input matInput
+                 type="number"
+                 formControlName="leftDioptria"
+                 (blur)="onTouched()"/>
+        </mat-form-field>
+      </div>
+      <div class="flex-child">
+        <div class="flex-line red">Cyl.</div>
+        <mat-form-field class="flex-line">
+          <input matInput
+                 type="number"
+                 formControlName="rightCilinder"
+                 (blur)="onTouched()"/>
+        </mat-form-field>
+        <mat-form-field class="flex-line">
+          <input matInput
+                 type="number"
+                 formControlName="leftCilinder"
+                 (blur)="onTouched()"/>
+        </mat-form-field>
+      </div>
+      <div class="flex-child">
+        <div class="flex-line red">Fok</div>
+        <mat-form-field class="flex-line">
+          <input matInput
+                 type="number"
+                 formControlName="rightFok"
+                 (blur)="onTouched()"/>
+        </mat-form-field>
+        <mat-form-field class="flex-line">
+          <input matInput
+                 type="number"
+                 formControlName="leftFok"
+                 (blur)="onTouched()" />
+        </mat-form-field>
+      </div>
+      <div class="flex-child">
+        <div class="flex-line red">Visus</div>
+        <mat-form-field class="flex-line">
+          <input matInput
+                 type="number"
+                 formControlName="rightVizus"
+                 (blur)="onTouched()"/>
+        </mat-form-field>
+        <mat-form-field class="flex-line">
+          <input matInput
+                 type="number"
+                 formControlName="leftVizus"
+                 (blur)="onTouched()"/>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="exam-number-container">
+      <div class="flex-child">
+        <div class="flex-line red">Add.</div>
+        <mat-form-field class="flex-line">
+          <input matInput
+                 type="number"
+                 formControlName="rightAdd"
+                 (blur)="onTouched()"/>
+        </mat-form-field>
+        <mat-form-field class="flex-line">
+          <input matInput
+                 type="number"
+                 formControlName="leftAdd"
+                 (blur)="onTouched()"/>
+        </mat-form-field>
+      </div>
+      <div class="flex-child">
+        <div class="flex-line red">PD</div>
+        <mat-form-field class="flex-line">
+          <input matInput
+                 type="number"
+                 formControlName="rightPd"
+                 (blur)="onTouched()"/>
+        </mat-form-field>
+        <mat-form-field class="flex-line">
+          <input matInput
+                 type="number"
+                 formControlName="leftPd"
+                 (blur)="onTouched()"/>
+        </mat-form-field>
+      </div>
+      <div class="flex-child">
+        <div class="flex-line red">Bifo. mag.</div>
+        <mat-form-field class="flex-line">
+          <input matInput
+                 type="number"
+                 formControlName="rightBifoMag"
+                 (blur)="onTouched()"/>
+        </mat-form-field>
+        <mat-form-field class="flex-line">
+          <input matInput
+                 type="number"
+                 formControlName="leftBifoMag"
+                 (blur)="onTouched()"/>
+        </mat-form-field>
+      </div>
+    </div>
+    <mat-form-field class="note-full-width">
+          <textarea matInput
+                    matTextareaAutosize
+                    placeholder="Megjegyzés"
+                    formControlName="notes"
+                    (blur)="onTouched()">
+          </textarea>
+    </mat-form-field>
+  </div>
+</div>

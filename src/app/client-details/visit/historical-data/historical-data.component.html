@@ -4,24 +4,36 @@
       <div class="vertical red">ELŐZMÉNYEK</div>
     </div>
   </div>
-  <div class="exam-data-container">
+  <div [formGroup]="historicExamForm" class="exam-data-container">
     <div class="exam-number-container">
       <div class="flex-child">
         <div class="flex-line red">Sph.</div>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="historicExam.rightEye.dioptria" [disabled]="!edit"/>
+          <input matInput
+                 type="number"
+                 formControlName="rightDioptria"
+                 (blur)="onTouched()"/>
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="historicExam.leftEye.dioptria" [disabled]="!edit"/>
+          <input matInput
+                 type="number"
+                 formControlName="leftDioptria"
+                 (blur)="onTouched()"/>
         </mat-form-field>
       </div>
       <div class="flex-child">
         <div class="flex-line red">Cyl.</div>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="historicExam.rightEye.cilinder" [disabled]="!edit"/>
+          <input matInput
+                 type="number"
+                 formControlName="rightCilinder"
+                 (blur)="onTouched()"/>
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="historicExam.leftEye.cilinder" [disabled]="!edit"/>
+          <input matInput
+                 type="number"
+                 formControlName="leftCilinder"
+                 (blur)="onTouched()"/>
         </mat-form-field>
       </div>
       <div class="flex-child">
@@ -29,11 +41,13 @@
         <mat-form-field class="flex-line">
           <input matInput
                  type="number"
-                 [(ngModel)]="historicExam.rightEye.fok"
-                 [disabled]="!edit"/>
+                 formControlName="rightFok"
+                 (blur)="onTouched()"/>
         </mat-form-field>
         <mat-form-field class="flex-line">
-          <input matInput type="number" [(ngModel)]="historicExam.leftEye.fok" [disabled]="!edit"/>
+          <input matInput type="number"
+                 formControlName="leftFok"
+                 (blur)="onTouched()"/>
         </mat-form-field>
       </div>
     </div>
@@ -41,8 +55,9 @@
           <textarea matInput
                     matTextareaAutosize
                     placeholder="Megjegyzés"
-                    [(ngModel)]="historicExam.notes"
-                    [disabled]="!edit"></textarea>
+                    formControlName="notes"
+                    (blur)="onTouched()">
+          </textarea>
     </mat-form-field>
   </div>
 </div>

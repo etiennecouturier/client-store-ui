@@ -37,3 +37,8 @@ span {
   max-width: 150px;
   margin: auto;
 }
+
+.padding-vertical {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
