@@ -9,11 +9,15 @@
       {{template.name}}
     </mat-radio-button>
   </mat-radio-group>
+  <mat-form-field>
+    <input matInput
+           type="text"
+           formControlName="title"/>
+  </mat-form-field>
   <mat-form-field class="note-full-width">
           <textarea matInput
                     matTextareaAutosize
-                    placeholder="Szöveg"
-                    formControlName="message">
+                    formControlName="body">
           </textarea>
   </mat-form-field>
 </form>

@@ -29,29 +29,41 @@ export class MailDialogComponent implements OnInit {
   ngOnInit(): void {
     this.mailForm = this.formBuilder.group({
       template: [],
-      message: [Constants.mailTemplates()[1]]
+      title: [Constants.mailTemplates()[1]['title']],
+      body: [Constants.mailTemplates()[1]['body']]
     });
 
     this.template.valueChanges
       .subscribe(s => {
-        this.message.setValue(Constants.mailTemplates()[this.template.value]);
+        this.title.setValue(this.getMailTemplate()['title']);
+        this.body.setValue(this.getMailTemplate()['body']);
       });
   }
 
   sendEmail() {
     this.notifierService.notify('success', 'az email küldés alatt van');
+    const formValue = this.mailForm.value;
+    formValue.visitId = this.visitId;
     this.mailService
-      .sendMail(this.visitId)
+      .sendMail(formValue)
       .subscribe(() => {
       });
+  }
+
+  private getMailTemplate() {
+    return Constants.mailTemplates()[this.template.value];
   }
 
   get template() {
     return this.mailForm.controls['template'];
   }
 
-  get message() {
-    return this.mailForm.controls['message'];
+  get body() {
+    return this.mailForm.controls['body'];
+  }
+
+  get title() {
+    return this.mailForm.controls['title'];
   }
 
 }
