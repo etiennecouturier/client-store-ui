@@ -109,4 +109,21 @@ export class Constants {
     };
   }
 
+  static mailTemplates(): Record<number, string> {
+    return {
+      0: 'Kedves Vásárló!\n' +
+        '\n' +
+        'A mai látogatásának részleteit a csatolt fájl tartalmazza.\n' +
+        '\n' +
+        'Üdvözlettel,\n' +
+        'Gyöngyi Optika',
+      1: 'Kedves Vásárló!\n' +
+        '\n' +
+        'Szemüvege megérkezett. A legutóbbi látogatásának részleteit a csatolt fájl tartalmazza.\n' +
+        '\n' +
+        'Üdvözlettel,\n' +
+        'Gyöngyi Optika'
+    };
+  }
+
 }

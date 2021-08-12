@@ -62,7 +62,7 @@
   <div class="clients-container"
        formArrayName="visits">
     <div *ngFor="let visitForm of visits.controls;let i = index">
-      <app-visit (del)="openDialog(i)"
+      <app-visit (del)="openDeleteConfirmationDialog(i)"
                  [formControlName]='i'>
       </app-visit>
     </div>

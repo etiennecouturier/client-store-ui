@@ -1,13 +1,35 @@
-<div mat-dialog-content  align="center">
-  <mat-label>Biztosan törlöd?</mat-label>
-</div>
-<div mat-dialog-actions align="center">
-  <button mat-icon-button color="accent" (click)="dialogRef.close()">
-    <mat-icon aria-label="Delete">cancel</mat-icon>
-  </button>
-<!--  <button mat-icon-button color="accent"-->
-<!--          mat-dialog-close-->
-<!--          (click)="del.emit()">-->
-<!--    <mat-icon aria-label="Delete">check</mat-icon>-->
-<!--  </button>-->
+<form mat-dialog-content
+      [formGroup]="mailForm">
+  <mat-radio-group class="radio-group"
+                   formControlName="template">
+    <mat-radio-button class="radio-button"
+                      *ngFor="let template of templates;let i = index"
+                      [value]="i"
+                      [checked]="template.checked">
+      {{template.name}}
+    </mat-radio-button>
+  </mat-radio-group>
+  <mat-form-field class="note-full-width">
+          <textarea matInput
+                    matTextareaAutosize
+                    placeholder="Szöveg"
+                    formControlName="message">
+          </textarea>
+  </mat-form-field>
+</form>
+<div mat-dialog-actions>
+  <div class="center">
+    <button mat-icon-button
+            color="accent"
+            mat-dialog-close
+            (click)="dialogRef.close()">
+      <mat-icon aria-label="Delete">cancel</mat-icon>
+    </button>
+    <button mat-icon-button
+            color="accent"
+            mat-dialog-close
+            (click)="sendEmail()">
+      <mat-icon aria-label="Send">send</mat-icon>
+    </button>
+  </div>
 </div>

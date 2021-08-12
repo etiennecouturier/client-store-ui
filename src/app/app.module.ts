@@ -55,6 +55,7 @@ import {ExamComponent} from './client-details/visit/exam/exam.component';
 import {HistoricalDataComponent} from './client-details/visit/historical-data/historical-data.component';
 import { OtherInfoComponent } from './client-details/visit/other-info/other-info.component';
 import { MailDialogComponent } from './mail-dialog/mail-dialog.component';
+import {MatRadioModule} from '@angular/material/radio';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
   provide: HTTP_INTERCEPTORS,
@@ -128,7 +129,8 @@ const URL_INTERCEPTOR_PROVIDER: ClassProvider = {
         allowedDomains: ['localhost:8080'],
         disallowedRoutes: []
       }
-    })
+    }),
+    MatRadioModule
   ],
   providers: [
     AuthService,

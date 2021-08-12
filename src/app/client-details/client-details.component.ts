@@ -73,7 +73,7 @@ export class ClientDetailsComponent implements OnInit {
     this.visits.removeAt(i);
   }
 
-  openDialog(index): void {
+  openDeleteConfirmationDialog(index): void {
     this.dialog.open(ConfirmDialogComponent, {
       width: '500px',
       data: this.clientDetailsForm.value

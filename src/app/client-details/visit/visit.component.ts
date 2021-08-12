@@ -5,6 +5,8 @@ import {MailService} from '../../services/mail.service';
 import {PdfService} from '../../services/pdf.service';
 import {ControlValueAccessor, FormBuilder, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {Subscription} from 'rxjs';
+import {MailDialogComponent} from '../../mail-dialog/mail-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-visit',
@@ -36,7 +38,8 @@ export class VisitComponent implements ControlValueAccessor, OnDestroy {
   onChangeSub: Subscription;
   private onTouched = () => {};
 
-  constructor(private mailService: MailService,
+  constructor(private dialog: MatDialog,
+              private mailService: MailService,
               private pdfService: PdfService,
               private notifierService: NotifierService,
               private formBuilder: FormBuilder) {
@@ -48,11 +51,11 @@ export class VisitComponent implements ControlValueAccessor, OnDestroy {
       .subscribe(blob => saveAs(blob, `visit_${this.id}.pdf`));
   }
 
-  sendEmail() {
-    this.notifierService.notify('success', 'az email küldés alatt van');
-    this.mailService
-      .sendMail(this.id)
-      .subscribe(() => {});
+  openEmailDialog(): void {
+    this.dialog.open(MailDialogComponent, {
+      width: '500px',
+      data: this.id
+    });
   }
 
   writeValue(visit: any): void {
