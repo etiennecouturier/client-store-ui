@@ -31,7 +31,7 @@ import {CommonModule} from '@angular/common';
 import {NotifierModule} from 'angular-notifier';
 import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule, NativeDateAdapter} from '@angular/material/core';
 import {VisitComponent} from './client-details/visit/visit.component';
 import {PhoneMaskDirective} from './directives/phone-mask.directive';
 import {LoggingInterceptor} from './interceptors/logging-interceptor.service';
@@ -56,6 +56,7 @@ import {HistoricalDataComponent} from './client-details/visit/historical-data/hi
 import { OtherInfoComponent } from './client-details/visit/other-info/other-info.component';
 import { MailDialogComponent } from './mail-dialog/mail-dialog.component';
 import {MatRadioModule} from '@angular/material/radio';
+import {MomentDateAdapter} from '@angular/material-moment-adapter';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
   provide: HTTP_INTERCEPTORS,
@@ -67,6 +68,18 @@ const URL_INTERCEPTOR_PROVIDER: ClassProvider = {
   provide: HTTP_INTERCEPTORS,
   useClass: UrlInterceptor,
   multi: true
+};
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'YYYY.M.D.',
+  },
+  display: {
+    dateInput: 'YYYY.M.D.',
+    monthYearLabel: 'YYYY MM',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'YYYY MM',
+  },
 };
 
 @NgModule({
@@ -145,7 +158,9 @@ const URL_INTERCEPTOR_PROVIDER: ClassProvider = {
     UserService,
     LOGGING_INTERCEPTOR_PROVIDER,
     URL_INTERCEPTOR_PROVIDER,
-    {provide: MAT_DATE_LOCALE, useValue: 'hu'}
+    {provide: MAT_DATE_LOCALE, useValue: 'hu'},
+    {provide: DateAdapter, useClass: NativeDateAdapter, deps: [MAT_DATE_LOCALE]},
+    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS}
   ],
   bootstrap: [AppComponent]
 })

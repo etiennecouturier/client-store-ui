@@ -56,6 +56,7 @@ export class ClientDetailsComponent implements OnInit {
       switchMap(formValue => {
         formValue.id = this.id;
         formValue.age = this.calculateAge();
+        console.log(formValue);
         return this.clientsService.save(formValue);
       }),
     ).subscribe(res => {
