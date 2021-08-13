@@ -31,6 +31,10 @@ body {
   color: red;
 }
 
+mat-panel-description.right-aligned {
+  flex-grow: 0;
+}
+
 /*visit*/
 
 .vertical {
