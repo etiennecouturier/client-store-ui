@@ -1,63 +1,73 @@
-<div class="exam-container">
-  <div class="label-border">
-    <div class="exam-label">
-      <div class="vertical red">ELŐZMÉNYEK</div>
-    </div>
-  </div>
-  <div [formGroup]="historicExamForm" class="exam-data-container">
-    <div class="exam-number-container">
-      <div class="flex-child">
-        <div class="flex-line red">Sph.</div>
-        <mat-form-field class="flex-line">
-          <input matInput
-                 type="number"
-                 formControlName="rightDioptria"
-                 (blur)="onTouched()"/>
-        </mat-form-field>
-        <mat-form-field class="flex-line">
-          <input matInput
-                 type="number"
-                 formControlName="leftDioptria"
-                 (blur)="onTouched()"/>
-        </mat-form-field>
-      </div>
-      <div class="flex-child">
-        <div class="flex-line red">Cyl.</div>
-        <mat-form-field class="flex-line">
-          <input matInput
-                 type="number"
-                 formControlName="rightCilinder"
-                 (blur)="onTouched()"/>
-        </mat-form-field>
-        <mat-form-field class="flex-line">
-          <input matInput
-                 type="number"
-                 formControlName="leftCilinder"
-                 (blur)="onTouched()"/>
-        </mat-form-field>
-      </div>
-      <div class="flex-child">
-        <div class="flex-line red">Fok</div>
-        <mat-form-field class="flex-line">
-          <input matInput
-                 type="number"
-                 formControlName="rightFok"
-                 (blur)="onTouched()"/>
-        </mat-form-field>
-        <mat-form-field class="flex-line">
-          <input matInput type="number"
-                 formControlName="leftFok"
-                 (blur)="onTouched()"/>
-        </mat-form-field>
+<mat-expansion-panel [expanded]="false" hideToggle>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Előzmények
+    </mat-panel-title>
+    <mat-panel-description class="right-aligned">
+      <mat-icon>history</mat-icon>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <div class="exam-container">
+    <div class="label-border">
+      <div class="exam-label">
+        <div class="vertical red">ELŐZMÉNYEK</div>
       </div>
     </div>
-    <mat-form-field class="note-full-width">
+    <div [formGroup]="historicExamForm" class="exam-data-container">
+      <div class="exam-number-container">
+        <div class="flex-child">
+          <div class="flex-line red">Sph.</div>
+          <mat-form-field class="flex-line">
+            <input matInput
+                   type="number"
+                   formControlName="rightDioptria"
+                   (blur)="onTouched()"/>
+          </mat-form-field>
+          <mat-form-field class="flex-line">
+            <input matInput
+                   type="number"
+                   formControlName="leftDioptria"
+                   (blur)="onTouched()"/>
+          </mat-form-field>
+        </div>
+        <div class="flex-child">
+          <div class="flex-line red">Cyl.</div>
+          <mat-form-field class="flex-line">
+            <input matInput
+                   type="number"
+                   formControlName="rightCilinder"
+                   (blur)="onTouched()"/>
+          </mat-form-field>
+          <mat-form-field class="flex-line">
+            <input matInput
+                   type="number"
+                   formControlName="leftCilinder"
+                   (blur)="onTouched()"/>
+          </mat-form-field>
+        </div>
+        <div class="flex-child">
+          <div class="flex-line red">Fok</div>
+          <mat-form-field class="flex-line">
+            <input matInput
+                   type="number"
+                   formControlName="rightFok"
+                   (blur)="onTouched()"/>
+          </mat-form-field>
+          <mat-form-field class="flex-line">
+            <input matInput type="number"
+                   formControlName="leftFok"
+                   (blur)="onTouched()"/>
+          </mat-form-field>
+        </div>
+      </div>
+      <mat-form-field class="note-full-width">
           <textarea matInput
                     matTextareaAutosize
                     placeholder="Megjegyzés"
                     formControlName="notes"
                     (blur)="onTouched()">
           </textarea>
-    </mat-form-field>
+      </mat-form-field>
+    </div>
   </div>
-</div>
+</mat-expansion-panel>

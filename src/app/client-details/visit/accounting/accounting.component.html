@@ -1,92 +1,102 @@
-<div class="exam-container">
-  <div class="label-border">
-    <div class="exam-label">
-      <div class="vertical red">ELSZÁMOLÁS</div>
-    </div>
-  </div>
-  <div class="exam-data-container" [formGroup]="accountingForm">
-    <div class="exam-number-container-shopping">
-      <div class="flex-child-shopping">
-        <div class="flex-line-shopping red">Keret</div>
-        <mat-form-field class="flex-line-shopping">
-          <input matInput
-                 type="number"
-                 formControlName="frame"
-                 (blur)="onTouched()"/>
-        </mat-form-field>
-      </div>
-      <div class="flex-child-shopping">
-        <div class="flex-line-shopping red">J. lencse</div>
-        <mat-form-field class="flex-line-shopping">
-          <input matInput
-                 type="number"
-                 formControlName="rightLense"
-                 (blur)="onTouched()"/>
-        </mat-form-field>
-      </div>
-      <div class="flex-child-shopping">
-        <div class="flex-line-shopping red">B. lencse</div>
-        <mat-form-field class="flex-line-shopping">
-          <input matInput
-                 type="number"
-                 formControlName="leftLense"
-                 (blur)="onTouched()"/>
-        </mat-form-field>
-      </div>
-      <div class="flex-child-shopping">
-        <div class="flex-line-shopping red">Munkadíj</div>
-        <mat-form-field class="flex-line-shopping">
-          <input matInput
-                 type="number"
-                 formControlName="service"
-                 (blur)="onTouched()"/>
-        </mat-form-field>
-      </div>
-      <div class="flex-child-shopping">
-        <div class="flex-line-shopping red">Vizsgálat</div>
-        <mat-form-field class="flex-line-shopping">
-          <input matInput type="number" formControlName="exam"/>
-        </mat-form-field>
-      </div>
-      <div class="flex-child-shopping">
-        <div class="flex-line-shopping red">Egyéb</div>
-        <mat-form-field class="flex-line-shopping">
-          <input matInput
-                 type="number"
-                 formControlName="other"
-                 (blur)="onTouched()"/>
-        </mat-form-field>
-      </div>
-      <div class="flex-child-shopping border-bottom padding-vertical">
-        <div class="flex-line-shopping red">Végösszeg</div>
-        <div class="flex-line-shopping">{{calculateTotal()}}</div>
-      </div>
-      <div class="flex-child-shopping">
-        <div class="flex-line-shopping red">Kedvezmény (%)</div>
-        <mat-form-field class="flex-line-shopping">
-          <input matInput
-                 type="number"
-                 formControlName="discountPercent"
-                 (blur)="onTouched()"/>
-        </mat-form-field>
-      </div>
-      <div class="flex-child-shopping border-bottom padding-vertical">
-        <div class="flex-line-shopping red">Kedvezmény (Ft)</div>
-        <div class="flex-line-shopping">{{calculateDiscountAmount()}}</div>
-      </div>
-      <div class="flex-child-shopping">
-        <div class="flex-line-shopping red">Fizetett</div>
-        <mat-form-field class="flex-line-shopping">
-          <input matInput
-                 type="number"
-                 formControlName="paid"
-                 (blur)="onTouched()"/>
-        </mat-form-field>
-      </div>
-      <div class="flex-child-shopping padding-vertical">
-        <div class="flex-line-shopping red">Fizetendő</div>
-        <div class="flex-line-shopping">{{calculateToBePaid()}}</div>
+<mat-expansion-panel [expanded]="false" hideToggle>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Elszámolás
+    </mat-panel-title>
+    <mat-panel-description>
+      <mat-icon>attach_money</mat-icon>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <div class="exam-container">
+    <div class="label-border">
+      <div class="exam-label">
+        <div class="vertical red">ELSZÁMOLÁS</div>
       </div>
     </div>
+    <div class="exam-data-container" [formGroup]="accountingForm">
+      <div class="exam-number-container-shopping">
+        <div class="flex-child-shopping">
+          <div class="flex-line-shopping red">Keret</div>
+          <mat-form-field class="flex-line-shopping">
+            <input matInput
+                   type="number"
+                   formControlName="frame"
+                   (blur)="onTouched()"/>
+          </mat-form-field>
+        </div>
+        <div class="flex-child-shopping">
+          <div class="flex-line-shopping red">J. lencse</div>
+          <mat-form-field class="flex-line-shopping">
+            <input matInput
+                   type="number"
+                   formControlName="rightLense"
+                   (blur)="onTouched()"/>
+          </mat-form-field>
+        </div>
+        <div class="flex-child-shopping">
+          <div class="flex-line-shopping red">B. lencse</div>
+          <mat-form-field class="flex-line-shopping">
+            <input matInput
+                   type="number"
+                   formControlName="leftLense"
+                   (blur)="onTouched()"/>
+          </mat-form-field>
+        </div>
+        <div class="flex-child-shopping">
+          <div class="flex-line-shopping red">Munkadíj</div>
+          <mat-form-field class="flex-line-shopping">
+            <input matInput
+                   type="number"
+                   formControlName="service"
+                   (blur)="onTouched()"/>
+          </mat-form-field>
+        </div>
+        <div class="flex-child-shopping">
+          <div class="flex-line-shopping red">Vizsgálat</div>
+          <mat-form-field class="flex-line-shopping">
+            <input matInput type="number" formControlName="exam"/>
+          </mat-form-field>
+        </div>
+        <div class="flex-child-shopping">
+          <div class="flex-line-shopping red">Egyéb</div>
+          <mat-form-field class="flex-line-shopping">
+            <input matInput
+                   type="number"
+                   formControlName="other"
+                   (blur)="onTouched()"/>
+          </mat-form-field>
+        </div>
+        <div class="flex-child-shopping border-bottom padding-vertical">
+          <div class="flex-line-shopping red">Végösszeg</div>
+          <div class="flex-line-shopping">{{calculateTotal()}}</div>
+        </div>
+        <div class="flex-child-shopping">
+          <div class="flex-line-shopping red">Kedvezmény (%)</div>
+          <mat-form-field class="flex-line-shopping">
+            <input matInput
+                   type="number"
+                   formControlName="discountPercent"
+                   (blur)="onTouched()"/>
+          </mat-form-field>
+        </div>
+        <div class="flex-child-shopping border-bottom padding-vertical">
+          <div class="flex-line-shopping red">Kedvezmény (Ft)</div>
+          <div class="flex-line-shopping">{{calculateDiscountAmount()}}</div>
+        </div>
+        <div class="flex-child-shopping">
+          <div class="flex-line-shopping red">Fizetett</div>
+          <mat-form-field class="flex-line-shopping">
+            <input matInput
+                   type="number"
+                   formControlName="paid"
+                   (blur)="onTouched()"/>
+          </mat-form-field>
+        </div>
+        <div class="flex-child-shopping padding-vertical">
+          <div class="flex-line-shopping red">Fizetendő</div>
+          <div class="flex-line-shopping">{{calculateToBePaid()}}</div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</mat-expansion-panel>

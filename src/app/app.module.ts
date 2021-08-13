@@ -31,7 +31,7 @@ import {CommonModule} from '@angular/common';
 import {NotifierModule} from 'angular-notifier';
 import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule, NativeDateAdapter} from '@angular/material/core';
+import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import {VisitComponent} from './client-details/visit/visit.component';
 import {PhoneMaskDirective} from './directives/phone-mask.directive';
 import {LoggingInterceptor} from './interceptors/logging-interceptor.service';
@@ -48,15 +48,15 @@ import {PdfService} from './services/pdf.service';
 import {MailService} from './services/mail.service';
 import {UserService} from './services/user.service';
 import {PhotoService} from './services/photo.service';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import {NavBarComponent} from './nav-bar/nav-bar.component';
 import {ContactLenseComponent} from './client-details/visit/contact-lense/contact-lense.component';
 import {AccountingComponent} from './client-details/visit/accounting/accounting.component';
 import {ExamComponent} from './client-details/visit/exam/exam.component';
 import {HistoricalDataComponent} from './client-details/visit/historical-data/historical-data.component';
-import { OtherInfoComponent } from './client-details/visit/other-info/other-info.component';
-import { MailDialogComponent } from './mail-dialog/mail-dialog.component';
+import {OtherInfoComponent} from './client-details/visit/other-info/other-info.component';
+import {MailDialogComponent} from './mail-dialog/mail-dialog.component';
 import {MatRadioModule} from '@angular/material/radio';
-import {MomentDateAdapter} from '@angular/material-moment-adapter';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
   provide: HTTP_INTERCEPTORS,
@@ -143,7 +143,8 @@ export const MY_FORMATS = {
         disallowedRoutes: []
       }
     }),
-    MatRadioModule
+    MatRadioModule,
+    MatExpansionModule
   ],
   providers: [
     AuthService,
@@ -159,8 +160,8 @@ export const MY_FORMATS = {
     LOGGING_INTERCEPTOR_PROVIDER,
     URL_INTERCEPTOR_PROVIDER,
     {provide: MAT_DATE_LOCALE, useValue: 'hu'},
-    {provide: DateAdapter, useClass: NativeDateAdapter, deps: [MAT_DATE_LOCALE]},
-    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS}
+    // {provide: DateAdapter, useClass: NativeDateAdapter, deps: [MAT_DATE_LOCALE]},
+    // {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS}
   ],
   bootstrap: [AppComponent]
 })

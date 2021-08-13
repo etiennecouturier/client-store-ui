@@ -1,18 +1,28 @@
-<form [formGroup]="otherInfoForm">
-  <mat-form-field class="note-full-width">
+<mat-expansion-panel [expanded]="false" hideToggle>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Egyéb információ
+    </mat-panel-title>
+    <mat-panel-description class="right-aligned">
+      <mat-icon>note</mat-icon>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <form [formGroup]="otherInfoForm">
+    <mat-form-field class="note-full-width">
       <textarea matInput
                 matTextareaAutosize
                 placeholder="Keret típusa"
                 formControlName="frame"
                 (blur)="onTouched()">
       </textarea>
-  </mat-form-field>
-  <mat-form-field class="note-full-width">
+    </mat-form-field>
+    <mat-form-field class="note-full-width">
       <textarea matInput
                 matTextareaAutosize
                 placeholder="Lencse típusa"
                 formControlName="lense"
                 (blur)="onTouched()">
       </textarea>
-  </mat-form-field>
-</form>
+    </mat-form-field>
+  </form>
+</mat-expansion-panel>
