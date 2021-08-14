@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {ClassProvider, NgModule} from '@angular/core';
+import {ClassProvider, LOCALE_ID, NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -31,7 +31,7 @@ import {CommonModule} from '@angular/common';
 import {NotifierModule} from 'angular-notifier';
 import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
+import {DateAdapter, MAT_DATE_FORMATS, MatNativeDateModule} from '@angular/material/core';
 import {VisitComponent} from './client-details/visit/visit.component';
 import {PhoneMaskDirective} from './directives/phone-mask.directive';
 import {LoggingInterceptor} from './interceptors/logging-interceptor.service';
@@ -57,6 +57,7 @@ import {OtherInfoComponent} from './client-details/visit/other-info/other-info.c
 import {MailDialogComponent} from './mail-dialog/mail-dialog.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {LuxonDateAdapter, LuxonDateModule, MatLuxonDateModule} from 'ngx-material-luxon';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
   provide: HTTP_INTERCEPTORS,
@@ -72,13 +73,13 @@ const URL_INTERCEPTOR_PROVIDER: ClassProvider = {
 
 export const MY_FORMATS = {
   parse: {
-    dateInput: 'YYYY.M.D.',
+    dateInput: 'yyyy.MM.d.',
   },
   display: {
-    dateInput: 'YYYY.M.D.',
-    monthYearLabel: 'YYYY MM',
+    dateInput: 'yyyy.MM.d.',
+    monthYearLabel: 'yyyy MM',
     dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'YYYY MM',
+    monthYearA11yLabel: 'yyyy MM',
   },
 };
 
@@ -144,7 +145,9 @@ export const MY_FORMATS = {
       }
     }),
     MatRadioModule,
-    MatExpansionModule
+    MatExpansionModule,
+    LuxonDateModule,
+    MatLuxonDateModule,
   ],
   providers: [
     AuthService,
@@ -159,9 +162,9 @@ export const MY_FORMATS = {
     UserService,
     LOGGING_INTERCEPTOR_PROVIDER,
     URL_INTERCEPTOR_PROVIDER,
-    {provide: MAT_DATE_LOCALE, useValue: 'hu'},
-    // {provide: DateAdapter, useClass: NativeDateAdapter, deps: [MAT_DATE_LOCALE]},
-    // {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS}
+    {provide: LOCALE_ID, useValue: 'hu'},
+    {provide: DateAdapter, useClass: LuxonDateAdapter},
+    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS}
   ],
   bootstrap: [AppComponent]
 })
