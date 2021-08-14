@@ -31,7 +31,7 @@ import {CommonModule} from '@angular/common';
 import {NotifierModule} from 'angular-notifier';
 import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {DateAdapter, MAT_DATE_FORMATS, MatNativeDateModule} from '@angular/material/core';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import {VisitComponent} from './client-details/visit/visit.component';
 import {PhoneMaskDirective} from './directives/phone-mask.directive';
 import {LoggingInterceptor} from './interceptors/logging-interceptor.service';
@@ -163,6 +163,7 @@ export const MY_FORMATS = {
     LOGGING_INTERCEPTOR_PROVIDER,
     URL_INTERCEPTOR_PROVIDER,
     {provide: LOCALE_ID, useValue: 'hu'},
+    {provide: MAT_DATE_LOCALE, useValue: 'hu'},
     {provide: DateAdapter, useClass: LuxonDateAdapter},
     {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS}
   ],
