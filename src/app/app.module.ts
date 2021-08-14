@@ -27,7 +27,7 @@ import {ChartsModule} from 'ng2-charts';
 import {ClientResolver} from './resolvers/client-resolver.service';
 import {ClientDetailsComponent} from './client-details/client-details.component';
 import {PhonePipe} from './pipes/phone.pipe';
-import {CommonModule} from '@angular/common';
+import {CommonModule, registerLocaleData} from '@angular/common';
 import {NotifierModule} from 'angular-notifier';
 import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -58,6 +58,8 @@ import {MailDialogComponent} from './mail-dialog/mail-dialog.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {LuxonDateAdapter, LuxonDateModule, MatLuxonDateModule} from 'ngx-material-luxon';
+import {LuxonModule} from 'luxon-angular';
+import localeHu from '@angular/common/locales/hu';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
   provide: HTTP_INTERCEPTORS,
@@ -71,17 +73,20 @@ const URL_INTERCEPTOR_PROVIDER: ClassProvider = {
   multi: true
 };
 
-export const MY_FORMATS = {
+export const CUSTOM_FORMATS = {
   parse: {
-    dateInput: 'yyyy.MM.d.',
+    dateInput: 'yyyy.M.d.',
   },
   display: {
-    dateInput: 'yyyy.MM.d.',
-    monthYearLabel: 'yyyy MM',
+    dateInput: 'yyyy.M.d.',
+    monthYearLabel: 'yyyy M',
     dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'yyyy MM',
+    monthYearA11yLabel: 'yyyy M',
   },
 };
+
+// todo why needed
+registerLocaleData(localeHu);
 
 @NgModule({
   declarations: [
@@ -128,7 +133,7 @@ export const MY_FORMATS = {
     ChartsModule,
     NotifierModule.withConfig({
       behaviour: {
-        autoHide: 1000
+        autoHide: 5000
       }
     }),
     MatDatepickerModule,
@@ -163,9 +168,8 @@ export const MY_FORMATS = {
     LOGGING_INTERCEPTOR_PROVIDER,
     URL_INTERCEPTOR_PROVIDER,
     {provide: LOCALE_ID, useValue: 'hu'},
-    {provide: MAT_DATE_LOCALE, useValue: 'hu'},
     {provide: DateAdapter, useClass: LuxonDateAdapter},
-    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS}
+    {provide: MAT_DATE_FORMATS, useValue: CUSTOM_FORMATS}
   ],
   bootstrap: [AppComponent]
 })

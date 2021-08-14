@@ -78,7 +78,7 @@ export class StatsComponent implements OnInit {
         this.chartData = [
           {data: res.map(value => value.count), label: 'látogatások száma'}
         ];
-        this.chartLabels = res.map(value => formatDate(value.date, 'yyyy-MM-dd', 'en-US'));
+        this.chartLabels = res.map(value => formatDate(value.date, 'yyyy.MM.dd', 'hu'));
       });
 
     this.statsService.findVisitorCountPerAge()

@@ -1,5 +1,6 @@
 import {Visit} from './visit';
 import {Client} from './client';
+import {DateTime} from 'luxon';
 
 export class Constants {
 
@@ -19,7 +20,7 @@ export class Constants {
   static emptyVisit(): Visit {
     return {
       id: null,
-      date: new Date(),
+      date: DateTime.now(),
       historicExam: {
         rightEye: {
           dioptria: null,
