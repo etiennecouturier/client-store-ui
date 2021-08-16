@@ -9,7 +9,6 @@ import {ClientsService} from '../services/clients.service';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import {debounceTime, switchMap} from 'rxjs/operators';
 import {Subscription} from 'rxjs';
-import {NotifierService} from 'angular-notifier';
 import {DateTime} from 'luxon';
 
 
@@ -31,12 +30,12 @@ export class ClientDetailsComponent implements OnInit {
               private route: ActivatedRoute,
               private clientsService: ClientsService,
               private phonePipe: PhonePipe,
-              private formBuilder: FormBuilder,
-              private notifierService: NotifierService) {
+              private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
     let client: Client = this.route.snapshot.data['client'];
+    console.log(client);
     if (!client) {
       client = Constants.emptyClient();
     }
@@ -58,12 +57,12 @@ export class ClientDetailsComponent implements OnInit {
         formValue.id = this.id;
         formValue.age = this.calculateAge();
         console.log(formValue);
-        return this.clientsService.save(formValue);
+        return this.clientsService.save<Client>(formValue);
       }),
     ).subscribe(res => {
       this.id = res.id;
       this.sex = res.sex;
-      this.notifierService.notify('success', 'sikeres mentés');
+      console.log(res);
     });
   }
 
@@ -86,13 +85,12 @@ export class ClientDetailsComponent implements OnInit {
 
   calculateAge() {
     if (this.dob) {
-      const timeDiff = Math.abs(Date.now() - new Date(this.dob).getTime());
-      return Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
+      return Math.trunc(Math.abs(this.dob.diffNow('years').years));
     }
   }
 
   get dob() {
-    return this.clientDetailsForm.controls['dob'].value;
+    return this.clientDetailsForm.controls['dob'].value as DateTime;
   }
 
   get visits() {

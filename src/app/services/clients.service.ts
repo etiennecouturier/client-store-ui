@@ -10,7 +10,8 @@ import {tap} from 'rxjs/operators';
 export class ClientsService {
 
   constructor(private http: HttpClient,
-              private notifierService: NotifierService) {}
+              private notifierService: NotifierService) {
+  }
 
   findClients(name, sortBy, sortDirection, offset, limit): Observable<Page<Client>> {
     let params = new HttpParams();
@@ -23,7 +24,7 @@ export class ClientsService {
   }
 
   find<T>(params: any = {}): Observable<T> {
-    return this.http.get<T>('/clients/id', { params : params });
+    return this.http.get<T>('/clients/id', {params: params});
   }
 
   deleteById(id: number): Observable<Object> {
@@ -38,7 +39,7 @@ export class ClientsService {
     return this.http.post<T>('/clients/new', elem, {})
       .pipe(
         tap(
-          // () => this.notifierService.notify('success', 'ügyfél adatai sikeresen mentve')
+          () => this.notifierService.notify('success', 'ügyfél sikeresen mentve')
         ));
   }
 

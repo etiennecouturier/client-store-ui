@@ -31,7 +31,7 @@ import {CommonModule, registerLocaleData} from '@angular/common';
 import {NotifierModule} from 'angular-notifier';
 import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
+import {DateAdapter, MAT_DATE_FORMATS, MatNativeDateModule} from '@angular/material/core';
 import {VisitComponent} from './client-details/visit/visit.component';
 import {PhoneMaskDirective} from './directives/phone-mask.directive';
 import {LoggingInterceptor} from './interceptors/logging-interceptor.service';
@@ -58,8 +58,8 @@ import {MailDialogComponent} from './mail-dialog/mail-dialog.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {LuxonDateAdapter, LuxonDateModule, MatLuxonDateModule} from 'ngx-material-luxon';
-import {LuxonModule} from 'luxon-angular';
 import localeHu from '@angular/common/locales/hu';
+import {DateInterceptor} from './interceptors/date-interceptor.service';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
   provide: HTTP_INTERCEPTORS,
@@ -70,6 +70,12 @@ const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
 const URL_INTERCEPTOR_PROVIDER: ClassProvider = {
   provide: HTTP_INTERCEPTORS,
   useClass: UrlInterceptor,
+  multi: true
+};
+
+const DATE_INTERCEPTOR_PROVIDER: ClassProvider = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: DateInterceptor,
   multi: true
 };
 
@@ -167,6 +173,7 @@ registerLocaleData(localeHu);
     UserService,
     LOGGING_INTERCEPTOR_PROVIDER,
     URL_INTERCEPTOR_PROVIDER,
+    DATE_INTERCEPTOR_PROVIDER,
     {provide: LOCALE_ID, useValue: 'hu'},
     {provide: DateAdapter, useClass: LuxonDateAdapter},
     {provide: MAT_DATE_FORMATS, useValue: CUSTOM_FORMATS}
