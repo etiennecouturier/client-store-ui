@@ -78,7 +78,10 @@ export class VisitComponent implements ControlValueAccessor, OnDestroy {
 
   registerOnChange(fn: any): void {
     this.onChangeSub = this.visitForm.valueChanges
-      .subscribe(fn);
+      .subscribe(formValue => {
+        formValue.id = this.id;
+        fn(formValue);
+      });
   }
 
   ngOnDestroy(): void {
